@@ -1,0 +1,33 @@
+#headerDiv {
+  place-items: flex-start;
+  z-index: 4;
+}
+
+#logo {
+  width: 5rem;
+  height: 3rem;
+  transition: 0.3s;
+  margin: 0.5rem 0 0 1rem;
+  border-radius: 1rem;
+}
+#logo:hover {
+  animation: logo 0.3s;
+}
+
+@keyframes logo {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(22.5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-22.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

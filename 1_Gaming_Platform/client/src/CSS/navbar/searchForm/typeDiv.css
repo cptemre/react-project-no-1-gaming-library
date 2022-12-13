@@ -1,0 +1,27 @@
+#typeDiv {
+  cursor: pointer;
+  justify-content: flex-end;
+  grid-template-columns: auto auto auto;
+}
+
+#downArrow {
+  justify-items: flex-end;
+  font-size: 1.2rem;
+  color: rgb(165, 112, 161);
+  text-shadow: 1px 2px rgb(144, 55, 179);
+}
+
+#filterType {
+  background-color: transparent;
+  color: rgb(217, 130, 218);
+  text-shadow: 2px 2px rgb(144, 55, 179);
+  padding-right: 3px;
+}
+
+#seperator {
+  height: 20px;
+  border-radius: 5rem;
+  background-color: var(--seperatorBC);
+  width: 2px;
+  margin-left: 0.7rem;
+}

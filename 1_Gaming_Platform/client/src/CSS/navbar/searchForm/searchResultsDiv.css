@@ -1,0 +1,7 @@
+#searchResultsDiv {
+  grid-area: result;
+}
+
+.searchResults {
+  height: 2rem;
+}

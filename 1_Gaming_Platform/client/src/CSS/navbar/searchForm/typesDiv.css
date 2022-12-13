@@ -1,0 +1,15 @@
+#typesDiv {
+  overflow-y: scroll;
+  height: 10rem;
+  padding-right: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.types {
+  justify-content: flex-end;
+  height: 2rem;
+  width: 100%;
+  transform-origin: top;
+  font-family: "Rubik Gemstones", cursive;
+  cursor: pointer;
+}
