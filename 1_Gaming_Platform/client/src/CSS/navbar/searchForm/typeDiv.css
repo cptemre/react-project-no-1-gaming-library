@@ -1,21 +1,32 @@
+#typeMainDiv {
+  position: relative;
+}
+
 #typeDiv {
   cursor: pointer;
   justify-content: flex-end;
   grid-template-columns: auto auto auto;
+  grid-column-gap: 0.2rem;
+  width: auto;
+  min-height: 2rem;
+  position: absolute;
+  right: 0;
+}
+
+.dropdown {
+  transition: 0.3s;
 }
 
 #downArrow {
   justify-items: flex-end;
   font-size: 1.2rem;
-  color: rgb(165, 112, 161);
-  text-shadow: 1px 2px rgb(144, 55, 179);
+  color: var(--lightBlue);
+  text-shadow: 1px 2px var(--purpleShadow);
 }
 
 #filterType {
-  background-color: transparent;
-  color: rgb(217, 130, 218);
-  text-shadow: 2px 2px rgb(144, 55, 179);
-  padding-right: 3px;
+  color: var(--lightBlue);
+  text-shadow: 2px 2px var(--purpleShadow);
 }
 
 #seperator {

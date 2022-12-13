@@ -20,7 +20,7 @@
   animation: dotSlider 2s forwards;
 }
 #underline {
-  background: linear-gradient(90deg, rgb(144, 55, 179), rgb(146, 189, 206));
+  background: linear-gradient(90deg, rgb(144, 55, 179), var(--inputBlue));
   z-index: 1;
   animation: underlineSlider 2s forwards;
 }

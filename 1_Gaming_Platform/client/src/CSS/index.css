@@ -1,5 +1,13 @@
 :root {
+  /* SCROLL BAR BG COLOR */
   --seperatorBC: rgb(213, 185, 218);
+  /* TYPEDIV, TYPES AND DOWN ARROW COLOR */
+  --lightBlue: rgb(83, 201, 199);
+  --hoverColor: rgb(27, 91, 164);
+  --purpleShadow: rgb(144, 55, 179);
+  --hoverShadow: rgb(190, 48, 187);
+  /* INPUT BLUE */
+  --inputBlue: rgb(81, 194, 238);
 }
 
 * {
@@ -23,11 +31,14 @@
 body {
   background-color: black;
   color: white;
+  min-height: 100vh;
+  width: 100vw;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Rubik Gemstones", cursive;
 }
 
 nav,
@@ -50,7 +61,8 @@ nav {
 }
 
 #searchForm {
-  max-width: 1000px;
+  min-width: 400px;
+  max-width: 650px;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "type input"
@@ -67,7 +79,7 @@ input {
   background-color: transparent;
   font-family: "Rubik Gemstones", cursive;
   letter-spacing: 2px;
-  color: rgb(83, 201, 199);
+  color: var(--inputBlue);
   outline: none;
   border: none;
 }

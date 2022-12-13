@@ -1,28 +1,56 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+// GLOBAL CONTEXT FILE
+import { Context } from "../Context";
+// JQUERY
+import $ from "jquery";
 
 const TypesDiv = () => {
+  // GET TYPES ARRAY
+  const { state } = useContext(Context);
+  // STATE TYPES SETUP
+  const [types, setTypes] = useState([]);
+
+  // SET TYPES BY FILTERING IT WITH CURRENT SELECTED VALUE IN FILTERTYPE
+  useEffect(() => {
+    const filteredTypes = state.types.filter(
+      (type) => type !== $("#filterType").html()
+    );
+    setTypes(filteredTypes);
+  }, [state.types]);
+
+  //#region FUNCTIONS
+  const mouseEnter = (e) => {
+    $(e.currentTarget).css({
+      color: "var(--lightBlue)",
+      letterSpacing: "2px",
+      textShadow: "2px 2px rgb(144, 55, 179)",
+    });
+    $("#filterType").css("opacity", 0.7);
+  };
+
+  const mouseLeave = (e) => {
+    $(e.currentTarget).css({
+      color: "white",
+      letterSpacing: "initial",
+      textShadow: "initial",
+    });
+    $("#filterType").css("opacity", 1);
+  };
+  //#endregion FUNCTIONS
+
   return (
+    // LOOP TO CREATE TYPES
     <div id="typesDiv" value="">
-      <div className="types">ALL GAMES</div>
-      <div className="types">DEVELOPERS</div>
-      <div className="types">PUBLISHERS</div>
-      <div className="types">ENGINES</div>
-      <div className="types">PLATFORMS</div>
-      <div className="types">YEARS</div>
-      <div className="types">GENRES</div>
-      <div className="types">MODES</div>
-      <div className="types">GALERY</div>
-      <div className="types">MICROSOFT WINDOWS</div>
-      <div className="types">STEAM</div>
-      <div className="types">EPIC</div>
-      <div className="types">XBOX ONE</div>
-      <div className="types">XBOX SERIES X</div>
-      <div className="types">XBOX SERIES S</div>
-      <div className="types">PLAYSTATION 4</div>
-      <div className="types">PLAYSTATION 5</div>
-      <div className="types">NINTENDO</div>
-      <div className="types">LINUX</div>
-      <div className="types">MACOS</div>
+      {types.map((type) => (
+        <div
+          key={type}
+          className="types"
+          onMouseEnter={(e) => mouseEnter(e)}
+          onMouseLeave={(e) => mouseLeave(e)}
+        >
+          {type}
+        </div>
+      ))}
     </div>
   );
 };

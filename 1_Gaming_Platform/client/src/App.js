@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import Home from "./Home";
 import Navbar from "./navbar/Navbar";
 import Logo from "./assets/imgs/header/Logo.jpg";
@@ -25,8 +25,13 @@ import { Context } from "./Context";
 // ROUTER
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // LOCAL DATA
+// REDUCER AND DEFAULTSTATE
+import { reducer, defaultState } from "./reducer";
 const localData = require("./gamesList.json");
+
 const App = () => {
+  const [state, dispatch] = useReducer(reducer, defaultState);
+
   return (
     <Router>
       <nav>
@@ -35,17 +40,12 @@ const App = () => {
             <img src={Logo} alt="Logo" id="logo" />
           </Link>
         </div>
-        <Navbar />
+        <Context.Provider value={{ state }}>
+          <Navbar />
+        </Context.Provider>
       </nav>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Context.Provider>
-              <Home />
-            </Context.Provider>
-          }
-        />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
