@@ -1,5 +1,7 @@
 #typeMainDiv {
   position: relative;
+  grid-template-rows: 1fr 1fr;
+  grid-area: typeDiv;
 }
 
 #typeDiv {
@@ -7,10 +9,17 @@
   justify-content: flex-end;
   grid-template-columns: auto auto auto;
   grid-column-gap: 0.2rem;
-  width: auto;
-  min-height: 2rem;
+  width: max-content;
+  height: 2rem;
   position: absolute;
   right: 0;
+}
+
+@media screen and (max-width: 390px) {
+  #typeDiv {
+    width: 100vw;
+    justify-content: center;
+  }
 }
 
 .dropdown {

@@ -56,30 +56,48 @@ img {
 
 nav {
   grid-template-columns: 5rem 1fr;
-  height: 3rem;
+  grid-template-rows: 1fr;
   position: relative;
+}
+
+@media screen and (max-width: 550px) {
+  nav {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "header"
+      "searchform";
+  }
+  #searchForm {
+    margin-right: 5px !important;
+  }
+  #searchForm,
+  #search {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  #searchForm {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr 1fr !important;
+    grid-template-areas:
+      "typeDiv"
+      "inputMain" !important;
+      width: 100vw !important;
+  }
 }
 
 #searchForm {
   min-width: 400px;
   max-width: 650px;
+  grid-area: searchform;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "type input"
-    ". result";
+  grid-template-rows: 1fr;
+  grid-template-areas: "typeDiv inputMain";
   grid-column-gap: 0.5rem;
   margin: 1rem 2rem 0 0;
   position: absolute;
   right: 0;
   z-index: 3;
-}
-
-input {
-  width: 100%;
-  background-color: transparent;
-  font-family: "Rubik Gemstones", cursive;
-  letter-spacing: 2px;
-  color: var(--inputBlue);
-  outline: none;
-  border: none;
 }

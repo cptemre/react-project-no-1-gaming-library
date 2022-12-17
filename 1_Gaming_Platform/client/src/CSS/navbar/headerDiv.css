@@ -3,6 +3,14 @@
   z-index: 4;
 }
 
+@media screen and (max-width: 390px) {
+  img {
+
+    justify-content: center;
+    margin: 0 !important;
+  }
+}
+
 #logo {
   width: 5rem;
   height: 3rem;
@@ -29,5 +37,11 @@
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  #headerDiv {
+    place-items: center;
   }
 }

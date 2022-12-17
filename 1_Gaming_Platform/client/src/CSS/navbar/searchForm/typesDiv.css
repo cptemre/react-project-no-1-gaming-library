@@ -3,6 +3,9 @@
   height: 10rem;
   padding-right: 1rem;
   grid-template-columns: 1fr;
+  position: absolute;
+  top: 2.5rem;
+  
 }
 
 .types {

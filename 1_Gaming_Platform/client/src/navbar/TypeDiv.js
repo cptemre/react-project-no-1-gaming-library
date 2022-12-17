@@ -1,23 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import TypesDiv from "./TypesDiv";
 // JQUERY
 import $ from "jquery";
 
 const TypeDiv = () => {
-  const [isClicked, setIsClicked] = useState(false);
-
-  //#region TYPES FUNCTIONS TO HIDE AND SHOW
-  // FUNCTION TO LOOP TYPES TO SCALE THEM AND ADJUST SCROLLBAR
-  const interval = (i, dom, value, scroll) => {
-    setTimeout(() => {
-      $(dom).css("transform", `scale(${value})`);
-      if (i === 3) {
-        $("#typesDiv").css("overflow-y", `${scroll}`);
-      }
-    }, 100 * i);
-  };
-
-  // DROPDOWN CLASS CLICK EVENT TO ADJUST TYPES
-  const dropdownClick = () => {
+  const [isClicked, setIsClicked] = useState(true);
+  // SHOW AND HIDE MENU
+  useEffect(() => {
     if (isClicked) {
       $(".types").each((i, dom) => {
         interval(i, dom, 0, "hidden");
@@ -30,16 +19,25 @@ const TypeDiv = () => {
         });
       });
     }
-    setIsClicked(!isClicked);
+  }, [isClicked]);
+
+  //#region TYPES FUNCTIONS TO HIDE AND SHOW
+  // FUNCTION TO LOOP TYPES TO SCALE THEM AND ADJUST SCROLLBAR
+  const interval = (i, dom, value, scroll) => {
+    setTimeout(() => {
+      $(dom).css("transform", `scale(${value})`);
+      if (i === 3) {
+        $("#typesDiv").css("overflow-y", `${scroll}`);
+      }
+    }, 100 * i);
   };
 
-  // BODY CLICK EVENT TO HIDE TYPES IF E DOES NOT MATCH TO ID TYPEDIV
-  $("body").mouseup(function (e) {
-    // write this
-    if (e.currentTarget !== $("#typeDiv")) {
-      $(".types").each((i, dom) => {
-        interval(i, dom, 0, "hidden");
-      });
+  // DROPDOWN CLASS CLICK EVENT TO ADJUST TYPES AND CLOSE DROPDOWN IF CLICK ANOTHER PLACE IN BODY
+  $("body").mousedown(function (e) {
+    if (e.target.className !== "dropdown") {
+      setIsClicked(true);
+    } else {
+      setIsClicked(!isClicked);
     }
   });
   //#endregion TYPES FUNCTIONS TO HIDE AND SHOW
@@ -70,7 +68,6 @@ const TypeDiv = () => {
         id="typeDiv"
         onMouseEnter={() => dropdownEnter()}
         onMouseLeave={() => dropdownLeave()}
-        onClick={() => dropdownClick()}
       >
         <div id="downArrow" className="dropdown">
           &#8623;
@@ -80,6 +77,7 @@ const TypeDiv = () => {
         </div>
         <div id="seperator"></div>
       </div>
+      <TypesDiv />
     </div>
   );
 };
