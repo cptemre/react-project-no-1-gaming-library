@@ -43,7 +43,8 @@ body {
 
 nav,
 div,
-form {
+form,
+figure {
   display: grid;
   place-items: center;
   width: 100%;
@@ -84,7 +85,7 @@ nav {
     grid-template-areas:
       "typeDiv"
       "inputMain" !important;
-      width: 100vw !important;
+    width: 100vw !important;
   }
 }
 
