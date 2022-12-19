@@ -1,18 +1,17 @@
 const reducer = (state, action) => {
-  return state;
+  if (action.type === "GET_ALL") {
+    return { ...state, list: action.payload };
+  }
+  return console.log("Something went wrong");
 };
 
 const defaultState = {
   types: [
+    "FAVORITES",
     "GAMES",
-    "DEVELOPERS",
-    "PUBLISHERS",
-    "ENGINES",
     "PLATFORMS",
-    "YEARS",
     "GENRES",
     "MODES",
-    "GALERY",
     "MICROSOFT WINDOWS",
     "STEAM",
     "EPIC",
@@ -24,7 +23,12 @@ const defaultState = {
     "NINTENDO",
     "LINUX",
     "MACOS",
+    "ENGINES",
+    "YEARS",
+    "DEVELOPERS",
+    "PUBLISHERS",
   ],
+  list: [],
 };
 
 export { reducer, defaultState };

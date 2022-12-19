@@ -1,11 +1,13 @@
 #typesDiv {
-  overflow-y: hidden;
+  overflow: hidden;
   height: 10rem;
-  padding-right: 1rem;
+  padding-right: 5px;
   grid-template-columns: 1fr;
   position: absolute;
+  right: 0;
   top: 2.5rem;
-  
+  width: 8rem;
+  justify-items: flex-end;
 }
 
 .types {

@@ -1,7 +1,7 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import Home from "./Home";
+import Games from "./pages/Games";
 import Navbar from "./navbar/Navbar";
-import Logo from "./assets/imgs/header/Logo.jpg";
 
 //#region CSS
 import "./CSS/index.css";
@@ -18,34 +18,70 @@ import "./CSS/navbar/searchForm/searchResultsDiv.css";
 
 //#endregion NAVBAR
 
+//#region MAIN
+import "./CSS/main/home.css";
+import "./CSS/main/games.css";
+
+//#endregion MAIN
+
 //#endregion CSS
 
 // GLOBAL CONTEXT FILE
 import { Context } from "./Context";
 // ROUTER
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-// LOCAL DATA
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // REDUCER AND DEFAULTSTATE
 import { reducer, defaultState } from "./reducer";
-const localData = require("./gamesList.json");
+import axios from "axios";
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
+  const [list, setList] = useState([]);
 
+  // SET YOUR DATA TO STATE
+  useEffect(() => {
+    fetchData();
+  }, [state]);
+  // SET YOUR LIST TO STATE.LIST
+  useEffect(() => {
+    console.log('list');
+    dispatch({ type: "GET_ALL", payload: list });
+  }, [list]);
+
+  // FETCH DATA BY SERVER OR LOCAL
+  const fetchData = async () => {
+    try {
+      // SERVER DATA
+      const { data } = await axios.get("/api/list");
+      setList(data);
+    } catch (error) {
+      // LOCAL DATA
+      const data = require("./gamesList.json");
+      setList(data);
+    }
+  };
   return (
     <Router>
-      <nav>
-        <div id="headerDiv">
-          <Link to="/">
-            <img src={Logo} alt="Logo" id="logo" />
-          </Link>
-        </div>
-        <Context.Provider value={{ state }}>
-          <Navbar />
-        </Context.Provider>
-      </nav>
+      <Context.Provider value={{ state }}>
+        <Navbar />
+      </Context.Provider>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Context.Provider value={{ state }}>
+              <Home />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/GAMES"
+          element={
+            <Context.Provider value={{ state }}>
+              <Games />
+            </Context.Provider>
+          }
+        />
       </Routes>
     </Router>
   );

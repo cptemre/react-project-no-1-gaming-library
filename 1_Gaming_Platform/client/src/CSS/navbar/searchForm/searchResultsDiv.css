@@ -8,8 +8,8 @@
   overflow-x: hidden;
   right: 0;
   grid-row-gap: 0.5rem;
-    padding-right: 10px;
-
+  padding-right: 10px;
+  visibility: hidden;
 }
 
 .searchFigure {
@@ -19,7 +19,6 @@
   transition: 0.3s;
   cursor: pointer;
   border-radius: 5px;
-
 }
 
 @media screen and (max-width: 390px) {

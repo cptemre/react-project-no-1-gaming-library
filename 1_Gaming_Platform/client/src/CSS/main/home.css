@@ -1,0 +1,49 @@
+main {
+  display: flex;
+  margin-top: 3rem;
+  row-gap: 3rem;
+  place-items: center;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+
+.urlDiv {
+  position: relative;
+  max-width: 20rem;
+  width: 100%;
+  height: 13rem;
+  flex-basis: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.urlName {
+  position: absolute;
+  z-index: 1;
+}
+
+.urlImgDiv {
+  z-index: 2;
+}
+
+.urlUpDiv {
+  position: relative;
+  top: 0;
+}
+.urlDownDiv {
+  position: relative;
+  top: 0;
+}
+.urlUpImg,
+.urlDownImg {
+  width: 100%;
+  height: 100%;
+}
+
+.urlUpImg {
+  border-radius: 2rem 2rem 0 0;
+}
+
+.urlDownImg {
+  border-radius: 0 0 2rem 2rem;
+}
