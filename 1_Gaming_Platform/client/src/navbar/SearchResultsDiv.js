@@ -1,6 +1,6 @@
 import React from "react";
 import $ from "jquery";
-import Bannerlord from "../assets/imgs/games/1_Bannerlord/1.jpg";
+// import Bannerlord from "../assets/imgs/games/1_Bannerlord/1.jpg";
 
 const SearchResultsDiv = () => {
   //#region MOUSEHANDLES
@@ -34,7 +34,7 @@ const SearchResultsDiv = () => {
 
   return (
     <div id="searchResultsDiv">
-      <figure
+      {/* <figure
         className="searchFigure"
         onMouseEnter={(e) => mouseenterHandle(e)}
         onMouseLeave={(e) => mouseleaveHandle(e)}
@@ -57,7 +57,7 @@ const SearchResultsDiv = () => {
       >
         <img src={Bannerlord} alt="" className="searchImg" />
         <figcaption className="searchCaption">God of War</figcaption>
-      </figure>
+      </figure> */}
     </div>
   );
 };

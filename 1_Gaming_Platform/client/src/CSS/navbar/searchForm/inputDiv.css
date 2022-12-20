@@ -52,11 +52,11 @@ input {
 #dot {
   background-color: white;
   box-shadow: 0px 0px 5px 2px white;
-  z-index: 2;
+  z-index: 6;
 }
 #underline {
   background: linear-gradient(90deg, rgb(144, 55, 179), var(--inputBlue));
-  z-index: 1;
+  z-index: 5;
 }
 
 @keyframes dotSlider {

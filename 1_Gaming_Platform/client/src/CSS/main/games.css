@@ -1,45 +1,86 @@
 .gamesDiv {
   display: flex;
   flex-wrap: wrap;
-  height: 50rem;
+  height: auto;
   margin-top: 3rem;
-  row-gap: 1rem;
+  row-gap: 6rem;
+  column-gap: 2rem;
+  padding: 0 5rem;
 }
 
 .gameDiv {
   margin: 0 auto;
-  max-width: 12rem;
-  flex-basis: 100%;
-  height: 15rem;
+  width: 23rem;
+  flex-basis: 15rem;
+  height: 12rem;
+  transition: 0.3s;
   position: relative;
+  z-index: 4;
+  cursor: pointer;
 }
 
+@media screen and (max-width: 550px) {
+  .gamesDiv {
+    padding: 0 2rem;
+  }
+  .gameDiv {
+    width: 15rem;
+    flex-basis: 75%;
+  }
+  .gameName {
+    font-size: 0.8rem !important;
+  }
+}
+@media screen and (max-width: 390px) {
+  .gameDiv {
+    width: 2rem;
+    font-size: 0.5rem !important;
+  }
+}
 .gameFig {
   position: absolute;
   overflow: hidden;
   border-radius: 2rem;
   border: 2px solid;
-  width: 8rem;
+  width: 100%;
   transition: 0.3s;
+  left: 0;
 }
 
 .gameImg {
   height: 15rem;
-  width: 8rem;
+  width: 100%;
   transition: 0.3s;
 }
 
 .gameFig:first-child {
-  z-index: 2;
-  border-color: var(--gameBorder);
+  z-index: 3;
+  border-color: var(--hoverColor);
 }
 .gameFig:nth-child(2) {
-  z-index: 1;
-  border-color: var(--hoverColor);
-  height: 90%;
+  z-index: 4;
+  border-color: var(--gameBorder);
 }
 .gameFig:nth-child(3) {
-  z-index: 1;
+  z-index: 3;
   border-color: var(--hoverShadow);
-  height: 90%;
+}
+
+.gameName {
+  position: absolute;
+  bottom: -4rem;
+  padding: 1rem 0;
+  color: white;
+  background-color: rgb(83, 83, 195);
+  box-shadow: 2px 2px 3px 2px rgb(195, 0, 255);
+  height: 4rem;
+  border-radius: 0.5rem;
+  border: 2px solid white;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  transform: scale(0);
+  transform-origin: top center;
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+  transition: 0.3s;
 }

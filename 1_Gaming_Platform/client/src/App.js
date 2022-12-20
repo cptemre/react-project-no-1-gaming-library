@@ -44,7 +44,6 @@ const App = () => {
   }, [state]);
   // SET YOUR LIST TO STATE.LIST
   useEffect(() => {
-    console.log('list');
     dispatch({ type: "GET_ALL", payload: list });
   }, [list]);
 
