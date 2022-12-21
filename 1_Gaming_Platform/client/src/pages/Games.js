@@ -1,13 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
-import Load from "../Load";
 import { Context } from "../Context";
 import $ from "jquery";
+import useFilter from "../hooks/useFilter";
 
 const Games = () => {
   const { state, dispatch } = useContext(Context);
   const [filteredList, setFilteredList] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
 
+  // SET STATE URL AND FILTER
+  useFilter(state, dispatch);
+
+  useEffect(() => {
+    dispatch({ type: "ID", payload: 10 });
+  }, []);
   // FILTER THE LIST BY 10 ON PAGE LOAD
   useEffect(() => {
     setFilteredList(state.filtered);
@@ -162,9 +168,6 @@ const Games = () => {
             );
           })}
       </div>
-      <Context.Provider value={{ state, dispatch }}>
-        <Load />
-      </Context.Provider>
     </>
   );
 };

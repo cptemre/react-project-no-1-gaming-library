@@ -1,12 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "./Context";
+// HOOKS
+import useFilter from "./hooks/useFilter";
 import $ from "jquery";
 import { Link } from "react-router-dom";
 const Home = () => {
+
   // GET TYPES ARRAY
-  const { state } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   // STATE TYPES SETUP
   const [types, setTypes] = useState([]);
+  useFilter(state, dispatch);
 
   // SET TYPES BY FILTERING IT WITH CURRENT SELECTED VALUE IN FILTERTYPE
   useEffect(() => {

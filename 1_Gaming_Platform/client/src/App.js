@@ -2,6 +2,10 @@ import React, { useReducer, useEffect, useState } from "react";
 import Home from "./Home";
 import Games from "./pages/Games";
 import Navbar from "./navbar/Navbar";
+import Load from "./Load";
+
+// HOOKS
+import useFilter from "./hooks/useFilter";
 
 //#region CSS
 import "./CSS/index.css";
@@ -36,20 +40,20 @@ import { reducer, defaultState } from "./reducer";
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
-
   const [list, setList] = useState([]);
+  // SET STATE URL AND FILTER
+  useFilter(state, dispatch);
 
   // SET YOUR DATA TO STATE
   useEffect(() => {
     const data = require("./gamesList.json");
     setList(data);
+    dispatch({ type: "SHOW", payload: false });
   }, []);
 
-  // SET YOUR LIST TO STATE.LIST
   useEffect(() => {
+    // SET YOUR LIST TO STATE.LIST
     dispatch({ type: "GET_ALL", payload: list });
-    const filter = list.filter((item) => item.id < 10);
-    dispatch({ type: "FILTERED", payload: filter });
   }, [list]);
 
   return (
@@ -61,7 +65,7 @@ const App = () => {
         <Route
           path="/"
           element={
-            <Context.Provider value={{ state }}>
+            <Context.Provider value={{ state, dispatch }}>
               <Home />
             </Context.Provider>
           }
@@ -69,13 +73,18 @@ const App = () => {
         <Route
           path="/GAMES"
           element={
-            <Context.Provider value={{ state, dispatch, list }}>
+            <Context.Provider value={{ state, dispatch }}>
               <Games />
             </Context.Provider>
           }
         />
-        <Route path="*" element="Error" />
+        <Route path="*" element="Page is not exist" />
       </Routes>
+      {state.show && (
+        <Context.Provider value={{ state, dispatch }}>
+          <Load />
+        </Context.Provider>
+      )}
     </Router>
   );
 };

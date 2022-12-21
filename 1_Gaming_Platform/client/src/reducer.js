@@ -5,6 +5,15 @@ const reducer = (state, action) => {
   if (action.type === "FILTERED") {
     return { ...state, filtered: action.payload };
   }
+  if (action.type === "URL") {
+    return { ...state, url: action.payload };
+  }
+  if (action.type === "ID") {
+    return { ...state, id: action.payload };
+  }
+  if (action.type === "SHOW") {
+    return { ...state, show: action.payload };
+  }
   return console.log("Something went wrong");
 };
 
@@ -32,7 +41,10 @@ const defaultState = {
     "PUBLISHERS",
   ],
   list: [],
-  filtered: []
+  filtered: [],
+  url: "",
+  id: 10,
+  show: false,
 };
 
 export { reducer, defaultState };

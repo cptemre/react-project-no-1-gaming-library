@@ -5,19 +5,21 @@ const Load = () => {
   const [filterID, setFilterID] = useState(10);
 
   useEffect(() => {
-    const url = document.URL.split("/");
-    console.log(url[url.length - 1]);
+    setFilterID(10);
+  }, []);
+
+  useEffect(() => {
     const filter = state.list.filter((item) => item.id < filterID);
     dispatch({ type: "FILTERED", payload: filter });
-  }, [filterID]);
+  }, [state.id]);
 
-  const mouseenterHandle = () => {
+  const mousedownHandle = () => {
     setFilterID((old) => old + 10);
-    console.log(filterID);
+    dispatch({ type: "ID", payload: filterID });
   };
   return (
     <div className="loadDiv">
-      <button className="loadBtn" onMouseDown={mouseenterHandle}>
+      <button className="loadBtn" onMouseDown={mousedownHandle}>
         Load More
       </button>
     </div>
