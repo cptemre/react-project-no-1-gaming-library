@@ -25,7 +25,7 @@
   }
   .gameDiv {
     width: 15rem;
-    flex-basis: 75%;
+    flex-basis: 60%;
   }
   .gameName {
     font-size: 0.8rem !important;
@@ -34,7 +34,9 @@
 @media screen and (max-width: 390px) {
   .gameDiv {
     width: 2rem;
-    font-size: 0.5rem !important;
+  }
+  .gameName {
+    font-size: 0.4rem !important;
   }
 }
 .gameFig {
@@ -70,6 +72,7 @@
   position: absolute;
   bottom: -4rem;
   padding: 1rem 0;
+  text-align: center;
   color: white;
   background-color: rgb(83, 83, 195);
   box-shadow: 2px 2px 3px 2px rgb(195, 0, 255);

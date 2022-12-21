@@ -5,6 +5,7 @@ import Navbar from "./navbar/Navbar";
 
 //#region CSS
 import "./CSS/index.css";
+import "./CSS/load.css";
 
 //#region NAVBAR
 import "./CSS/navbar/headerDiv.css";
@@ -32,33 +33,25 @@ import { Context } from "./Context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // REDUCER AND DEFAULTSTATE
 import { reducer, defaultState } from "./reducer";
-import axios from "axios";
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
+
   const [list, setList] = useState([]);
 
   // SET YOUR DATA TO STATE
   useEffect(() => {
-    fetchData();
-  }, [state]);
+    const data = require("./gamesList.json");
+    setList(data);
+  }, []);
+
   // SET YOUR LIST TO STATE.LIST
   useEffect(() => {
     dispatch({ type: "GET_ALL", payload: list });
+    const filter = list.filter((item) => item.id < 10);
+    dispatch({ type: "FILTERED", payload: filter });
   }, [list]);
 
-  // FETCH DATA BY SERVER OR LOCAL
-  const fetchData = async () => {
-    try {
-      // SERVER DATA
-      const { data } = await axios.get("/api/list");
-      setList(data);
-    } catch (error) {
-      // LOCAL DATA
-      const data = require("./gamesList.json");
-      setList(data);
-    }
-  };
   return (
     <Router>
       <Context.Provider value={{ state }}>
@@ -76,11 +69,12 @@ const App = () => {
         <Route
           path="/GAMES"
           element={
-            <Context.Provider value={{ state }}>
+            <Context.Provider value={{ state, dispatch, list }}>
               <Games />
             </Context.Provider>
           }
         />
+        <Route path="*" element="Error" />
       </Routes>
     </Router>
   );

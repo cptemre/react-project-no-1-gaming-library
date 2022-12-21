@@ -2,6 +2,9 @@ const reducer = (state, action) => {
   if (action.type === "GET_ALL") {
     return { ...state, list: action.payload };
   }
+  if (action.type === "FILTERED") {
+    return { ...state, filtered: action.payload };
+  }
   return console.log("Something went wrong");
 };
 
@@ -29,6 +32,7 @@ const defaultState = {
     "PUBLISHERS",
   ],
   list: [],
+  filtered: []
 };
 
 export { reducer, defaultState };

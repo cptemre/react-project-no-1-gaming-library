@@ -1,22 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
+import Load from "../Load";
 import { Context } from "../Context";
 import $ from "jquery";
 
 const Games = () => {
-  const { state } = useContext(Context);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const { state, dispatch } = useContext(Context);
+  const [filteredList, setFilteredList] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
-  // GET ALL LIST
+
+  // FILTER THE LIST BY 10 ON PAGE LOAD
   useEffect(() => {
-    setIsLoaded(true);
-  }, [state.list]);
+    setFilteredList(state.filtered);
+  }, [state.filtered]);
 
-  //#region FUNCTIONS
-
-  const sizing = () => {
-    setWidth(window.innerWidth);
-  };
-
+  // GET WIDTH VALUE
   useEffect(() => {
     window.addEventListener("resize", sizing);
 
@@ -25,15 +22,24 @@ const Games = () => {
     };
   }, [width]);
 
+  //#region FUNCTIONS
+
+  const sizing = () => {
+    setWidth(window.innerWidth);
+  };
+
+  const leftSize = (min, max) => {
+    if (width <= 390) {
+      return min;
+    } else {
+      return max;
+    }
+  };
   //#region GAME DIV FUNCTIONS
   const divmouseenterHandle = (e) => {
     // LEFT MEASURE ACCORDING TO SCREEN SIZE
-    let myLeft;
-    if (width <= 390) {
-      myLeft = "2rem";
-    } else {
-      myLeft = "8rem";
-    }
+    let myLeft = leftSize(3, 8) + "rem";
+
     // SETS ALL GAMEDIVS TO ZINDEX 1, FILTERS THEM TO GRAY, CHANGE THEIR OPACITY TO HALF
     $(".gameDiv").css({ zIndex: 1, filter: "grayscale(90%)", opacity: 0.5 });
     // SETS CURRENTTARGET'S ZINDEX TO HIGHER THAN OTHERS, NO FILTER AND FULL OPACITY
@@ -72,12 +78,8 @@ const Games = () => {
   //#region GAME FIGURE FUNCTIONS
   const mouseenterHandle = (e) => {
     // LEFT MEASURE ACCORDING TO SCREEN SIZE
-    let myLeft;
-    if (width <= 390) {
-      myLeft = "1.5rem";
-    } else {
-      myLeft = "6rem";
-    }
+    let myLeft = leftSize(2.5, 6) + "rem";
+
     // SET CURRENT FIGURES INDEX TO HIGHER AND ZOOM
     $(e.currentTarget).css({
       "z-index": 4,
@@ -108,12 +110,8 @@ const Games = () => {
 
   const mouseleaveHandle = (e) => {
     // LEFT MEASURE ACCORDING TO SCREEN SIZE
-    let myLeft;
-    if (width <= 390) {
-      myLeft = "2rem";
-    } else {
-      myLeft = "8rem";
-    }
+    let myLeft = leftSize(3, 8) + "rem";
+
     // CURRENT TARGET CHECK, SIZING AND MOVING THEM TO CENTER FOR SMOOTH ANIMATION
     if ($(e.currentTarget).hasClass("figure0")) {
       $(e.currentTarget).css({ left: `-${myLeft}` });
@@ -128,41 +126,46 @@ const Games = () => {
   //#endregion FUNCTIONS
 
   return (
-    <div className="gamesDiv">
-      {isLoaded &&
-        state.list.map((item) => {
-          const nameReplace = item.names.replace(/ /g, "_");
-          return (
-            <div
-              key={item.id}
-              id={nameReplace}
-              className="gameDiv"
-              onMouseEnter={(e) => divmouseenterHandle(e)}
-              onMouseLeave={(e) => divmouseleaveHandle(e)}
-            >
-              {item.src.map((src, i) => {
-                return (
-                  <figure
-                    key={`${item.id}figure${i}`}
-                    className={`figure${i} gameFig`}
-                    onMouseEnter={(e) => mouseenterHandle(e)}
-                    onMouseLeave={(e) => mouseleaveHandle(e)}
-                  >
-                    <img
-                      src={require(`../assets/imgs/games/${item.names}/${
-                        i + 1
-                      }.jpg`)}
-                      alt=""
-                      className="gameImg"
-                    />
-                  </figure>
-                );
-              })}
-              <div className="gameName">{item.names}</div>
-            </div>
-          );
-        })}
-    </div>
+    <>
+      <div className="gamesDiv">
+        {filteredList &&
+          filteredList.map((item) => {
+            const nameReplace = item.names.replace(/ /g, "_");
+            return (
+              <div
+                key={item.id}
+                id={nameReplace}
+                className="gameDiv"
+                onMouseEnter={(e) => divmouseenterHandle(e)}
+                onMouseLeave={(e) => divmouseleaveHandle(e)}
+              >
+                {item.src.map((src, i) => {
+                  return (
+                    <figure
+                      key={`${item.id}figure${i}`}
+                      className={`figure${i} gameFig`}
+                      onMouseEnter={(e) => mouseenterHandle(e)}
+                      onMouseLeave={(e) => mouseleaveHandle(e)}
+                    >
+                      <img
+                        src={require(`../assets/imgs/games/${item.names}/${
+                          i + 1
+                        }.jpg`)}
+                        alt=""
+                        className="gameImg"
+                      />
+                    </figure>
+                  );
+                })}
+                <div className="gameName">{item.names}</div>
+              </div>
+            );
+          })}
+      </div>
+      <Context.Provider value={{ state, dispatch }}>
+        <Load />
+      </Context.Provider>
+    </>
   );
 };
 

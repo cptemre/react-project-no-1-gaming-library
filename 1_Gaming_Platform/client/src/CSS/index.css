@@ -10,6 +10,8 @@
   --inputBlue: rgb(81, 194, 238);
   /* MIDDLEGAME FIGURE BORDER COLOR WHITE */
   --gameBorder: rgb(191, 165, 194);
+    /* BUTTON COLORS */
+  --loadGreen: rgb(100, 204, 98)
 }
 
 * {
@@ -36,9 +38,6 @@ body {
   color: white;
   min-height: 100vh;
   width: 100vw;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Rubik Gemstones", cursive;

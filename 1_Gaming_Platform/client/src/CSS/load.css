@@ -1,0 +1,19 @@
+.loadDiv {
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  margin: 4rem 0;
+}
+
+.loadBtn {
+  outline: none;
+  font-family: "Rubik Gemstones", cursive;
+  border: 3px solid rgb(204, 225, 213);
+  background-color: var(--loadGreen);
+  padding: 5px;
+  border-radius: 2rem;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  cursor: pointer;
+}
