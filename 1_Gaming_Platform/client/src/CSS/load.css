@@ -16,4 +16,10 @@
   letter-spacing: 1px;
   transition: 0.3s;
   cursor: pointer;
+  width: 100%;
+}
+
+.loadBtn:hover {
+  width: 120%;
+  letter-spacing: 2px;
 }

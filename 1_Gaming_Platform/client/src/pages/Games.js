@@ -1,23 +1,38 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../Context";
 import $ from "jquery";
+
+// HOOKS
 import useFilter from "../hooks/useFilter";
+import useLength from "../hooks/useLength";
 
 const Games = () => {
   const { state, dispatch } = useContext(Context);
   const [filteredList, setFilteredList] = useState([]);
+  const [myList, setMyList] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
 
   // SET STATE URL AND FILTER
   useFilter(state, dispatch);
+  useLength(state, dispatch);
 
   useEffect(() => {
     dispatch({ type: "ID", payload: 10 });
   }, []);
+
+  useEffect(() => {
+    dispatch({ type: "FILTERED_TYPE_LIST", payload: state.list });
+  }, [state.list]);
+
   // FILTER THE LIST BY 10 ON PAGE LOAD
   useEffect(() => {
+    setMyList(state.filteredTypeList);
     setFilteredList(state.filtered);
   }, [state.filtered]);
+
+  useEffect(() => {
+    dispatch({type:'DOM_LENGTH', payload: $(".gameDiv").length})
+  }, [filteredList])
 
   // GET WIDTH VALUE
   useEffect(() => {

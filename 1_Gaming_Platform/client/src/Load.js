@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "./Context";
+import $ from "jquery";
+
+// HOOKS
+
 const Load = () => {
   const { state, dispatch } = useContext(Context);
   const [filterID, setFilterID] = useState(10);
 
   useEffect(() => {
-    setFilterID(10);
-  }, []);
+    dispatch({ type: "ID", payload: filterID });
+  }, [filterID]);
 
-  useEffect(() => {
-    const filter = state.list.filter((item) => item.id < filterID);
-    dispatch({ type: "FILTERED", payload: filter });
-  }, [state.id]);
+  // CHECK IF FILTERED TYPE LIST AND GAMEDIV LENGTH IS SAME. IF SO CHANGE COLOR OF THE BUTTON
 
   const mousedownHandle = () => {
     setFilterID((old) => old + 10);
-    dispatch({ type: "ID", payload: filterID });
   };
   return (
     <div className="loadDiv">

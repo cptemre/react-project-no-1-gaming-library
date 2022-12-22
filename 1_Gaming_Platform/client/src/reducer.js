@@ -2,11 +2,17 @@ const reducer = (state, action) => {
   if (action.type === "GET_ALL") {
     return { ...state, list: action.payload };
   }
+  if (action.type === "FILTERED_TYPE_LIST") {
+    return { ...state, filteredTypeList: action.payload };
+  }
   if (action.type === "FILTERED") {
     return { ...state, filtered: action.payload };
   }
   if (action.type === "URL") {
     return { ...state, url: action.payload };
+  }
+  if (action.type === "DOM_LENGTH") {
+    return { ...state, domLength: action.payload };
   }
   if (action.type === "ID") {
     return { ...state, id: action.payload };
@@ -41,8 +47,10 @@ const defaultState = {
     "PUBLISHERS",
   ],
   list: [],
+  filteredTypeList: [],
   filtered: [],
   url: "",
+  domLength: 0,
   id: 10,
   show: false,
 };

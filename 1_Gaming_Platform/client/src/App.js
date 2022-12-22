@@ -41,8 +41,7 @@ import { reducer, defaultState } from "./reducer";
 const App = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
   const [list, setList] = useState([]);
-  // SET STATE URL AND FILTER
-  useFilter(state, dispatch);
+  
 
   // SET YOUR DATA TO STATE
   useEffect(() => {
