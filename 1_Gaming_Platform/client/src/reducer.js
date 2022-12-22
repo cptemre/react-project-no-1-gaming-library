@@ -20,6 +20,9 @@ const reducer = (state, action) => {
   if (action.type === "SHOW") {
     return { ...state, show: action.payload };
   }
+  if (action.type === "WIDTH") {
+    return { ...state, width: action.payload };
+  }
   return console.log("Something went wrong");
 };
 
@@ -53,6 +56,7 @@ const defaultState = {
   domLength: 0,
   id: 10,
   show: false,
+  width: 0
 };
 
 export { reducer, defaultState };

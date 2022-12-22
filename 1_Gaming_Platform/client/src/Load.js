@@ -5,7 +5,7 @@ import $ from "jquery";
 // HOOKS
 
 const Load = () => {
-  const { state, dispatch } = useContext(Context);
+  const { dispatch } = useContext(Context);
   const [filterID, setFilterID] = useState(10);
 
   useEffect(() => {

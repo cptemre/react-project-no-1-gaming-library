@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import $ from "jquery";
 
 const useFilter = (state, dispatch) => {
   const [filterID, setFilterID] = useState(0);

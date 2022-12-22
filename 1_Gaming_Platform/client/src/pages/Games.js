@@ -1,150 +1,40 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../Context";
-import $ from "jquery";
+// GAME FUNCTIONS
+import {
+  divmouseenterHandle,
+  divmouseleaveHandle,
+  mouseenterHandle,
+  mouseleaveHandle,
+} from "../gameAnimations";
+
 
 // HOOKS
 import useFilter from "../hooks/useFilter";
 import useLength from "../hooks/useLength";
+import useDispatch from "../hooks/useDispatch";
+import useWidth from "../hooks/useWidth";
 
 const Games = () => {
   const { state, dispatch } = useContext(Context);
   const [filteredList, setFilteredList] = useState([]);
-  const [myList, setMyList] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
 
-  // SET STATE URL AND FILTER
+  // HOOKS
   useFilter(state, dispatch);
-  useLength(state, dispatch);
-
-  useEffect(() => {
-    dispatch({ type: "ID", payload: 10 });
-  }, []);
-
-  useEffect(() => {
-    dispatch({ type: "FILTERED_TYPE_LIST", payload: state.list });
-  }, [state.list]);
+  useLength(state);
+  useDispatch(state, dispatch);
+  useWidth(dispatch)
 
   // FILTER THE LIST BY 10 ON PAGE LOAD
   useEffect(() => {
-    setMyList(state.filteredTypeList);
     setFilteredList(state.filtered);
   }, [state.filtered]);
 
+  // SET WIDTH
   useEffect(() => {
-    dispatch({type:'DOM_LENGTH', payload: $(".gameDiv").length})
-  }, [filteredList])
-
-  // GET WIDTH VALUE
-  useEffect(() => {
-    window.addEventListener("resize", sizing);
-
-    return () => {
-      window.removeEventListener("resize", sizing);
-    };
-  }, [width]);
-
-  //#region FUNCTIONS
-
-  const sizing = () => {
-    setWidth(window.innerWidth);
-  };
-
-  const leftSize = (min, max) => {
-    if (width <= 390) {
-      return min;
-    } else {
-      return max;
-    }
-  };
-  //#region GAME DIV FUNCTIONS
-  const divmouseenterHandle = (e) => {
-    // LEFT MEASURE ACCORDING TO SCREEN SIZE
-    let myLeft = leftSize(3, 8) + "rem";
-
-    // SETS ALL GAMEDIVS TO ZINDEX 1, FILTERS THEM TO GRAY, CHANGE THEIR OPACITY TO HALF
-    $(".gameDiv").css({ zIndex: 1, filter: "grayscale(90%)", opacity: 0.5 });
-    // SETS CURRENTTARGET'S ZINDEX TO HIGHER THAN OTHERS, NO FILTER AND FULL OPACITY
-    $(e.currentTarget).css({
-      zIndex: 4,
-      filter: "none",
-      opacity: 1,
-    });
-
-    // ANIMATION OF OTHER GAME FIGURES TO MOVE TO LEFT AND RIGHT
-    $(e.currentTarget)
-      .children(".figure0")
-      .css({ left: `-${myLeft}` });
-    $(e.currentTarget).children(".figure2").css({ left: myLeft });
-
-    // SHOW GAME NAME
-    $(e.currentTarget)
-      .children(".gameName")
-      .css({ transform: "scale(1)", width: "180%" });
-  };
-
-  const divmouseleaveHandle = (e) => {
-    // SETS ALL GAMEDIVS TO BACK TO NORMAL, NO FILTER, CHANGE THEIR OPACITY TO FULL
-    $(".gameDiv").css({ zIndex: 4, filter: "none", opacity: 1 });
-
-    // GAME FIGURES BACK TO ORIGINAL PLACE WITH NORMAL SCALE
-    $(".gameFig").css({ left: "0", transform: "scale(1)" });
-
-    // HIDE GAME NAME
-    $(e.currentTarget)
-      .children(".gameName")
-      .css({ transform: "scale(0)", width: "100%" });
-  };
-  //#endregion GAME DIV FUNCTIONS
-
-  //#region GAME FIGURE FUNCTIONS
-  const mouseenterHandle = (e) => {
-    // LEFT MEASURE ACCORDING TO SCREEN SIZE
-    let myLeft = leftSize(2.5, 6) + "rem";
-
-    // SET CURRENT FIGURES INDEX TO HIGHER AND ZOOM
-    $(e.currentTarget).css({
-      "z-index": 4,
-      transform: "scale(1.2)",
-    });
-    // CURRENT TARGET CHECK, SIZING AND ZINDEXING THEM
-    if ($(e.currentTarget).hasClass("figure0")) {
-      $(e.currentTarget).css({ left: `-${myLeft}` });
-      $(e.currentTarget).next().css({ zIndex: 3 });
-      $(e.currentTarget)
-        .next()
-        .next()
-        .css({ zIndex: 2, transform: "scale(0.8)" });
-    }
-    if ($(e.currentTarget).hasClass("figure1")) {
-      $(e.currentTarget).next().css({ zIndex: 3, transform: "scale(1)" });
-      $(e.currentTarget).prev().css({ zIndex: 3, transform: "scale(1)" });
-    }
-    if ($(e.currentTarget).hasClass("figure2")) {
-      $(e.currentTarget).css({ left: myLeft });
-      $(e.currentTarget).prev().css({ zIndex: 3, transform: "scale(1)" });
-      $(e.currentTarget)
-        .prev()
-        .prev()
-        .css({ zIndex: 2, transform: "scale(0.8)" });
-    }
-  };
-
-  const mouseleaveHandle = (e) => {
-    // LEFT MEASURE ACCORDING TO SCREEN SIZE
-    let myLeft = leftSize(3, 8) + "rem";
-
-    // CURRENT TARGET CHECK, SIZING AND MOVING THEM TO CENTER FOR SMOOTH ANIMATION
-    if ($(e.currentTarget).hasClass("figure0")) {
-      $(e.currentTarget).css({ left: `-${myLeft}` });
-    }
-
-    if ($(e.currentTarget).hasClass("figure2")) {
-      $(e.currentTarget).css({ left: myLeft });
-    }
-    $(".gameFig").css("transform", "scale(1)");
-  };
-  //#endregion GAME FIGURE FUNCTIONS
-  //#endregion FUNCTIONS
+    setWidth(state.width);
+  }, [state.width]);
 
   return (
     <>
@@ -157,7 +47,7 @@ const Games = () => {
                 key={item.id}
                 id={nameReplace}
                 className="gameDiv"
-                onMouseEnter={(e) => divmouseenterHandle(e)}
+                onMouseEnter={(e) => divmouseenterHandle(e, width)}
                 onMouseLeave={(e) => divmouseleaveHandle(e)}
               >
                 {item.src.map((src, i) => {
@@ -165,8 +55,8 @@ const Games = () => {
                     <figure
                       key={`${item.id}figure${i}`}
                       className={`figure${i} gameFig`}
-                      onMouseEnter={(e) => mouseenterHandle(e)}
-                      onMouseLeave={(e) => mouseleaveHandle(e)}
+                      onMouseEnter={(e) => mouseenterHandle(e, width)}
+                      onMouseLeave={(e) => mouseleaveHandle(e, width)}
                     >
                       <img
                         src={require(`../assets/imgs/games/${item.names}/${

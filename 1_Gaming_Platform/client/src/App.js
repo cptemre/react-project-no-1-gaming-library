@@ -41,7 +41,6 @@ import { reducer, defaultState } from "./reducer";
 const App = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
   const [list, setList] = useState([]);
-  
 
   // SET YOUR DATA TO STATE
   useEffect(() => {
@@ -80,7 +79,7 @@ const App = () => {
         <Route path="*" element="Page is not exist" />
       </Routes>
       {state.show && (
-        <Context.Provider value={{ state, dispatch }}>
+        <Context.Provider value={{ dispatch }}>
           <Load />
         </Context.Provider>
       )}
