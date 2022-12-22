@@ -1,11 +1,10 @@
 import React, { useReducer, useEffect, useState } from "react";
 import Home from "./Home";
 import Games from "./pages/Games";
+import Windows from "./pages/Windows";
+import PlayStation4 from "./pages/PlayStation4";
 import Navbar from "./navbar/Navbar";
 import Load from "./Load";
-
-// HOOKS
-import useFilter from "./hooks/useFilter";
 
 //#region CSS
 import "./CSS/index.css";
@@ -69,10 +68,26 @@ const App = () => {
           }
         />
         <Route
-          path="/GAMES"
+          path="/games"
           element={
             <Context.Provider value={{ state, dispatch }}>
               <Games />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/microsoft windows"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <Windows />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/playstation 4"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <PlayStation4 />
             </Context.Provider>
           }
         />

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../Context";
 import GameDiv from "../GameDiv";
 
-const Games = () => {
+const Windows = () => {
   const { state, dispatch } = useContext(Context);
 
   return (
@@ -12,4 +12,4 @@ const Games = () => {
   );
 };
 
-export default Games;
+export default Windows;
