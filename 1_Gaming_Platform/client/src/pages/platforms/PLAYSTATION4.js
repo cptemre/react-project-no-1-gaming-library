@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Context } from "../Context";
-import GameDiv from "../GameDiv";
+import { Context } from "../../utilities/Context";
+import GameDiv from "../../utilities/GameDiv";
 
-const PlayStation4 = () => {
+const PLAYSTATION4 = () => {
   const { state, dispatch } = useContext(Context);
 
   return (
@@ -12,4 +12,4 @@ const PlayStation4 = () => {
   );
 };
 
-export default PlayStation4;
+export default PLAYSTATION4;

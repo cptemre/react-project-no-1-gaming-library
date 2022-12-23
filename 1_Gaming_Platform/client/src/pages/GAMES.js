@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Context } from "../Context";
-import GameDiv from "../GameDiv";
+import { Context } from "../utilities/Context";
+import GameDiv from "../utilities/GameDiv";
 
-const Windows = () => {
+const GAMES = () => {
   const { state, dispatch } = useContext(Context);
 
   return (
@@ -12,4 +12,4 @@ const Windows = () => {
   );
 };
 
-export default Windows;
+export default GAMES;

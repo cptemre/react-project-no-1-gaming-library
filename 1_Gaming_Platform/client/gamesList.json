@@ -5,9 +5,9 @@
     "developers": "Rocksteady Studios",
     "publishers": "Warner Bros,Interactive Entertainment",
     "engines": "Unreal Engine 3",
-    "platforms": ["Microsoft Windows,PlayStation 4,Xbox One"],
+    "platforms": ["Microsoft Windows","PlayStation 4","Xbox One"],
     "years": 2015,
-    "genres": ["Action,Adventure"],
+    "genres": ["Action","Adventure"],
     "modes": ["Single-player"],
     "src": [
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.explicit.bing.net%2Fth%3Fid%3DOIP.CcJDLTDKuGzPq0mqq7a9YwHaEK%26pid%3DApi&f=1&ipt=4353b794c8924774d239673d883b34762e16d9b742bb55312fb6633ed9b664e0&ipo=images",
@@ -33,7 +33,7 @@
       "Microsoft Windows,PlayStation 4,PlayStation 5,Xbox One,Xbox Series X,Xbox Series S"
     ],
     "years": 2022,
-    "genres": ["Action,Strategy,Role-playing"],
+    "genres": ["Action","Strategy","Role-playing"],
     "modes": ["Single-player,Multiplayer"],
     "src": [
       "https://gameranx.com/wp-content/uploads/2016/03/Mount-Blade-2-Bannerlord-4K-Wallpaper-1.jpg",

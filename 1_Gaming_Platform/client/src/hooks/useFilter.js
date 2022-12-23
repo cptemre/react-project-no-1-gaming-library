@@ -15,7 +15,7 @@ const useFilter = (state, dispatch) => {
     // PREPARE URL PART
     const url = document.URL.split("/");
     const lastURL = url[url.length - 1].replace(/%20/g, " ");
-    
+
     // FILTER YOUR LIST TO STATE.FILTER
     const filter = filteredTypeList.filter((item) => item.id < filterID);
     dispatch({ type: "FILTERED", payload: filter });
@@ -31,6 +31,8 @@ const useFilter = (state, dispatch) => {
       dispatch({ type: "SHOW", payload: false });
     }
   }, [filterID, filteredTypeList, state.domLength]);
+
+
 };
 
 export default useFilter;

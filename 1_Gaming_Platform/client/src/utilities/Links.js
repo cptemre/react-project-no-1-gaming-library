@@ -1,18 +1,21 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Context } from "./Context";
+import { Context } from "../utilities/Context";
 import $ from "jquery";
 import { Link } from "react-router-dom";
-const Home = () => {
 
+const Links = () => {
   // GET TYPES ARRAY
-  const { state, dispatch } = useContext(Context);
-  // STATE TYPES SETUP
+  const { path, link } = useContext(Context);
+  // STATE LINKS SETUP
   const [types, setTypes] = useState([]);
-
+  const [imgPath, setImgPath] = useState("");
   // SET TYPES BY FILTERING IT WITH CURRENT SELECTED VALUE IN FILTERTYPE
   useEffect(() => {
-    setTypes(state.types);
-  }, [state.types]);
+    setTypes(link);
+  }, [link]);
+  useEffect(() => {
+    setImgPath(path);
+  }, [path]);
 
   //#region MOUSE FUNCTIONS
 
@@ -39,6 +42,7 @@ const Home = () => {
     $(urlUpDiv).animate({ top: "0" });
     $(urlDownDiv).animate({ top: "0" });
   };
+
   //#endregion MOUSE FUNCTIONS
 
   return (
@@ -47,7 +51,7 @@ const Home = () => {
         return (
           <div key={type} id={type} className="urlDiv">
             <Link
-              to={`/${type.toLowerCase()}`}
+              to={`${type.toLowerCase()}`}
               onMouseEnter={(e) => mouseenterHandle(e)}
               onMouseLeave={(e) => mouseleaveHandle(e)}
             >
@@ -55,14 +59,14 @@ const Home = () => {
               <div className="urlImgDiv">
                 <div className="urlUpDiv">
                   <img
-                    src={require(`./assets/imgs/links/${type}/image1x1.jpg`)}
+                    src={require(`../assets/imgs/links/${imgPath}${type}/image1x1.jpg`)}
                     alt=""
                     className="urlUpImg"
                   />
                 </div>
                 <div className="urlDownDiv">
                   <img
-                    src={require(`./assets/imgs/links/${type}/image1x2.jpg`)}
+                    src={require(`../assets/imgs/links/${imgPath}${type}/image1x2.jpg`)}
                     alt=""
                     className="urlDownImg"
                   />
@@ -76,4 +80,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Links;

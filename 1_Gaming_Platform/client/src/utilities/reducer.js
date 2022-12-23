@@ -2,6 +2,9 @@ const reducer = (state, action) => {
   if (action.type === "GET_ALL") {
     return { ...state, list: action.payload };
   }
+  if (action.type === "PLATFORMS") {
+    return { ...state, platforms: action.payload };
+  }
   if (action.type === "FILTERED_TYPE_LIST") {
     return { ...state, filteredTypeList: action.payload };
   }
@@ -31,6 +34,17 @@ const defaultState = {
     "FAVORITES",
     "GAMES",
     "PLATFORMS",
+    // "SERVICES",
+    "GENRES",
+    "MODES",
+    "ENGINES",
+    "YEARS",
+    "DEVELOPERS",
+    "PUBLISHERS",
+  ],
+  search: [
+    "FAVORITES",
+    "GAMES",
     "GENRES",
     "MODES",
     "MICROSOFT WINDOWS",
@@ -49,6 +63,11 @@ const defaultState = {
     "DEVELOPERS",
     "PUBLISHERS",
   ],
+  platforms: [
+
+  ],
+  genres: [],
+  services: ["STEAM", "EPIC"],
   list: [],
   filteredTypeList: [],
   filtered: [],
@@ -56,7 +75,7 @@ const defaultState = {
   domLength: 0,
   id: 10,
   show: false,
-  width: 0
+  width: 0,
 };
 
 export { reducer, defaultState };

@@ -9,10 +9,10 @@ import {
 } from "./gameAnimations";
 
 // HOOKS
-import useFilter from "./hooks/useFilter";
-import useLength from "./hooks/useLength";
-import useDispatch from "./hooks/useDispatch";
-import useWidth from "./hooks/useWidth";
+import useFilter from "../hooks/useFilter";
+import useLength from "../hooks/useLength";
+import useDispatch from "../hooks/useDispatch";
+import useWidth from "../hooks/useWidth";
 
 const GameDiv = () => {
   const { state, dispatch } = useContext(Context);
@@ -26,6 +26,7 @@ const GameDiv = () => {
   useWidth(dispatch);
 
   // FILTER THE LIST BY 10 ON PAGE LOAD
+
   useEffect(() => {
     setFilteredList(state.filtered);
   }, [state.filtered]);
@@ -58,7 +59,7 @@ const GameDiv = () => {
                       onMouseLeave={(e) => mouseleaveHandle(e, width)}
                     >
                       <img
-                        src={require(`./assets/imgs/games/${item.names}/${
+                        src={require(`../assets/imgs/games/${item.names}/${
                           i + 1
                         }.jpg`)}
                         alt=""

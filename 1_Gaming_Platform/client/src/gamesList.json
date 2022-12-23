@@ -5,9 +5,9 @@
     "developers": "Rocksteady Studios",
     "publishers": "Warner Bros,Interactive Entertainment",
     "engines": "Unreal Engine 3",
-    "platforms": ["Microsoft Windows,PlayStation 4,Xbox One"],
+    "platforms": ["Microsoft Windows","PlayStation 4","Xbox One"],
     "years": 2015,
-    "genres": ["Action,Adventure"],
+    "genres": ["Action","Adventure"],
     "modes": ["Single-player"],
     "src": [
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.explicit.bing.net%2Fth%3Fid%3DOIP.CcJDLTDKuGzPq0mqq7a9YwHaEK%26pid%3DApi&f=1&ipt=4353b794c8924774d239673d883b34762e16d9b742bb55312fb6633ed9b664e0&ipo=images",
@@ -30,11 +30,11 @@
     "developers": "TaleWorlds Entertainment",
     "publishers": "TaleWorlds Entertainment Prime Matter",
     "platforms": [
-      "Microsoft Windows,PlayStation 4,PlayStation 5,Xbox One,Xbox Series X,Xbox Series S"
+      "Microsoft Windows","PlayStation 4","PlayStation 5","Xbox One","Xbox Series X","Xbox Series S"
     ],
     "years": 2022,
-    "genres": ["Action,Strategy,Role-playing"],
-    "modes": ["Single-player,Multiplayer"],
+    "genres": ["Action","Strategy","Role-playing"],
+    "modes": ["Single-player","Multiplayer"],
     "src": [
       "https://gameranx.com/wp-content/uploads/2016/03/Mount-Blade-2-Bannerlord-4K-Wallpaper-1.jpg",
       "https://gameranx.com/wp-content/uploads/2016/03/Mount-Blade-2-Bannerlord-4K-Wallpaper-2.jpg",
@@ -56,7 +56,7 @@
     "developers": "Kojima Productions",
     "publishers": "Sony Interactive Entertainment",
     "engines": "Decima",
-    "platforms": ["Microsoft Windows,PlayStation 4,PlayStation 5"],
+    "platforms": ["Microsoft Windows","PlayStation 4","PlayStation 5"],
     "years": 2021,
     "genres": ["Action"],
     "modes": ["Single-player"],
@@ -81,10 +81,10 @@
     "developers": "Monolith Productions",
     "publishers": "Warner Bros. Interactive Entertainment",
     "engines": "LithTech Firebird",
-    "platforms": ["Microsoft Windows,PlayStation 4,Xbox One"],
+    "platforms": ["Microsoft Windows","PlayStation 4","Xbox One"],
     "years": 2017,
-    "genres": ["Action,Role-playing,Hack and Slash"],
-    "modes": ["Single-player,Multiplayer"],
+    "genres": ["Action","Role-playing","Hack and Slash"],
+    "modes": ["Single-player","Multiplayer"],
     "src": [
       "https://wallpapercave.com/wp/wp2243693.jpg",
       "https://www.rxwallpaper.site/wp-content/uploads/middle-earth-shadow-of-war-wallpapers-in-ultra-hd-4k.jpg",
@@ -105,10 +105,10 @@
     "developers": "Supergiant Games",
     "publishers": "Supergiant Games",
     "platforms": [
-      "Microsoft Windows,PlayStation 4,PlayStation 5,Xbox One,Xbox Series X,Xbox Series S,macOS,Nintendo Switch"
+      "Microsoft Windows","PlayStation 4","PlayStation 5","Xbox One","Xbox Series X","Xbox Series S","macOS","Nintendo Switch"
     ],
     "years": 2020,
-    "genres": ["Roguelike,Action,Role-playing"],
+    "genres": ["Roguelike","Action","Role-playing"],
     "modes": ["Single-player"],
     "src": [
       "https://media.nichegamer.com/wp-content/uploads/2020/11/11194807/hades-11-11-2020-1.jpg",
@@ -131,7 +131,7 @@
     "names": "Hitman",
     "developers": "IO Interactive",
     "publishers": "Square Enix",
-    "platforms": ["Microsoft Windows,PlayStation 4,Xbox One,macOS,Linux"],
+    "platforms": ["Microsoft Windows","PlayStation 4","Xbox One","macOS","Linux"],
     "years": 2016,
     "genres": ["Stealth"],
     "modes": ["Single-player"],
@@ -157,10 +157,10 @@
     "publishers": "Ubisoft",
     "engines": "Ubisoft Anvil",
     "platforms": [
-      "Microsoft Windows,PlayStation 4,,PlayStation 5,Xbox One,Xbox Series X,Xbox Series S,Stadia,Amazon Luna"
+      "Microsoft Windows","PlayStation 4","PlayStation 5","Xbox One","Xbox Series X","Xbox Series S","Stadia","Amazon Luna"
     ],
     "years": 2020,
-    "genres": ["Action,Role-playing"],
+    "genres": ["Action","Role-playing"],
     "modes": ["Single-player"],
     "src": [
       "https://wallpaperboat.com/wp-content/uploads/2020/06/03/42384/assassins-creed-valhalla-10.jpg",
@@ -183,10 +183,10 @@
     "developers": "Paradox Development Studio",
     "publishers": "Paradox Interactive",
     "engines": "Clausewitz Engine",
-    "platforms": ["Microsoft Windows,macOS,Linux"],
+    "platforms": ["Microsoft Windows","macOS","Linux"],
     "years": 2022,
     "genres": ["Grand Strategy"],
-    "modes": ["Single-player,Multiplayer"],
+    "modes": ["Single-player","Multiplayer"],
     "src": [
       "https://gamingbolt.com/wp-content/uploads/2021/05/Victoria-3-1024x576.jpg",
       "https://i.redd.it/kpat5xbw9b171.jpg",
@@ -205,10 +205,10 @@
     "developers": "ZeniMax Online Studios",
     "publishers": "Bethesda Softworks",
     "platforms": [
-      "Microsoft Windows,macOS,PlayStation 4,Playstation 5,Xbox One,Xbox Series X,Xbox Series S,Stadia"
+      "Microsoft Windows","macOS","PlayStation 4","Playstation 5","Xbox One","Xbox Series X","Xbox Series S","Stadia"
     ],
     "years": 2014,
-    "genres": ["MMO,Role-playing"],
+    "genres": ["MMO","Role-playing"],
     "modes": ["Multiplayer"],
     "src": [
       "https://esosslfiles-a.akamaihd.net/cms/2019/05/201a4998aa206533ef718781937ed674.jpg",
@@ -229,9 +229,9 @@
     "names": "World of Warcraft",
     "developers": "Blizzard Entertainment",
     "publishers": "Blizzard Entertainment",
-    "platforms": ["Microsoft Windows,macOS"],
+    "platforms": ["Microsoft Windows","macOS"],
     "years": 2004,
-    "genres": ["MMO,Role-playing"],
+    "genres": ["MMO","Role-playing"],
     "modes": ["Multiplayer"],
     "src": [
       "https://images.hdqwalls.com/wallpapers/world-of-warcraft--shadowlands-4k-ro.jpg",
@@ -251,10 +251,10 @@
     "publishers": "Capcom",
     "engines": "RE Engine",
     "platforms": [
-      "Microsoft Windows,macOS,PlayStation 4,Playstation 5,Xbox One,Xbox Series X,Xbox Series S,Nintendo Switch,Stadia"
+      "Microsoft Windows","macOS","PlayStation 4","Playstation 5","Xbox One","Xbox Series X","Xbox Series S","Nintendo Switch","Stadia"
     ],
     "years": 2021,
-    "genres": ["Survival,Horror"],
+    "genres": ["Survival","Horror"],
     "modes": ["Single-player"],
     "src": [
       "https://images.hdqwalls.com/wallpapers/resident-evil-village-4k-90.jpg",
@@ -276,11 +276,9 @@
     "names": "A Plague Tale Innocence",
     "developers": "Asobo Studio",
     "publishers": "Focus Home Interactive",
-    "platforms": [
-      "Microsoft Windows,macOS,PlayStation 4,Playstation 5,Xbox One,Xbox Series X,Xbox Series S,Nintendo Switch,Amazon Luna"
-    ],
+    "platforms": ["Microsoft Windows","macOS","PlayStation 4","Playstation 5","Xbox One","Xbox Series X","Xbox Series S","Nintendo Switch","Amazon Luna"],
     "years": 2019,
-    "genres": ["Action,Adventure,Stealth"],
+    "genres": ["Action","Adventure","Stealth"],
     "modes": ["Single-player"],
     "src": [
       "https://wallpapercave.com/wp/wp4344142.jpg",
@@ -305,9 +303,9 @@
     "developers": "Warhorse Studios",
     "publishers": "Deep Silver",
     "engines": "CryEngine",
-    "platforms": ["Microsoft Windows,PlayStation 4,Xbox One,Amazon Luna"],
+    "platforms": ["Microsoft Windows","PlayStation 4","Xbox One","Amazon Luna"],
     "years": 2018,
-    "genres": ["Action,Role-playing"],
+    "genres": ["Action","Role-playing"],
     "modes": ["Single-player"],
     "src": [
       "https://wallpapercave.com/wp/wp2387663.jpg",
@@ -332,10 +330,10 @@
     "publishers": "Activision",
     "engines": "IW 8.0",
     "platforms": [
-      "Microsoft Windows,PlayStation 4,PlayStation 5,Xbox One,Xbox Series X,Xbox Series S"
+      "Microsoft Windows","PlayStation 4","PlayStation 5","Xbox One","Xbox Series X","Xbox Series S"
     ],
     "years": 2020,
-    "genres": ["Battle royale,First-person shooter"],
+    "genres": ["Battle royale","First-person shooter"],
     "modes": ["Multiplayer"],
     "src": [
       "https://www.pixel4k.com/wp-content/uploads/2020/08/call-of-duty-warzone_1596993314.jpg",
@@ -357,11 +355,11 @@
     "publishers": "Studio MDHR",
     "engines": "Unity",
     "platforms": [
-      "Microsoft Windows,PlayStation 4,Xbox One,macOS,Nintendo Switch"
+      "Microsoft Windows","PlayStation 4","Xbox One","macOS","Nintendo Switch"
     ],
     "years": 2017,
     "genres": ["Run and gun"],
-    "modes": ["Single-player,Multiplayer"],
+    "modes": ["Single-player","Multiplayer"],
     "src": [
       "https://wallpapercave.com/wp/wp2206815.jpg",
       "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b147c31b-cb05-44a3-944e-f67b7f97aac0/dc7bnnl-b231bd3d-9f16-47d6-9947-04a000ededfd.png/v1/fill/w_1024,h_521,q_80,strp/cuphead_wallpaper_by_edencrafty127_dc7bnnl-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTIxIiwicGF0aCI6IlwvZlwvYjE0N2MzMWItY2IwNS00NGEzLTk0NGUtZjY3YjdmOTdhYWMwXC9kYzdibm5sLWIyMzFiZDNkLTlmMTYtNDdkNi05OTQ3LTA0YTAwMGVkZWRmZC5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.0KMcf45gE0nDkhoEMp6plGn5VRg7Pw0exOIdL9271TQ",
@@ -405,10 +403,10 @@
     "publishers": "CD Projekt",
     "engines": "REDengine 4",
     "platforms": [
-      "PlayStation 4,PlayStation 5,Stadia,Microsoft Windows,Xbox One,Xbox Series X,Xbox Series S"
+      "PlayStation 4","PlayStation 5","Stadia","Microsoft Windows","Xbox One","Xbox Series X","Xbox Series S"
     ],
     "years": 2020,
-    "genres": ["Action,Role-playing"],
+    "genres": ["Action","Role-playing"],
     "modes": ["Single-player"],
     "src": [
       "https://wallpapercave.com/wp/wp6501827.jpg",
@@ -432,10 +430,10 @@
     "publishers": "Xbox Game Studios,Iam8bit",
     "engines": "Unity",
     "platforms": [
-      "Microsoft Windows,Xbox One,Xbox Series X,Xbox Series S,Nintendo Switch"
+      "Microsoft Windows","Xbox One","Xbox Series X","Xbox Series S","Nintendo Switch"
     ],
     "years": 2020,
-    "genres": ["Platform-adventure,Metroidvania"],
+    "genres": ["Platform-adventure","Metroidvania"],
     "modes": ["Single-player"],
     "src": [
       "https://cdn.wccftech.com/wp-content/uploads/2020/02/ori_will_wisps_art.jpg",
@@ -458,7 +456,7 @@
     "publishers": "Team Cherry",
     "engines": "Unity",
     "platforms": [
-      "Microsoft Windows,Linux,macOS,Nintendo Switch,PlayStation 4,Xbox One"
+      "Microsoft Windows","Linux","macOS","Nintendo Switch","PlayStation 4","Xbox One"
     ],
     "years": 2017,
     "genres": ["Metroidvania"],
@@ -485,10 +483,10 @@
     "publishers": "CD Projekt",
     "engines": "REDengine 3",
     "platforms": [
-      "Microsoft Windows,Nintendo Switch,PlayStation 4,PlayStation 5,Xbox One,,Xbox Series X,Xbox Series S"
+      "Microsoft Windows","Nintendo Switch","PlayStation 4","PlayStation 5","Xbox One","Xbox Series X","Xbox Series S"
     ],
     "years": 2015,
-    "genres": ["Action,Role-playing"],
+    "genres": ["Action","Role-playing"],
     "modes": ["Single-player"],
     "src": [
       "https://www.gratistodo.com/wp-content/uploads/2016/09/The-Witcher-Wallpapers-22.jpg",
@@ -513,10 +511,10 @@
     "publishers": "Bethesda Softworks",
     "engines": "Creation Engine",
     "platforms": [
-      "Microsoft Windows,PlayStation 4,PlayStation 5,Xbox One,Xbox Series X,Xbox Series S"
+      "Microsoft Windows","PlayStation 4","PlayStation 5","Xbox One","Xbox Series X","Xbox Series S"
     ],
     "years": 2015,
-    "genres": ["Action,Role-playing"],
+    "genres": ["Action","Role-playing"],
     "modes": ["Single-player"],
     "src": [
       "https://hdwallpaperim.com/wp-content/uploads/2017/08/24/103746-Fallout_4.jpg",
@@ -538,11 +536,11 @@
     "developers": "Hello Games",
     "publishers": "Hello Games",
     "platforms": [
-      "PlayStation 4,PlayStation 5,Microsoft Windows,Xbox One,Xbox Series X,Xbox Series S,macOS,iPadOS,Nintendo Switch"
+      "PlayStation 4","PlayStation 5","Microsoft Windows","Xbox One","Xbox Series X","Xbox Series S","macOS","iPadOS","Nintendo Switch"
     ],
     "years": 2016,
-    "genres": ["Action,Adventure,Survival"],
-    "modes": ["Single-player,Multiplayer"],
+    "genres": ["Action","Adventure","Survival"],
+    "modes": ["Single-player","Multiplayer"],
     "src": [
       "https://wallpapercave.com/wp/wp1851428.jpg",
       "https://www.pcgamesn.com/wp-content/uploads/2019/04/no-mans-sky-vr.jpg",
@@ -563,9 +561,9 @@
     "names": "God of War",
     "developers": "Santa Monica Studio",
     "publishers": "Sony Interactive Entertainment",
-    "platforms": ["Microsoft Windows,PlayStation 4"],
+    "platforms": ["Microsoft Windows","PlayStation 4"],
     "years": 2018,
-    "genres": ["Action,Adventure,Hack and Slash"],
+    "genres": ["Action","Adventure","Hack and Slash"],
     "modes": ["Single-player"],
     "src": [
       "https://images5.alphacoders.com/112/thumb-1920-1124773.jpg",
@@ -588,8 +586,8 @@
     "publishers": "Ubisoft",
     "platforms": ["Microsoft Windows"],
     "years": 2019,
-    "genres": ["City-building,Real-time strategy"],
-    "modes": ["Single-player,Multiplayer"],
+    "genres": ["City-building","Real-time strategy"],
+    "modes": ["Single-player","Multiplayer"],
     "src": [
       "https://cdn.nwtv.nl/wp-content/uploads/2019/04/Anno1800_screen_Preview_Naval_Defense_190124_6pm_CET_1548168856.jpg",
       "https://wallpaperaccess.com/full/2744468.jpg",
@@ -609,10 +607,10 @@
     "publishers": "Electronic Arts",
     "engines": "Unreal Engine 4",
     "platforms": [
-      "PlayStation 4,PlayStation 5,Microsoft Windows,Xbox One,Xbox Series X,Xbox Series S,Stadia"
+      "PlayStation 4","PlayStation 5","Microsoft Windows","Xbox One","Xbox Series X","Xbox Series S","Stadia"
     ],
     "years": 2019,
-    "genres": ["Action,Adventure"],
+    "genres": ["Action","Adventure"],
     "modes": ["Single-player"],
     "src": [
       "https://wallpapercave.com/wp/wp4884525.jpg",
@@ -635,11 +633,11 @@
     "developers": "Techland",
     "publishers": "Techland",
     "platforms": [
-      "PlayStation 4,PlayStation 5,Microsoft Windows,Xbox One,Xbox Series X,Xbox Series S,Nintendo Switch"
+      "PlayStation 4","PlayStation 5","Microsoft Windows","Xbox One","Xbox Series X","Xbox Series S","Nintendo Switch"
     ],
     "years": 2022,
-    "genres": ["Action,Role-playing,Survival,Horror"],
-    "modes": ["Single-player,Multiplayer"],
+    "genres": ["Action","Role-playing","Survival","Horror"],
+    "modes": ["Single-player","Multiplayer"],
     "src": [
       "https://pixelz.cc/wp-content/uploads/2018/06/dying-light-2-uhd-4k-wallpaper.jpg",
       "https://gameranx.com/wp-content/uploads/2019/01/Dying-Light-2-4K-Wallpaper-3.jpg",
@@ -663,11 +661,11 @@
     "publishers": "Warner Bros,Interactive Entertainment",
     "engines": "Unreal Engine 3",
     "platforms": [
-      "PlayStation 4,PlayStation 5,Microsoft Windows,Xbox One,Xbox Series X,Xbox Series S,Stadia,Nintendo Switch"
+      "PlayStation 4","PlayStation 5","Microsoft Windows","Xbox One","Xbox Series X","Xbox Series S","Stadia","Nintendo Switch"
     ],
     "years": 2019,
     "genres": ["Fighting"],
-    "modes": ["Single-player,Multiplayer"],
+    "modes": ["Single-player","Multiplayer"],
     "src": [
       "https://wallpapercave.com/wp/wp6705360.jpg",
       "https://wallpapercave.com/wp/wp3907247.jpg",
@@ -689,7 +687,7 @@
     "developers": "BlueTwelve Studio",
     "publishers": "Annapurna Interactive",
     "engines": "Unreal Engine 4",
-    "platforms": ["PlayStation 4,PlayStation 5,Microsoft Windows"],
+    "platforms": ["PlayStation 4","PlayStation 5","Microsoft Windows"],
     "years": 2022,
     "genres": ["Adventure"],
     "modes": ["Single-player"],
@@ -713,7 +711,7 @@
     "publishers": "ZA/UM",
     "engines": "Unity",
     "platforms": [
-      "PlayStation 4,PlayStation 5,Microsoft Windows,Xbox One,Xbox Series X,Xbox Series S,Stadia,Nintendo Switch,macOS"
+      "PlayStation 4","PlayStation 5","Microsoft Windows","Xbox One","Xbox Series X","Xbox Series S","Stadia","Nintendo Switch","macOS"
     ],
     "years": 2019,
     "genres": ["Role-playing"],
@@ -740,9 +738,9 @@
     "developers": "Guerrilla Games",
     "publishers": "Sony Interactive Entertainment",
     "engines": "Decima",
-    "platforms": ["PlayStation 4,PlayStation 5"],
+    "platforms": ["PlayStation 4","PlayStation 5"],
     "years": 2022,
-    "genres": ["Action,Role-playing"],
+    "genres": ["Action","Role-playing"],
     "modes": ["Single-player"],
     "src": [
       "https://gamingbolt.com/wp-content/uploads/2020/06/Horizon-Forbidden-West-2.jpg",
@@ -762,9 +760,9 @@
     "developers": "Obsidian Entertainment",
     "publishers": "Private Division",
     "engines": "Unreal Engine 4",
-    "platforms": ["PlayStation 4,Microsoft Windows,Xbox One,Nintendo Switch"],
+    "platforms": ["PlayStation 4","Microsoft Windows","Xbox One","Nintendo Switch"],
     "years": 2019,
-    "genres": ["Action,Role-playing"],
+    "genres": ["Action","Role-playing"],
     "modes": ["Single-player"],
     "src": [
       "https://www.justpushstart.com/wp-content/uploads/2019/06/70feecdb-2cbd-42d0-9588-704f15dc2e04.jpg",

@@ -1,8 +1,9 @@
 import React, { useReducer, useEffect, useState } from "react";
-import Home from "./Home";
-import Games from "./pages/Games";
-import Windows from "./pages/Windows";
-import PlayStation4 from "./pages/PlayStation4";
+import Home from "./links/Home";
+import Platforms from "./links/Platforms";
+import GAMES from "./pages/GAMES";
+import WINDOWS from "./pages/platforms/WINDOWS";
+import PLAYSTATION4 from "./pages/platforms/PLAYSTATION4";
 import Navbar from "./navbar/Navbar";
 import Load from "./Load";
 
@@ -31,11 +32,11 @@ import "./CSS/main/games.css";
 //#endregion CSS
 
 // GLOBAL CONTEXT FILE
-import { Context } from "./Context";
+import { Context } from "./utilities/Context";
 // ROUTER
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // REDUCER AND DEFAULTSTATE
-import { reducer, defaultState } from "./reducer";
+import { reducer, defaultState } from "./utilities/reducer";
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
@@ -46,13 +47,16 @@ const App = () => {
     const data = require("./gamesList.json");
     setList(data);
     dispatch({ type: "SHOW", payload: false });
+    
   }, []);
 
   useEffect(() => {
     // SET YOUR LIST TO STATE.LIST
     dispatch({ type: "GET_ALL", payload: list });
+
   }, [list]);
 
+  // ROUTES SHOULD BE DYNAMIC
   return (
     <Router>
       <Context.Provider value={{ state }}>
@@ -68,26 +72,90 @@ const App = () => {
           }
         />
         <Route
+          path="/platforms"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <Platforms />
+            </Context.Provider>
+          }
+        />
+        <Route
           path="/games"
           element={
             <Context.Provider value={{ state, dispatch }}>
-              <Games />
+              <GAMES />
             </Context.Provider>
           }
         />
         <Route
-          path="/microsoft windows"
+          path="/platforms/microsoft windows"
           element={
             <Context.Provider value={{ state, dispatch }}>
-              <Windows />
+              <WINDOWS />
             </Context.Provider>
           }
         />
         <Route
-          path="/playstation 4"
+          path="/platforms/xbox one"
           element={
             <Context.Provider value={{ state, dispatch }}>
-              <PlayStation4 />
+              <PLAYSTATION4 />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/platforms/xbox series s"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <PLAYSTATION4 />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/platforms/xbox series x"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <PLAYSTATION4 />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/platforms/playstation 4"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <PLAYSTATION4 />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/platforms/playstation 5"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <PLAYSTATION4 />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/platforms/nintendo"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <PLAYSTATION4 />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/platforms/linux"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <PLAYSTATION4 />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/platforms/macos"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <PLAYSTATION4 />
             </Context.Provider>
           }
         />

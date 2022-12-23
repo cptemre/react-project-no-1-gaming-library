@@ -9,27 +9,37 @@ const useDispatch = (state, dispatch) => {
   }, []);
 
   // SET FILTERED TYPE LIST
+
   useEffect(() => {
+    let filteredTypeList = [];
+    const url = new RegExp(state.url, "gi");
     // ALL GAMES WITHOUT FILTER
     if (state.url === "games") {
-      dispatch({ type: "FILTERED_TYPE_LIST", payload: state.list });
+      filteredTypeList = state.list;
     }
     // FILTER PLATFORMS
-    else if (state.types.includes(state.url.toUpperCase())) {
-      console.log(state.url);
-      let filteredTypeList = [];
-      const url = new RegExp(state.url, "gi");
+    else if (state.platforms.includes(state.url.toUpperCase())) {
       for (let i = 0; i < state.list.length; i++) {
         for (let y = 0; y < state.list[i]["platforms"].length; y++) {
           if (state.list[i]["platforms"][y].match(url)) {
             filteredTypeList.push(state.list[i]);
-            console.log(state.list[i]);
           }
         }
       }
-      dispatch({ type: "FILTERED_TYPE_LIST", payload: filteredTypeList });
     }
-  }, [state.url]);
+    // FILTER GENRES
+    else if (state.genres.includes(state.url.toUpperCase())) {
+      for (let i = 0; i < state.list.length; i++) {
+        for (let y = 0; y < state.list[i]["platforms"].length; y++) {
+          if (state.list[i]["platforms"][y].match(url)) {
+            filteredTypeList.push(state.list[i]);
+          }
+        }
+      }
+    }
+        
+    dispatch({ type: "FILTERED_TYPE_LIST", payload: filteredTypeList });
+  }, [state.list, state.url]);
 
   // FILTER THE LIST BY 10 ON PAGE LOAD
   useEffect(() => {

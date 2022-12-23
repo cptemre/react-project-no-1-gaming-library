@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 // GLOBAL CONTEXT FILE
-import { Context } from "../Context";
+import { Context } from "../utilities/Context";
 // JQUERY
 import $ from "jquery";
 
