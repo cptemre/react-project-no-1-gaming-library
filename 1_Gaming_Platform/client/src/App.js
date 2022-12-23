@@ -1,7 +1,8 @@
 import React, { useReducer, useEffect, useState } from "react";
 import Home from "./links/Home";
-import Platforms from "./links/Platforms";
 import GAMES from "./pages/GAMES";
+import Platforms from "./links/Platforms";
+import GENRES from "./links/GENRES";
 import WINDOWS from "./pages/platforms/WINDOWS";
 import PLAYSTATION4 from "./pages/platforms/PLAYSTATION4";
 import Navbar from "./navbar/Navbar";
@@ -47,13 +48,11 @@ const App = () => {
     const data = require("./gamesList.json");
     setList(data);
     dispatch({ type: "SHOW", payload: false });
-    
   }, []);
 
   useEffect(() => {
     // SET YOUR LIST TO STATE.LIST
     dispatch({ type: "GET_ALL", payload: list });
-
   }, [list]);
 
   // ROUTES SHOULD BE DYNAMIC
@@ -72,6 +71,14 @@ const App = () => {
           }
         />
         <Route
+          path="/games"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <GAMES />
+            </Context.Provider>
+          }
+        />
+        <Route
           path="/platforms"
           element={
             <Context.Provider value={{ state, dispatch }}>
@@ -80,10 +87,10 @@ const App = () => {
           }
         />
         <Route
-          path="/games"
+          path="/genres"
           element={
             <Context.Provider value={{ state, dispatch }}>
-              <GAMES />
+              <GENRES />
             </Context.Provider>
           }
         />
