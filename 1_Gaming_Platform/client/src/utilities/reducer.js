@@ -26,6 +26,9 @@ const reducer = (state, action) => {
   if (action.type === "WIDTH") {
     return { ...state, width: action.payload };
   }
+  if (action.type === "LINK") {
+    return { ...state, link: action.payload };
+  }
   return console.log("Something went wrong");
 };
 
@@ -76,6 +79,7 @@ const defaultState = {
   id: 10,
   show: false,
   width: 0,
+  link: []
 };
 
 export { reducer, defaultState };

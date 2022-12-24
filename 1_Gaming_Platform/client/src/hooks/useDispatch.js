@@ -8,6 +8,8 @@ const useDispatch = (state, dispatch) => {
     dispatch({ type: "ID", payload: 10 });
   }, []);
 
+  // CONTINUE FROM HERE. STATE PLATFORM SET UP WORKS
+
   // SET FILTERED TYPE LIST
 
   useEffect(() => {
@@ -17,7 +19,7 @@ const useDispatch = (state, dispatch) => {
     // PREPARE TYPE URL PART
     const fullURL = document.URL.split("/");
     const typeURL = fullURL[3];
-
+    
     // ALL GAMES WITHOUT FILTER
     if (typeURL === "games") {
       filteredTypeList = state.list;

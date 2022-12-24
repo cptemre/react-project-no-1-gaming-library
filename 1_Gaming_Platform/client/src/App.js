@@ -53,6 +53,8 @@ const App = () => {
     dispatch({ type: "GET_ALL", payload: list });
   }, [list]);
 
+
+
   // ROUTES SHOULD BE DYNAMIC
   return (
     <Router>
