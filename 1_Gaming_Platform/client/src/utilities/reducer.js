@@ -5,9 +5,6 @@ const reducer = (state, action) => {
   if (action.type === "PLATFORMS") {
     return { ...state, platforms: action.payload };
   }
-  if (action.type === "GENRES") {
-    return { ...state, genres: action.payload };
-  }
   if (action.type === "FILTERED_TYPE_LIST") {
     return { ...state, filteredTypeList: action.payload };
   }
@@ -66,7 +63,9 @@ const defaultState = {
     "DEVELOPERS",
     "PUBLISHERS",
   ],
-  platforms: [],
+  platforms: [
+
+  ],
   genres: [],
   services: ["STEAM", "EPIC"],
   list: [],
