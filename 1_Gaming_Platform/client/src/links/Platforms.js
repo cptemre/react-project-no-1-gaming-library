@@ -3,31 +3,26 @@ import { Context } from "../utilities/Context";
 import Links from "../utilities/Links";
 import useTypes from "../hooks/useTypes";
 
-const PLATFORMS = () => {
-  const { state, dispatch } = useContext(Context);
+const Platforms = () => {
+  const { state, dispatch, type, typePath } = useContext(Context);
   const [link, setLink] = useState([]);
+  const [path, setPath] = useState(typePath);
+  const [pathLink, setPathLink] = useState(type);
+
   // SET NEW PATH WITH USESTATE
-  const path = "PLATFORMS/";
+  useTypes(state, dispatch, pathLink);
 
-  useEffect(() => {
-    // PREPARE TYPE URL PART
-    const fullURL = document.URL.split("/");
-    const typeURL = fullURL[3];
 
-    console.log(typeURL);
-  }, []);
-
-  useTypes(state, dispatch, "platforms");
-
+  // SET SUB FOLDER NAMES
   useEffect(() => {
     setLink(state.link);
   }, [state.link]);
 
   return (
-    <Context.Provider value={{ path, link }}>
+    <Context.Provider value={{ state, dispatch, path, link }}>
       <Links />
     </Context.Provider>
   );
 };
 
-export default PLATFORMS;
+export default Platforms;

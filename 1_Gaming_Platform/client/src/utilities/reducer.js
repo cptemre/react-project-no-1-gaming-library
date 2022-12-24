@@ -5,6 +5,12 @@ const reducer = (state, action) => {
   if (action.type === "PLATFORMS") {
     return { ...state, platforms: action.payload };
   }
+  if (action.type === "GENRES") {
+    return { ...state, genres: action.payload };
+  }
+  if (action.type === "MODES") {
+    return { ...state, modes: action.payload };
+  }
   if (action.type === "FILTERED_TYPE_LIST") {
     return { ...state, filteredTypeList: action.payload };
   }
@@ -29,6 +35,12 @@ const reducer = (state, action) => {
   if (action.type === "LINK") {
     return { ...state, link: action.payload };
   }
+    if (action.type === "PATH") {
+      return { ...state, path: action.payload };
+    }
+    if (action.type === "PATH_LINK") {
+      return { ...state, pathLink: action.payload };
+    }
   return console.log("Something went wrong");
 };
 
@@ -66,10 +78,9 @@ const defaultState = {
     "DEVELOPERS",
     "PUBLISHERS",
   ],
-  platforms: [
-
-  ],
+  platforms: [],
   genres: [],
+  modes: [],
   services: ["STEAM", "EPIC"],
   list: [],
   filteredTypeList: [],
@@ -79,7 +90,9 @@ const defaultState = {
   id: 10,
   show: false,
   width: 0,
-  link: []
+  link: [],
+  path: "",
+  pathLink: "",
 };
 
 export { reducer, defaultState };

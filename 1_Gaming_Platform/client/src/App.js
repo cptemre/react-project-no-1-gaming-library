@@ -53,8 +53,6 @@ const App = () => {
     dispatch({ type: "GET_ALL", payload: list });
   }, [list]);
 
-
-
   // ROUTES SHOULD BE DYNAMIC
   return (
     <Router>
@@ -71,18 +69,55 @@ const App = () => {
           }
         />
         <Route
-          path="/platforms"
+          path="/games"
           element={
             <Context.Provider value={{ state, dispatch }}>
+              <GAMES />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/platforms"
+          element={
+            <Context.Provider
+              value={{
+                state,
+                dispatch,
+                type: "platforms",
+                typePath: "PLATFORMS/",
+              }}
+            >
               <Platforms />
             </Context.Provider>
           }
         />
         <Route
-          path="/games"
+          path="/genres"
           element={
-            <Context.Provider value={{ state, dispatch }}>
-              <GAMES />
+            <Context.Provider
+              value={{
+                state,
+                dispatch,
+                type: "genres",
+                typePath: "GENRES/",
+              }}
+            >
+              <Platforms />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/modes"
+          element={
+            <Context.Provider
+              value={{
+                state,
+                dispatch,
+                type: "modes",
+                typePath: "MODES/",
+              }}
+            >
+              <Platforms />
             </Context.Provider>
           }
         />

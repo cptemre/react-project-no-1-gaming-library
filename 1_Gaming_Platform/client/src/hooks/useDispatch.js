@@ -19,7 +19,7 @@ const useDispatch = (state, dispatch) => {
     // PREPARE TYPE URL PART
     const fullURL = document.URL.split("/");
     const typeURL = fullURL[3];
-    
+
     // ALL GAMES WITHOUT FILTER
     if (typeURL === "games") {
       filteredTypeList = state.list;
