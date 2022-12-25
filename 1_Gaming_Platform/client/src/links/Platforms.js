@@ -4,22 +4,36 @@ import Links from "../utilities/Links";
 import useTypes from "../hooks/useTypes";
 
 const Platforms = () => {
-  const { state, dispatch, type, typePath } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   const [link, setLink] = useState([]);
-  const [path, setPath] = useState(typePath);
-  const [pathLink, setPathLink] = useState(type);
+  const [url, setUrl] = useState(document.URL.split("/"));
+  const [lastURL, setLastURL] = useState(url[url.length - 1]);
+  const [path, setPath] = useState("");
+
+  useEffect(() => {
+    // PREPARE URL PART
+    const url = document.URL.split("/");
+    const lURL = url[url.length - 1];
+    setLastURL(lURL);
+    const lURLU = lURL.toUpperCase() + "/";
+    setPath(lURLU);
+  }, []);
+
+  useEffect(() => {
+    dispatch({ type: "URL", payload: lastURL });
+  }, [state.list]);
 
   // SET NEW PATH WITH USESTATE
-  useTypes(state, dispatch, pathLink);
-
+  useTypes(state, dispatch, lastURL);
 
   // SET SUB FOLDER NAMES
   useEffect(() => {
-    setLink(state.link);
-  }, [state.link]);
+    setLink(state[lastURL]);
+    console.log(state[lastURL]);
+  }, [state[lastURL]]);
 
   return (
-    <Context.Provider value={{ state, dispatch, path, link }}>
+    <Context.Provider value={{ path, link }}>
       <Links />
     </Context.Provider>
   );

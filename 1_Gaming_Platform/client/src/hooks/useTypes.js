@@ -1,30 +1,27 @@
 import { useState, useEffect } from "react";
 
 const useTypes = (state, dispatch, path) => {
-
-
-
   // CONTINUE FROM HERE. STATE PLATFORM SET UP WORKS
   useEffect(() => {
     let types = [];
-    let routePaths = [];
     for (let i = 0; i < state.list.length; i++) {
-      for (let x = 0; x < state.list[i][path].length; x++) {
-        types.push(state.list[i][path][x].toUpperCase());
+      if (state.list[i][path]) {
+        for (let x = 0; x < state.list[i][path].length; x++) {
+          // SPLIT FROM COMMA
+          for (let y = 0; y < state.list[i][path][x].length; y++) {
+            const splitted = state.list[i][path][x].split(",");
+            for (let y = 0; y < splitted.length; y++) {
+              types.push(splitted[y].toUpperCase());
+            }
+          }
+        }
       }
     }
     types = [...new Set(types)];
-    console.log(types);
+    types = types.sort()
     dispatch({ type: path.toUpperCase(), payload: types });
-    console.log(state.genres);
-  }, [state.filteredTypeList, path]);
-
-  // SET TYPES BY FILTERING IT WITH CURRENT SELECTED VALUE IN FILTERTYPE
-  useEffect(() => {
     console.log(state[path]);
-    dispatch({ type: "LINK", payload: state[path] });
-    console.log(state.link);
-  }, [state[path], path]);
+  }, [path, state.list]);
 };
 
 export default useTypes;

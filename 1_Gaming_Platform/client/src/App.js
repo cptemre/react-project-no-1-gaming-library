@@ -83,8 +83,6 @@ const App = () => {
               value={{
                 state,
                 dispatch,
-                type: "platforms",
-                typePath: "PLATFORMS/",
               }}
             >
               <Platforms />
@@ -98,8 +96,6 @@ const App = () => {
               value={{
                 state,
                 dispatch,
-                type: "genres",
-                typePath: "GENRES/",
               }}
             >
               <Platforms />
@@ -113,14 +109,65 @@ const App = () => {
               value={{
                 state,
                 dispatch,
-                type: "modes",
-                typePath: "MODES/",
               }}
             >
               <Platforms />
             </Context.Provider>
           }
         />
+        <Route
+          path="/engines"
+          element={
+            <Context.Provider
+              value={{
+                state,
+                dispatch,
+              }}
+            >
+              <Platforms />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/years"
+          element={
+            <Context.Provider
+              value={{
+                state,
+                dispatch,
+              }}
+            >
+              <Platforms />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/developers"
+          element={
+            <Context.Provider
+              value={{
+                state,
+                dispatch,
+              }}
+            >
+              <Platforms />
+            </Context.Provider>
+          }
+        />
+        <Route
+          path="/publishers"
+          element={
+            <Context.Provider
+              value={{
+                state,
+                dispatch,
+              }}
+            >
+              <Platforms />
+            </Context.Provider>
+          }
+        />
+
         <Route
           path="/platforms/microsoft windows"
           element={

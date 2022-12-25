@@ -11,6 +11,18 @@ const reducer = (state, action) => {
   if (action.type === "MODES") {
     return { ...state, modes: action.payload };
   }
+  if (action.type === "ENGINES") {
+    return { ...state, engines: action.payload };
+  }
+  if (action.type === "YEARS") {
+    return { ...state, years: action.payload };
+  }
+  if (action.type === "DEVELOPERS") {
+    return { ...state, developers: action.payload };
+  }
+  if (action.type === "PUBLISHERS") {
+    return { ...state, publishers: action.payload };
+  }
   if (action.type === "FILTERED_TYPE_LIST") {
     return { ...state, filteredTypeList: action.payload };
   }
@@ -32,15 +44,6 @@ const reducer = (state, action) => {
   if (action.type === "WIDTH") {
     return { ...state, width: action.payload };
   }
-  if (action.type === "LINK") {
-    return { ...state, link: action.payload };
-  }
-    if (action.type === "PATH") {
-      return { ...state, path: action.payload };
-    }
-    if (action.type === "PATH_LINK") {
-      return { ...state, pathLink: action.payload };
-    }
   return console.log("Something went wrong");
 };
 
@@ -81,6 +84,9 @@ const defaultState = {
   platforms: [],
   genres: [],
   modes: [],
+  engines: [],
+  years: [],
+  developers: [],
   services: ["STEAM", "EPIC"],
   list: [],
   filteredTypeList: [],
@@ -90,9 +96,6 @@ const defaultState = {
   id: 10,
   show: false,
   width: 0,
-  link: [],
-  path: "",
-  pathLink: "",
 };
 
 export { reducer, defaultState };

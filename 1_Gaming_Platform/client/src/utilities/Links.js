@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Links = () => {
   // GET TYPES ARRAY
-  const { path, link } = useContext(Context);
+  const { state, path, link } = useContext(Context);
   // STATE LINKS SETUP
   const [types, setTypes] = useState([]);
   const [imgPath, setImgPath] = useState("");
