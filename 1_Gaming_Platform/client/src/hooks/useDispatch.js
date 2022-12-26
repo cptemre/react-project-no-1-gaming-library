@@ -27,9 +27,11 @@ const useDispatch = (state, dispatch) => {
     // FILTER TYPES
     else if (state[typeURL].includes(state.url.toUpperCase())) {
       for (let i = 0; i < state.list.length; i++) {
-        for (let y = 0; y < state.list[i][typeURL].length; y++) {
-          if (state.list[i][typeURL][y].match(url)) {
-            filteredTypeList.push(state.list[i]);
+        if (state.list[i][typeURL]) {
+          for (let y = 0; y < state.list[i][typeURL].length; y++) {
+            if (state.list[i][typeURL][y].match(url)) {
+              filteredTypeList.push(state.list[i]);
+            }
           }
         }
       }

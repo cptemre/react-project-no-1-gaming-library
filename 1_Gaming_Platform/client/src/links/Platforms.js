@@ -29,7 +29,7 @@ const Platforms = () => {
   // SET SUB FOLDER NAMES
   useEffect(() => {
     setLink(state[lastURL]);
-    console.log(state[lastURL]);
+    console.log(lastURL);
   }, [state[lastURL]]);
 
   return (
