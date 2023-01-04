@@ -52,13 +52,11 @@ const App = () => {
   }, [state]);
   // SET SUB FOLDER NAMES
   useEffect(() => {
-    // ?
+    // IF TYPE INCLUDES THEN SET
     if (types.includes(url.toUpperCase())) {
       setLink(state[url]);
     }
-    console.log(state[url]);
     setLink(state[url]);
-    console.log(state[url]);
   }, [state[url], url]);
 
   // SET YOUR DATA TO STATE
@@ -124,139 +122,27 @@ const App = () => {
             />
           );
         })}
-        {link &&
-          link.map((i) => {
-            const subpath = i.toLowerCase();
+        {types &&
+          types.map((type) => {
             return (
-              <Route
-                key={`/platforms/${subpath}`}
-                path={`/platforms/${subpath}`}
-                element={
-                  <Context.Provider value={{ state, dispatch }}>
-                    <PlatformTypes />
-                  </Context.Provider>
-                }
-              />
+              link &&
+              link.map((i) => {
+                const subpath = i.toLowerCase();
+                return (
+                  <Route
+                    key={`/${type}/${subpath}`}
+                    path={`/${type}/${subpath}`}
+                    element={
+                      <Context.Provider value={{ state, dispatch }}>
+                        <PlatformTypes />
+                      </Context.Provider>
+                    }
+                  />
+                );
+              })
             );
           })}
-        {link &&
-          link.map((i) => {
-            const subpath = i.toLowerCase();
-            return (
-              <Route
-                key={`/genres/${subpath}`}
-                path={`/genres/${subpath}`}
-                element={
-                  <Context.Provider value={{ state, dispatch }}>
-                    <PlatformTypes />
-                  </Context.Provider>
-                }
-              />
-            );
-          })}
-        {link &&
-          link.map((i) => {
-            const subpath = i.toLowerCase();
-            return (
-              <Route
-                key={`/engines/${subpath}`}
-                path={`/engines/${subpath}`}
-                element={
-                  <Context.Provider value={{ state, dispatch }}>
-                    <PlatformTypes />
-                  </Context.Provider>
-                }
-              />
-            );
-          })}
-        {/* <Route
-          path="/platforms/microsoft windows"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/xbox one"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/xbox series s"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/xbox series x"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/playstation 4"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/playstation 5"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/macos"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/nintendo switch"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/linux"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/stadia"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        />
-        <Route
-          path="/platforms/amazon luna"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <PlatformTypes />
-            </Context.Provider>
-          }
-        /> */}
+
         <Route path="*" element="Page is not exist" />
       </Routes>
       {state.show && (

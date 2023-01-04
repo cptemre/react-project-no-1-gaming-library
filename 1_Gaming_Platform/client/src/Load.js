@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "./utilities/Context";
-import $ from "jquery";
 
 // HOOKS
 

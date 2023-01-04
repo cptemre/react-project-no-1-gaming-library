@@ -22,17 +22,12 @@ const useFilter = (state, dispatch) => {
     // SET URL IN DISPATCH
     dispatch({ type: "URL", payload: lastURL });
     // SHOW LOAD MORE BUTTON IF IT IS A PROPER PAGE
-    if (
-      state.types.includes(lastURL.toUpperCase()) &&
-      lastURL.toUpperCase() !== "PLATFORMS"
-    ) {
+    if (state.types.includes(lastURL.toUpperCase())) {
       dispatch({ type: "SHOW", payload: true });
     } else {
       dispatch({ type: "SHOW", payload: false });
     }
   }, [filterID, filteredTypeList, state.domLength]);
-
-
 };
 
 export default useFilter;

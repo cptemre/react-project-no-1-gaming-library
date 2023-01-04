@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "./Context";
+// ROUTER
+import { useNavigate } from "react-router-dom";
 // GAME FUNCTIONS
 import {
   divmouseenterHandle,
@@ -18,6 +20,8 @@ const GameDiv = () => {
   const { state, dispatch } = useContext(Context);
   const [filteredList, setFilteredList] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
+
+  const navigate = useNavigate();
 
   // HOOKS
   useFilter(state, dispatch);
@@ -49,6 +53,7 @@ const GameDiv = () => {
                 className="gameDiv"
                 onMouseEnter={(e) => divmouseenterHandle(e, width)}
                 onMouseLeave={(e) => divmouseleaveHandle(e)}
+                onClick={() => navigate(`/${nameReplace}`)}
               >
                 {item.src.map((src, i) => {
                   return (
