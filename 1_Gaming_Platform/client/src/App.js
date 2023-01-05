@@ -1,10 +1,18 @@
 import React, { useReducer, useEffect, useState } from "react";
-import Home from "./links/Home";
-import Platforms from "./links/Platforms";
-import GAMES from "./pages/GAMES";
-import PlatformTypes from "./pages/PlatformTypes";
+// NAVBAR
 import Navbar from "./navbar/Navbar";
+// LOAD BUTTON
 import Load from "./Load";
+// HOME
+import Home from "./links/Home";
+// GAMES AND FAVORITES PAGE
+import GAMES from "./pages/GAMES";
+// MAIN PAGES
+import Platforms from "./links/Platforms";
+// SUBPATHS
+import PlatformTypes from "./pages/PlatformTypes";
+// GAME PAGE
+import Game from "./links/Game";
 
 //#region CSS
 import "./CSS/index.css";
@@ -148,7 +156,14 @@ const App = () => {
               })
             );
           })}
-
+        <Route
+          path="/game/:name"
+          element={
+            <Context.Provider value={{ state, dispatch }}>
+              <Game />
+            </Context.Provider>
+          }
+        />
         <Route path="*" element="Page is not exist" />
       </Routes>
       {state.show && (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
 
 const useTypes = (state, dispatch, path) => {
   // CONTINUE FROM HERE. STATE PLATFORM SET UP WORKS
@@ -18,9 +18,8 @@ const useTypes = (state, dispatch, path) => {
       }
     }
     types = [...new Set(types)];
-    types = types.sort()
+    types = types.sort();
     dispatch({ type: path.toUpperCase(), payload: types });
-    console.log(state[path]);
   }, [path, state.list]);
 };
 

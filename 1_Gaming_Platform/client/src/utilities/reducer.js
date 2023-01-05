@@ -9,11 +9,13 @@ const reducer = (state, action) => {
     } else {
       fav = [...state.favorites, action.payload];
     }
-    console.log(fav);
     return { ...state, favorites: fav };
   }
   if (action.type === "PLATFORMS") {
     return { ...state, platforms: action.payload };
+  }
+  if (action.type === "SERVICES") {
+    return { ...state, services: action.payload };
   }
   if (action.type === "GENRES") {
     return { ...state, genres: action.payload };
@@ -63,7 +65,7 @@ const defaultState = {
     "FAVORITES",
     "GAMES",
     "PLATFORMS",
-    // "SERVICES",
+    "SERVICES",
     "GENRES",
     "MODES",
     "ENGINES",
@@ -107,6 +109,7 @@ const defaultState = {
     "XBOX SERIES S",
     "XBOX SERIES X",
   ],
+  services: [],
   genres: [
     "ACTION",
     "ADVENTURE",
@@ -146,7 +149,6 @@ const defaultState = {
   ],
   years: [],
   developers: [],
-  services: ["STEAM", "EPIC"],
   list: [],
   filteredTypeList: [],
   filtered: [],

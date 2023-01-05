@@ -90,7 +90,7 @@ const GameDiv = () => {
   return (
     <>
       <div className="gamesDiv">
-        {filteredList &&
+        {filteredList.length ? (
           filteredList.map((item) => {
             const nameReplace = item.names.replace(/ /g, "_");
             return (
@@ -108,7 +108,7 @@ const GameDiv = () => {
                       className={`figure${i} gameFig`}
                       onMouseEnter={(e) => mouseenterHandle(e, width)}
                       onMouseLeave={(e) => mouseleaveHandle(e, width)}
-                      onClick={() => navigate(`/${nameReplace}`)}
+                      onClick={() => navigate(`/game/${nameReplace}`)}
                     >
                       <img
                         src={require(`../assets/imgs/games/${item.names}/${
@@ -132,7 +132,10 @@ const GameDiv = () => {
                 </div>
               </div>
             );
-          })}
+          })
+        ) : (
+          <div>THERE ARE NO GAMES HERE</div>
+        )}
       </div>
     </>
   );
