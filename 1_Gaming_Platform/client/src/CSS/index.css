@@ -10,8 +10,9 @@
   --inputBlue: rgb(81, 194, 238);
   /* MIDDLEGAME FIGURE BORDER COLOR WHITE */
   --gameBorder: rgb(191, 165, 194);
-    /* BUTTON COLORS */
-  --loadGreen: rgb(100, 204, 98)
+  /* BUTTON COLORS */
+  --loadGreen: rgb(100, 204, 98);
+  --redBackground: rgb(220, 190, 190);
 }
 
 * {

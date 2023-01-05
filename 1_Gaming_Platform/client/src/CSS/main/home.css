@@ -39,6 +39,7 @@ main {
 .urlDownImg {
   width: 100%;
   height: 100%;
+  height: 7rem;
 }
 
 .urlUpImg {

@@ -96,14 +96,18 @@ const App = () => {
             </Context.Provider>
           }
         />
-        <Route
-          path="/games"
-          element={
-            <Context.Provider value={{ state, dispatch }}>
-              <GAMES />
-            </Context.Provider>
-          }
-        />
+        {["/favorites", "/games"].map((path) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <Context.Provider value={{ state, dispatch }}>
+                <GAMES />
+              </Context.Provider>
+            }
+          />
+        ))}
+
         {types.map((type) => {
           return (
             <Route
@@ -127,18 +131,20 @@ const App = () => {
             return (
               link &&
               link.map((i) => {
-                const subpath = i.toLowerCase();
-                return (
-                  <Route
-                    key={`/${type}/${subpath}`}
-                    path={`/${type}/${subpath}`}
-                    element={
-                      <Context.Provider value={{ state, dispatch }}>
-                        <PlatformTypes />
-                      </Context.Provider>
-                    }
-                  />
-                );
+                if (typeof i !== "object") {
+                  const subpath = i.toLowerCase();
+                  return (
+                    <Route
+                      key={`/${type}/${subpath}`}
+                      path={`/${type}/${subpath}`}
+                      element={
+                        <Context.Provider value={{ state, dispatch }}>
+                          <PlatformTypes />
+                        </Context.Provider>
+                      }
+                    />
+                  );
+                }
               })
             );
           })}

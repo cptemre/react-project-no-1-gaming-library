@@ -87,3 +87,15 @@
   font-size: 1.3rem;
   transition: 0.3s;
 }
+
+.heart {
+  transform: scale(1);
+  border: 2px solid darkred;
+  background-color: var(--redBackground);
+  color: darkred;
+  height: auto;
+  width: 2.5rem;
+  font-size: 2rem;
+  border-radius: 2rem;
+  transition: 0.3s;
+}

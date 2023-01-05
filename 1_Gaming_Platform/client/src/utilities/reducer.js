@@ -2,6 +2,16 @@ const reducer = (state, action) => {
   if (action.type === "GET_ALL") {
     return { ...state, list: action.payload };
   }
+  if (action.type === "FAVORITES") {
+    let fav;
+    if (state.favorites.includes(action.payload)) {
+      fav = state.favorites.filter((favs) => favs !== action.payload);
+    } else {
+      fav = [...state.favorites, action.payload];
+    }
+    console.log(fav);
+    return { ...state, favorites: fav };
+  }
   if (action.type === "PLATFORMS") {
     return { ...state, platforms: action.payload };
   }
@@ -44,6 +54,7 @@ const reducer = (state, action) => {
   if (action.type === "WIDTH") {
     return { ...state, width: action.payload };
   }
+
   return console.log("Something went wrong");
 };
 
@@ -81,6 +92,7 @@ const defaultState = {
     "DEVELOPERS",
     "PUBLISHERS",
   ],
+  favorites: [],
   platforms: [
     "AMAZON LUNA",
     "IPADOS",

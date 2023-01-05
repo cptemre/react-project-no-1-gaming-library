@@ -23,6 +23,8 @@ const useDispatch = (state, dispatch) => {
     // ALL GAMES WITHOUT FILTER
     if (typeURL === "games") {
       filteredTypeList = state.list;
+    } else if (typeURL === "favorites") {
+      filteredTypeList = state.favorites;
     }
     // FILTER TYPES
     else if (state[typeURL].includes(state.url.toUpperCase())) {
