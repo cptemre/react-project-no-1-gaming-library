@@ -33,7 +33,7 @@ import "./CSS/navbar/searchForm/searchResultsDiv.css";
 //#region MAIN
 import "./CSS/main/home.css";
 import "./CSS/main/games.css";
-
+import "./CSS/main/game.css";
 //#endregion MAIN
 
 //#endregion CSS

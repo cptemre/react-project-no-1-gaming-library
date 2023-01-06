@@ -149,6 +149,7 @@ const defaultState = {
   ],
   years: [],
   developers: [],
+  publishers: [],
   list: [],
   filteredTypeList: [],
   filtered: [],

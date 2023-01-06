@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 390px) {
   #inputDiv {
-    width: 100vw ;
+    width: 100vw;
   }
   input {
     text-align: center;
@@ -32,6 +32,7 @@ input {
   position: relative;
   top: 8px;
   right: 0;
+  text-transform: uppercase;
 }
 
 #inputUnderlineDiv {

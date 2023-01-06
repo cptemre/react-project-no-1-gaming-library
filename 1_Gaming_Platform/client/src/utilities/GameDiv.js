@@ -5,6 +5,9 @@ import $ from "jquery";
 import { Context } from "./Context";
 // ROUTER
 import { useNavigate } from "react-router-dom";
+// GAME NAME FILE
+import GameName from "../utilities/GameName";
+
 // GAME FUNCTIONS
 import {
   divmouseenterHandle,
@@ -44,7 +47,7 @@ const GameDiv = () => {
     setWidth(state.width);
   }, [state.width]);
 
-  // IF THE PAGE IS FAVORITES THEN SET FILTEREDLIST TO FAVORITES
+  // IF THE PAGE IS FAVORITES THEN SET FILTEREDLIST TO FAVORITES AND CHANGE THE HEART COLOR TO FAV COLOR
   useEffect(() => {
     // PREPARE TYPE URL PART
     const fullURL = document.URL.split("/");
@@ -52,41 +55,13 @@ const GameDiv = () => {
 
     if (typeURL === "favorites") {
       setFilteredList(state.favorites);
-    }
-  }, [state.favorites]);
-
-  // AT START CHECK IF FILTERED ITEMS ARE IN FAVS, IF SO CHANGE HEART COLOR
-  useEffect(() => {
-    filteredList.map((item, i) => {
-      if (!state.favorites.includes(item)) {
-        $(".heart").eq(i).css({
-          backgroundColor: "var(--redBackground)",
-          color: "darkred",
-        });
-      } else {
-        $(".heart").eq(i).css({
-          backgroundColor: "darkred",
-          color: "var(--redBackground)",
-        });
-      }
-    });
-  }, [state.favorites, filteredList]);
-  // HEART FUNCTIONS
-  // CHANGE HEART COLOR BY CHECKING IF IT IS IN FAVS
-  const clickHandle = (e, item) => {
-    dispatch({ type: "FAVORITES", payload: item });
-    if (state.favorites.includes(item)) {
-      $(e.currentTarget).css({
+      $(".heart").css({
         backgroundColor: "var(--redBackground)",
         color: "darkred",
       });
-    } else {
-      $(e.currentTarget).css({
-        backgroundColor: "darkred",
-        color: "var(--redBackground)",
-      });
     }
-  };
+  }, [state.favorites, state.url]);
+
   return (
     <>
       <div className="gamesDiv">
@@ -120,16 +95,9 @@ const GameDiv = () => {
                     </figure>
                   );
                 })}
-                <div className="gameName">
-                  <div>{item.names}</div>
-                  <div
-                    id={item.names}
-                    className="heart"
-                    onClick={(e) => clickHandle(e, item)}
-                  >
-                    &#9829;
-                  </div>
-                </div>
+                <Context.Provider value={{ state, dispatch, item }}>
+                  <GameName />
+                </Context.Provider>
               </div>
             );
           })
