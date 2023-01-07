@@ -36,6 +36,10 @@ import "./CSS/main/games.css";
 import "./CSS/main/game.css";
 //#endregion MAIN
 
+//#region MAIN
+import "./CSS/game/table.css";
+//#endregion MAIN
+
 //#endregion CSS
 
 // GLOBAL CONTEXT FILE
@@ -140,7 +144,7 @@ const App = () => {
               link &&
               link.map((i) => {
                 if (typeof i !== "object") {
-                  const subpath = i.toLowerCase();
+                  const subpath = i.toLowerCase().replace(/ /gi, '_');
                   return (
                     <Route
                       key={`/${type}/${subpath}`}

@@ -13,6 +13,9 @@
   /* BUTTON COLORS */
   --loadGreen: rgb(100, 204, 98);
   --redBackground: rgb(220, 190, 190);
+    /* CLOSE SIGN COLORS */
+  --closeSign: rgb(184, 60, 60);
+  --closeSignHover: rgb(182, 31, 31);
 }
 
 * {

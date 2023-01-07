@@ -51,7 +51,7 @@ const Links = () => {
         return (
           <div key={type} id={type} className="urlDiv">
             <Link
-              to={`${type.toLowerCase()}`}
+              to={`${type.toLowerCase().replace(/ /gi, "_")}`}
               onMouseEnter={(e) => mouseenterHandle(e)}
               onMouseLeave={(e) => mouseleaveHandle(e)}
             >

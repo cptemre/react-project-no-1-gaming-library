@@ -19,26 +19,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 550px) {
-  .gamesDiv {
-    padding: 0 2rem;
-  }
-  .gameDiv {
-    width: 15rem;
-    flex-basis: 60%;
-  }
-  .gameName {
-    font-size: 0.8rem !important;
-  }
-}
-@media screen and (max-width: 390px) {
-  .gameDiv {
-    width: 2rem;
-  }
-  .gameName {
-    font-size: 0.4rem !important;
-  }
-}
+
 .gameFig {
   position: absolute;
   overflow: hidden;
@@ -100,4 +81,25 @@
   border-radius: 2rem;
   transition: 0.3s;
   cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  .gamesDiv {
+    padding: 0 2rem;
+  }
+  .gameDiv {
+    width: 15rem;
+    flex-basis: 60%;
+  }
+  .gameName {
+    font-size: 0.8rem !important;
+  }
+}
+@media screen and (max-width: 390px) {
+  .gameDiv {
+    width: 2rem;
+  }
+  .gameName {
+    font-size: 0.7rem !important;
+  }
 }

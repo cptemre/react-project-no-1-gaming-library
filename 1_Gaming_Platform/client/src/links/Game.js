@@ -1,22 +1,29 @@
 import React, { useContext, useEffect, useState } from "react";
+// NAME COMPONENT
 import GameName from "../utilities/GameName";
+// IMG COMPONENT
+import GameImgs from "../utilities/GameImgs";
 // CONTEXT
 import { Context } from "../utilities/Context";
-// JQUERY
-import $ from "jquery";
 // HOOKS
 import useFilter from "../hooks/useFilter";
+// ROUTER
+import { useNavigate } from "react-router-dom";
+// JQUERY
+import $ from "jquery";
 
 const Game = () => {
   // VARIABLES
   const [item, setTheGame] = useState({});
+  // ITEM KEYS
+  const [keys, setKeys] = useState([]);
+  // UNWANTED ITEM KEYS
+  const [noKeys, setNoKeys] = useState(["id", "src", "iframe"]);
+  // CONTEXT
   const { state, dispatch } = useContext(Context);
-  const COLORS = ["var(--purpleShadow)", "white", "var(--lightBlue)"];
-  const COLORS_HOVER = [
-    "var(--hoverShadow)",
-    "var(--seperatorBC)",
-    "var(--hoverColor)",
-  ];
+  // NAVIGATE
+  const navigate = useNavigate();
+
   useEffect(() => {
     // PREPARE URL PART
     const url = document.URL.split("/");
@@ -25,64 +32,34 @@ const Game = () => {
     const game = state.list.filter((games) => games.names === lastURL);
     setTheGame(game[0]);
   }, [state.list]);
-  // HIDE LOAD MORE
-  useFilter(state, dispatch);
-  // CSS FOR GAME NAME COMPONENT
+
+  // SET ITEM KEYS
   useEffect(() => {
-    // FAV ICON CSS SET
-    $(".gameName").css({
-      transform: "scale(1)",
-      position: "relative",
-    });
-    imgBorder();
+    let tempKeys = [];
+    // PUSH KEYS
+    for (const key in item) {
+      tempKeys.push(key);
+    }
+    // FILTER UNWANTED KEYS
+    for (let i = 0; i < noKeys.length; i++) {
+      tempKeys = tempKeys.filter((temp) => temp !== noKeys[i]);
+    }
+    setKeys(tempKeys);
   }, [item]);
 
-  // FUNCTIONS
+  // HIDE LOAD MORE
+  useFilter(state, dispatch);
 
-  // IMG CSS SET
-  const imgBorder = () => {
-    $.each($(".gameImgs"), function (i, val) {
-      $(".gameImgs").eq(i).css("border-color", COLORS[i]);
-    });
-  };
+  // CONTINUE TO CREATE A LINK FROM HERE
+  const trLink = (e, key) => {
+    let innerHtml = $(e.currentTarget).html();
+    let newKey = $(e.currentTarget).html();
 
-  // IMG MOUSE ENTER
-  const imgMouseEnter = (e) => {
-    if ($(e.currentTarget).css("position") !== "absolute") {
-      const i = e.currentTarget.id;
-      $(e.currentTarget).css({
-        borderColor: `${COLORS_HOVER[i]}`,
-        transform: "scale(1.3)",
-      });
+    if (key !== "names") {
+      innerHtml = innerHtml.toLowerCase().replace(" ", "");
+      console.log(innerHtml);
+      navigate(`/${key}/${innerHtml}`);
     }
-  };
-
-  // IMG MOUSE LEAVE
-  const imgMouseLeave = (e) => {
-    const i = e.currentTarget.id;
-    $(e.currentTarget).css({
-      borderColor: `${COLORS[i]}`,
-      transform: "scale(1)",
-    });
-  };
-
-  // IMG MOUSE CLICK
-  const imgClick = (e) => {
-    $(e.currentTarget).children(".gameImgs").css({
-      position: "absolute",
-      top: "25vh",
-      left: "10vw",
-      maxWidth: "80vw",
-      height: "50vh",
-      zIndex: 10,
-    });
-    $(e.currentTarget).children(".closeDiv").css({
-      position: "absolute",
-      top: "30.4vh",
-      right: "10.1vw",
-      zIndex: 11,
-      transform: "scale(1)",
-    });
   };
   return (
     <div className="gamePage">
@@ -99,33 +76,55 @@ const Game = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
+            {item.names && (
+              <div className="tempImgsDiv">
+                <Context.Provider value={{ item }}>
+                  <GameImgs />
+                </Context.Provider>
+              </div>
+            )}
           </div>
           {item.names && (
             <div className="imgsDiv">
-              {item.src.map((path, i) => (
-                <div
-                  key={path}
-                  className="imgContainer"
-                  onClick={(e) => imgClick(e)}
-                >
-                  <img
-                    src={require(`../assets/imgs/games/${item.names}/${
-                      i + 1
-                    }.jpg`)}
-                    alt={item.names}
-                    className="gameImgs"
-                    data-require={`../assets/imgs/games/${item.names}/${
-                      i + 1
-                    }.jpg`}
-                    id={i}
-                    onMouseEnter={(e) => imgMouseEnter(e)}
-                    onMouseLeave={(e) => imgMouseLeave(e)}
-                  />
-                  <div className="closeDiv">&#x2718;</div>
-                </div>
-              ))}
+              <Context.Provider value={{ item }}>
+                <GameImgs />
+              </Context.Provider>
             </div>
           )}
+          <table>
+            <tbody>
+              {keys.map((key) => {
+                let newKey = key;
+                if (!noKeys.includes(item)) {
+                  // DELETE S FROM END
+                  if (key[key.length - 1] === "s") {
+                    newKey = key.slice(0, key.length - 1);
+                  }
+
+                  return (
+                    <tr key={newKey}>
+                      <th>{newKey}</th>
+                      <td>
+                        {typeof item[key] !== "object"
+                          ? item[key]
+                          : key !== "links"
+                          ? item[key].map(
+                              (
+                                element // CONTINUE TO SET ELEMENTS
+                              ) => (
+                                <tr onClick={(e) => trLink(e, key)}>
+                                  {element}
+                                </tr>
+                              )
+                            )
+                          : "no"}
+                      </td>
+                    </tr>
+                  );
+                }
+              })}
+            </tbody>
+          </table>
         </>
       )}
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // JQUERY
 import $ from "jquery";
 // CONTEXT
@@ -6,22 +6,46 @@ import { Context } from "./Context";
 // ROUTER
 const GameName = () => {
   const { state, dispatch, item } = useContext(Context);
+  const [url, setUrl] = useState("");
+
+  // SET URL
+  useEffect(() => {
+    // PREPARE TYPE URL PART
+    const fullURL = document.URL.split("/");
+    const typeURL = fullURL[3];
+    setUrl(typeURL);
+  }, []);
   // AT START CHECK IF FILTERED ITEMS ARE IN FAVS, IF SO CHANGE HEART COLOR
   useEffect(() => {
-    state.filteredTypeList.map((item, i) => {
+    // IF IT IS A GAME URL DONT LOOP
+    if (url !== "game") {
+      state.filteredTypeList.map((item, i) => {
+        if (!state.favorites.includes(item)) {
+          $(".heart").eq(i).css({
+            backgroundColor: "var(--redBackground)",
+            color: "darkred",
+          });
+        } else {
+          $(".heart").eq(i).css({
+            backgroundColor: "darkred",
+            color: "var(--redBackground)",
+          });
+        }
+      });
+    } else {
       if (!state.favorites.includes(item)) {
-        $(".heart").eq(i).css({
+        $(".heart").css({
           backgroundColor: "var(--redBackground)",
           color: "darkred",
         });
       } else {
-        $(".heart").eq(i).css({
+        $(".heart").css({
           backgroundColor: "darkred",
           color: "var(--redBackground)",
         });
       }
-    });
-  }, [state.favorites, state.filteredTypeList]);
+    }
+  }, [state.favorites, state.filteredTypeList, url]);
 
   // MOUSE ENTER HANDLE
   const mouseEnterHandle = (e) => {
@@ -46,7 +70,6 @@ const GameName = () => {
       });
     }
     console.log(e.currentTarget);
-    console.log(state.favorites);
   };
   return (
     <>
