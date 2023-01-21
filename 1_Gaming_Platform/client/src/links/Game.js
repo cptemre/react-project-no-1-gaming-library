@@ -5,10 +5,12 @@ import GameName from "../utilities/GameName";
 import GameImgs from "../utilities/GameImgs";
 // CONTEXT
 import { Context } from "../utilities/Context";
+// PLATFORMS PAGE
+import Platforms from "../links/Platforms";
 // HOOKS
 import useFilter from "../hooks/useFilter";
 // ROUTER
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 // JQUERY
 import $ from "jquery";
 
@@ -18,7 +20,7 @@ const Game = () => {
   // ITEM KEYS
   const [keys, setKeys] = useState([]);
   // UNWANTED ITEM KEYS
-  const [noKeys, setNoKeys] = useState(["id", "src", "iframe"]);
+  const [noKeys, setNoKeys] = useState(["id", "src", "iframe", "names"]);
   // CONTEXT
   const { state, dispatch } = useContext(Context);
   // NAVIGATE
@@ -50,17 +52,6 @@ const Game = () => {
   // HIDE LOAD MORE
   useFilter(state, dispatch);
 
-  // CONTINUE TO CREATE A LINK FROM HERE
-  const trLink = (e, key) => {
-    let innerHtml = $(e.currentTarget).html();
-    let newKey = $(e.currentTarget).html();
-
-    if (key !== "names") {
-      innerHtml = innerHtml.toLowerCase().replace(" ", "");
-      console.log(innerHtml);
-      navigate(`/${key}/${innerHtml}`);
-    }
-  };
   return (
     <div className="gamePage">
       {item && (
@@ -100,7 +91,6 @@ const Game = () => {
                   if (key[key.length - 1] === "s") {
                     newKey = key.slice(0, key.length - 1);
                   }
-
                   return (
                     <tr key={newKey}>
                       <th>{newKey}</th>
@@ -108,15 +98,23 @@ const Game = () => {
                         {typeof item[key] !== "object"
                           ? item[key]
                           : key !== "links"
-                          ? item[key].map(
-                              (
-                                element // CONTINUE TO SET ELEMENTS
-                              ) => (
-                                <tr onClick={(e) => trLink(e, key)}>
-                                  {element}
-                                </tr>
-                              )
-                            )
+                          ? item[key].map((element) => {
+                              let innerHtml;
+                              if (key !== "names") {
+                                innerHtml = element
+                                  .toLowerCase()
+                                  .replace(/ /g, "_");
+                              }
+                              return (
+                                <Link
+                                  key={`link${innerHtml}`}
+                                  to={`/${key}/${innerHtml}`}
+                                  target="_blank"
+                                >
+                                  <p className="tableLinks">{element}</p>
+                                </Link>
+                              );
+                            })
                           : "no"}
                       </td>
                     </tr>

@@ -3,7 +3,7 @@
     "id": 0,
     "names": "Batman Arkham Knight",
     "developers": ["Rocksteady Studios"],
-    "publishers": ["Warner Bros,Interactive Entertainment"],
+    "publishers": ["Warner Bros"],
     "engines": ["Unreal Engine 3"],
     "platforms": ["Microsoft Windows", "PlayStation 4", "Xbox One"],
     "services": ["Steam", "Epic"],
@@ -97,7 +97,7 @@
     "id": 3,
     "names": "Shadow of War",
     "developers": ["Monolith Productions"],
-    "publishers": ["Warner Bros,Interactive Entertainment"],
+    "publishers": ["Warner Bros"],
     "engines": ["LithTech Firebird"],
     "platforms": ["Microsoft Windows", "PlayStation 4", "Xbox One"],
     "services": ["Steam"],
@@ -436,7 +436,7 @@
   {
     "id": 13,
     "names": "Call of Duty Warzone",
-    "developers": ["Infinity Ward,Raven Software"],
+    "developers": ["Infinity Ward"],
     "publishers": ["Activision"],
     "engines": ["IW 8.0"],
     "platforms": [
@@ -568,7 +568,7 @@
     "id": 17,
     "names": "Ori and the Will of the Wisps",
     "developers": ["Moon Studios"],
-    "publishers": ["Xbox Game Studios,Iam8bit"],
+    "publishers": ["Xbox Game Studios"],
     "engines": ["Unity"],
     "platforms": [
       "Microsoft Windows",
@@ -875,7 +875,7 @@
     "id": 26,
     "names": "Mortal Kombat 11",
     "developers": ["NetherRealm Studios"],
-    "publishers": ["Warner Bros,Interactive Entertainment"],
+    "publishers": ["Warner Bros"],
     "engines": ["Unreal Engine 3"],
     "platforms": [
       "PlayStation 4",

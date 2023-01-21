@@ -76,6 +76,11 @@ const App = () => {
     const data = require("./gamesList.json");
     setList(data);
     dispatch({ type: "SHOW", payload: false });
+    // IF TYPE INCLUDES THEN SET
+    if (types.includes(url.toUpperCase())) {
+      setLink(state[url]);
+    }
+    setLink(state[url]);
   }, []);
 
   useEffect(() => {
@@ -144,7 +149,7 @@ const App = () => {
               link &&
               link.map((i) => {
                 if (typeof i !== "object") {
-                  const subpath = i.toLowerCase().replace(/ /gi, '_');
+                  const subpath = i.toLowerCase().replace(/ /gi, "_");
                   return (
                     <Route
                       key={`/${type}/${subpath}`}

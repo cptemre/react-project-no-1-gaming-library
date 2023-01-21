@@ -1,3 +1,46 @@
-table {
+tbody {
   width: 100%;
+  padding: 1rem;
+  grid-row-gap: 1.5rem;
+}
+
+tbody,
+tr,
+td {
+  display: grid;
+  place-items: center;
+}
+
+tr {
+  width: 85%;
+  grid-template-columns: 0.5fr 1fr;
+  border-radius: 5px;
+  min-height: 5rem;
+  border: 2px solid rgb(203, 162, 203);
+  background-color: rgb(54, 36, 56);
+  transition: 0.3s;
+  padding: 0.8rem 0;
+}
+
+tr:hover {
+  box-shadow: 3px 5px 0 2px rgb(204, 143, 204);
+  background-color: rgb(31, 30, 33);
+  transform: scale(1.1);
+}
+
+th {
+  letter-spacing: 3px;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: rgb(199, 164, 164);
+}
+
+td {
+  grid-row-gap: 0.2rem;
+}
+
+.tableLinks {
+  color: rgb(113, 113, 170);
+  text-decoration: underline;
+  cursor: pointer;
 }

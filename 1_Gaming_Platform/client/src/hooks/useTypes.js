@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+import { useEffect } from "react";
 
 const useTypes = (state, dispatch, path) => {
   // CONTINUE FROM HERE. STATE PLATFORM SET UP WORKS
