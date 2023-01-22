@@ -15,12 +15,22 @@ const GameName = () => {
     const typeURL = fullURL[3];
     setUrl(typeURL);
   }, []);
+
+  // SET STATE FAVORITES FROM LOCAL STORAGE
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(state.favorites));
+  }, [state.favorites]);
+
   // AT START CHECK IF FILTERED ITEMS ARE IN FAVS, IF SO CHANGE HEART COLOR
   useEffect(() => {
     // IF IT IS A GAME URL DONT LOOP
-    if (url !== "game") {
+    if (url !== "game" && url !== "favorites") {
       state.filteredTypeList.map((item, i) => {
-        if (!state.favorites.includes(item)) {
+        if (
+          !state.favorites.includes(
+            state.favorites.find((game) => game.id === item.id)
+          )
+        ) {
           $(".heart").eq(i).css({
             backgroundColor: "var(--redBackground)",
             color: "darkred",
@@ -32,8 +42,17 @@ const GameName = () => {
           });
         }
       });
+    } else if (url === "favorites") {
+      $(".heart").css({
+        backgroundColor: "darkred",
+        color: "var(--redBackground)",
+      });
     } else {
-      if (!state.favorites.includes(item)) {
+      if (
+        !state.favorites.includes(
+          state.favorites.find((game) => game.id === item.id)
+        )
+      ) {
         $(".heart").css({
           backgroundColor: "var(--redBackground)",
           color: "darkred",
@@ -45,7 +64,12 @@ const GameName = () => {
         });
       }
     }
-  }, [state.favorites, state.filteredTypeList, url]);
+  }, [
+    JSON.parse(localStorage.getItem("favorites")),
+    state.favorites,
+    state.filteredTypeList,
+    url,
+  ]);
 
   // MOUSE ENTER HANDLE
   const mouseEnterHandle = (e) => {
@@ -69,7 +93,6 @@ const GameName = () => {
         color: "var(--redBackground)",
       });
     }
-    console.log(e.currentTarget);
   };
   return (
     <>

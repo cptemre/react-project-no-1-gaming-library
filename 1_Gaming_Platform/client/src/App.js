@@ -81,6 +81,10 @@ const App = () => {
       setLink(state[url]);
     }
     setLink(state[url]);
+    const favoritesLoc = JSON.parse(localStorage.getItem("favorites"));
+    if (favoritesLoc) {
+      dispatch({ type: "LOCAL", payload: favoritesLoc });
+    }
   }, []);
 
   useEffect(() => {

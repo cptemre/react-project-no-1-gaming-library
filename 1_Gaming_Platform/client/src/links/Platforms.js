@@ -18,6 +18,7 @@ const Platforms = () => {
     const lURLU = lURL.toUpperCase() + "/";
     setPath(lURLU);
   }, []);
+  console.log(state);
 
   useEffect(() => {
     dispatch({ type: "URL", payload: lastURL });

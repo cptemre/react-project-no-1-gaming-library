@@ -11,6 +11,9 @@ const reducer = (state, action) => {
     }
     return { ...state, favorites: fav };
   }
+  if (action.type === "LOCAL") {
+    return { ...state, favorites: action.payload };
+  }
   if (action.type === "PLATFORMS") {
     return { ...state, platforms: action.payload };
   }

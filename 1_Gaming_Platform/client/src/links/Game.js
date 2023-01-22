@@ -11,8 +11,6 @@ import Platforms from "../links/Platforms";
 import useFilter from "../hooks/useFilter";
 // ROUTER
 import { useNavigate, Link } from "react-router-dom";
-// JQUERY
-import $ from "jquery";
 
 const Game = () => {
   // VARIABLES
@@ -106,16 +104,26 @@ const Game = () => {
                                   .replace(/ /g, "_");
                               }
                               return (
-                                <Link
-                                  key={`link${innerHtml}`}
-                                  to={`/${key}/${innerHtml}`}
-                                  target="_blank"
-                                >
-                                  <p className="tableLinks">{element}</p>
-                                </Link>
+                                  <Link
+                                    key={`link${innerHtml}`}
+                                    to={`/${key}/${innerHtml}`}
+                                    target="_blank"
+                                  >
+                                    <p className="tableLinks">{element}</p>
+                                  </Link>
                               );
                             })
-                          : "no"}
+                          : Object.keys(item[key]).map((link) => {
+                              return (
+                                <a
+                                  key={item[key][link]}
+                                  href={item[key][link]}
+                                  target="_blank"
+                                >
+                                  <p className="tableLinks">{link}</p>
+                                </a>
+                              );
+                            })}
                       </td>
                     </tr>
                   );

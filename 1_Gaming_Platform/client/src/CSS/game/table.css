@@ -1,6 +1,6 @@
 tbody {
   width: 100%;
-  padding: 1rem;
+  padding: 2rem 1rem;
   grid-row-gap: 1.5rem;
 }
 
@@ -13,13 +13,14 @@ td {
 
 tr {
   width: 85%;
-  grid-template-columns: 0.5fr 1fr;
   border-radius: 5px;
   min-height: 5rem;
   border: 2px solid rgb(203, 162, 203);
   background-color: rgb(54, 36, 56);
   transition: 0.3s;
-  padding: 0.8rem 0;
+  padding: 0.8rem 1rem;
+  text-align: justify;
+  grid-row-gap: 1rem;
 }
 
 tr:hover {
@@ -37,10 +38,13 @@ th {
 
 td {
   grid-row-gap: 0.2rem;
+  color: rgb(154, 130, 130);
+  font-size: 1.2rem;
 }
 
 .tableLinks {
   color: rgb(113, 113, 170);
   text-decoration: underline;
+  text-transform: uppercase;
   cursor: pointer;
 }
