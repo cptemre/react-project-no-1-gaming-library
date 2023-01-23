@@ -12,7 +12,7 @@ const Navbar = () => {
           <img src={Logo} alt="Logo" id="logo" />
         </Link>
       </div>
-      <form id="searchForm">
+      <form id="searchForm" onSubmit={(e) => e.preventDefault()}>
         <TypeDiv />
         <InputDiv />
       </form>

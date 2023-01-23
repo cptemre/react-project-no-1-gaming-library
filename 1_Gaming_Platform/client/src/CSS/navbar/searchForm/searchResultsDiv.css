@@ -9,7 +9,9 @@
   right: 0;
   grid-row-gap: 0.5rem;
   padding-right: 10px;
-  visibility: hidden;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: 0.2s;
 }
 
 .searchFigure {

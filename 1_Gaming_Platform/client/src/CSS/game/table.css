@@ -47,4 +47,24 @@ td {
   text-decoration: underline;
   text-transform: uppercase;
   cursor: pointer;
+  text-align: center;
+}
+
+@media screen and (max-width: 550px) {
+  th {
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+  }
+  td {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  th {
+    font-size: 0.8rem;
+  }
+  td {
+    font-size: 0.6rem;
+  }
 }

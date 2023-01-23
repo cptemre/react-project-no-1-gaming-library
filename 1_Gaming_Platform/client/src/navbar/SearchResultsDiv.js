@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import $ from "jquery";
-// import Bannerlord from "../assets/imgs/games/1_Bannerlord/1.jpg";
+import { Context } from "../utilities/Context";
+import { Link } from "react-router-dom";
 
 const SearchResultsDiv = () => {
+  const { searchArray } = useContext(Context);
+  const [results, setResults] = useState([]);
+
+  // WHEN SEARCH ARRAY CHANGES SET A NEW USESTATE
+  useEffect(() => {
+    // SELECT ONLY FIRST 5 GAMES
+    const tempArray = searchArray.filter((game, i) => i <= 4);
+    setResults(tempArray);
+  }, [searchArray]);
+
   //#region MOUSEHANDLES
   const mouseenterHandle = (e) => {
     // IMG VARIABLE
@@ -30,34 +41,38 @@ const SearchResultsDiv = () => {
     // ZOOM BACK TO CURRENT IMAGE
     $(searchImg).css("transform", "scale(1)");
   };
+
+  const clickHandle = () => {
+    $("#search").val("");
+    $("#searchResultsDiv").css("transform", "scale(0)");
+  };
   //#endregion MOUSEHANDLES
 
   return (
     <div id="searchResultsDiv">
-      {/* <figure
-        className="searchFigure"
-        onMouseEnter={(e) => mouseenterHandle(e)}
-        onMouseLeave={(e) => mouseleaveHandle(e)}
-      >
-        <img src={Bannerlord} alt="" className="searchImg" />
-        <figcaption className="searchCaption">Bannerlord</figcaption>
-      </figure>
-      <figure
-        className="searchFigure"
-        onMouseEnter={(e) => mouseenterHandle(e)}
-        onMouseLeave={(e) => mouseleaveHandle(e)}
-      >
-        <img src={Bannerlord} alt="" className="searchImg" />
-        <figcaption className="searchCaption">God of War</figcaption>
-      </figure>
-      <figure
-        className="searchFigure"
-        onMouseEnter={(e) => mouseenterHandle(e)}
-        onMouseLeave={(e) => mouseleaveHandle(e)}
-      >
-        <img src={Bannerlord} alt="" className="searchImg" />
-        <figcaption className="searchCaption">God of War</figcaption>
-      </figure> */}
+      {results.map((result) => {
+        const to = result.names.replace(/ /g, "_");
+        return (
+          <Link
+            to={`/game/${to}`}
+            key={result.names + " result"}
+            onClick={() => clickHandle()}
+          >
+            <figure
+              className="searchFigure"
+              onMouseEnter={(e) => mouseenterHandle(e)}
+              onMouseLeave={(e) => mouseleaveHandle(e)}
+            >
+              <img
+                src={require(`../assets/imgs/games/${result.names}/1.jpg`)}
+                alt={result.names}
+                className="searchImg"
+              />
+              <figcaption className="searchCaption">{result.names}</figcaption>
+            </figure>
+          </Link>
+        );
+      })}
     </div>
   );
 };

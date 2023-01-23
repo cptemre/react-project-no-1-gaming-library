@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useContext, useState } from "react";
 import SearchResultsDiv from "./SearchResultsDiv";
 import $ from "jquery";
-
+import { Context } from "../utilities/Context";
 const InputDiv = () => {
+  const inputRef = useRef();
+  const { state } = useContext(Context);
+  const [searchArray, setSearchArray] = useState([]);
   // FOCUS TO INPUT IN THE PAGE RELOAD
   useEffect(() => {
     document.getElementById("search").focus();
   }, []);
+
+  //#region FUNCTIONS
 
   // INPUT FOCUS ANIMATION
   const focusHandle = () => {
@@ -18,6 +23,48 @@ const InputDiv = () => {
     $("#dot").animate({ left: 0 }, 500);
     $("#underline").animate({ width: 0 }, 500);
   };
+
+  const valueChange = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    let type = $("#filterType").html().toLowerCase();
+    let tempArray = [];
+    setSearchArray([]);
+    // SEARCHRESULTSDIV SCALING
+    if (value) {
+      $("#searchResultsDiv").css("transform", "scale(1)");
+    } else {
+      $("#searchResultsDiv").css("transform", "scale(0)");
+    }
+
+    // REGEX MATCH CHECK
+    const myRegex = new RegExp(value, "gi");
+    if (type === "games") {
+      tempArray = state.list.filter((game) => {
+        if (game.names.match(myRegex)) {
+          return game.names;
+        }
+      });
+    } else if (type === "favorites") {
+      tempArray = state.favorites.filter((game) => {
+        if (game.names.match(myRegex)) {
+          return game.names;
+        }
+      });
+    } else {
+      tempArray = state.list.filter((game) => {
+        for (let i = 0; i < game[type].length; i++) {
+          if (game[type][i].match(myRegex)) {
+            return game;
+          }
+        }
+      });
+    }
+    setSearchArray(tempArray);
+  };
+
+  //#endregion FUNCTIONS
+
   return (
     <div id="inputMain">
       <div id="inputDiv">
@@ -25,15 +72,19 @@ const InputDiv = () => {
           id="search"
           type="text"
           placeholder="Search here"
+          ref={inputRef}
           onFocus={() => focusHandle()}
           onBlur={() => blurHandle()}
+          onChange={(e) => valueChange(e)}
         />
         <div id="inputUnderlineDiv">
           <div id="dot"></div>
           <div id="underline"></div>
         </div>
       </div>
-      <SearchResultsDiv />
+      <Context.Provider value={{ searchArray }}>
+        <SearchResultsDiv />
+      </Context.Provider>
     </div>
   );
 };

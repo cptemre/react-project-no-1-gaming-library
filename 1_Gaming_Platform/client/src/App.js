@@ -81,6 +81,7 @@ const App = () => {
       setLink(state[url]);
     }
     setLink(state[url]);
+    // GET FAVORITES FROM LOCALSTORAGE AND SET TO STATE
     const favoritesLoc = JSON.parse(localStorage.getItem("favorites"));
     if (favoritesLoc) {
       dispatch({ type: "LOCAL", payload: favoritesLoc });

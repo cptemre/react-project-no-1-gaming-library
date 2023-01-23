@@ -6,15 +6,16 @@ import $ from "jquery";
 
 const TypesDiv = () => {
   // GET TYPES ARRAY
-  const { state } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   // STATE TYPES SETUP
   const [types, setTypes] = useState([]);
 
   // SET TYPES BY FILTERING IT WITH CURRENT SELECTED VALUE IN FILTERTYPE
   useEffect(() => {
-    const filteredTypes = state.types.filter(
+    let filteredTypes = state.types.filter(
       (type) => type !== $("#filterType").html()
     );
+    filteredTypes = filteredTypes.sort();
     setTypes(filteredTypes);
   }, [state.types]);
 
@@ -36,6 +37,16 @@ const TypesDiv = () => {
     });
     $("#filterType").css("opacity", 1);
   };
+
+  // CREATE A FILTERED ARRAY BY CLICKED HTML. PUT THIS TO #FILTERTYPE DOM HTML. SET NEW TYPES
+  const mouseClick = (e) => {
+    const html = e.currentTarget.innerHTML;
+    let filtered = types.filter((type) => type !== html);
+    filtered = [...filtered, $("#filterType").html()].sort();
+    $("#filterType").html(html);
+    setTypes(filtered);
+  };
+  
   //#endregion FUNCTIONS
 
   return (
@@ -47,6 +58,7 @@ const TypesDiv = () => {
           className="types"
           onMouseEnter={(e) => mouseEnter(e)}
           onMouseLeave={(e) => mouseLeave(e)}
+          onClick={(e) => mouseClick(e)}
         >
           {type}
         </div>
