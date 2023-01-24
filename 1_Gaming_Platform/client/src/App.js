@@ -5,14 +5,14 @@ import Navbar from "./navbar/Navbar";
 import Load from "./Load";
 // HOME
 import Home from "./links/Home";
-// GAMES AND FAVORITES PAGE
-import GAMES from "./pages/GAMES";
 // MAIN PAGES
 import Platforms from "./links/Platforms";
 // SUBPATHS
 import PlatformTypes from "./pages/PlatformTypes";
 // GAME PAGE
 import Game from "./links/Game";
+// HOOKS
+import useURL from "./hooks/useURL";
 
 //#region CSS
 import "./CSS/index.css";
@@ -55,13 +55,15 @@ const App = () => {
   const [types, setTypes] = useState([]);
   const [link, setLink] = useState([]);
   const [url, setUrl] = useState("");
+  const paths = useURL(document.URL);
 
   // SET SUB FOLDER NAMES
 
   useEffect(() => {
-    const url = document.URL.split("/");
-    setUrl(url[3]);
-  }, [state]);
+    if (paths[0][3]) {
+      setUrl(paths[0][3]);
+    }
+  }, [state, paths]);
   // SET SUB FOLDER NAMES
   useEffect(() => {
     // IF TYPE INCLUDES THEN SET
@@ -124,7 +126,7 @@ const App = () => {
             path={path}
             element={
               <Context.Provider value={{ state, dispatch }}>
-                <GAMES />
+                <PlatformTypes />
               </Context.Provider>
             }
           />

@@ -47,7 +47,8 @@ const Links = () => {
 
   return (
     <main id="main">
-      {types.map((type) => {
+      {
+        imgPath !== '/' && types.map((type) => {
         return (
           <div key={type} id={type} className="urlDiv">
             <Link
@@ -60,14 +61,14 @@ const Links = () => {
                 <div className="urlUpDiv">
                   <img
                     src={require(`../assets/imgs/links/${imgPath}${type}/image1x1.jpg`)}
-                    alt=""
+                    alt={type}
                     className="urlUpImg"
                   />
                 </div>
                 <div className="urlDownDiv">
                   <img
                     src={require(`../assets/imgs/links/${imgPath}${type}/image1x2.jpg`)}
-                    alt=""
+                    alt={type}
                     className="urlDownImg"
                   />
                 </div>
@@ -75,7 +76,8 @@ const Links = () => {
             </Link>
           </div>
         );
-      })}
+      })
+      }
     </main>
   );
 };

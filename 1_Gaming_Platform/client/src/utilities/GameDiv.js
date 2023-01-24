@@ -7,6 +7,8 @@ import { Context } from "./Context";
 import { useNavigate } from "react-router-dom";
 // GAME NAME FILE
 import GameName from "../utilities/GameName";
+// HOOKS
+import useURL from "../hooks/useURL";
 
 // GAME FUNCTIONS
 import {
@@ -26,6 +28,7 @@ const GameDiv = () => {
   const { state, dispatch } = useContext(Context);
   const [filteredList, setFilteredList] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
+  const paths = useURL(document.URL);
 
   // LINK
   const navigate = useNavigate();
@@ -50,17 +53,18 @@ const GameDiv = () => {
   // IF THE PAGE IS FAVORITES THEN SET FILTEREDLIST TO FAVORITES AND CHANGE THE HEART COLOR TO FAV COLOR
   useEffect(() => {
     // PREPARE TYPE URL PART
-    const fullURL = document.URL.split("/");
-    const typeURL = fullURL[3];
+    if (paths[0][3]) {
+      const typeURL = paths[0][3];
 
-    if (typeURL === "favorites") {
-      setFilteredList(state.favorites);
-      $(".heart").css({
-        backgroundColor: "var(--redBackground)",
-        color: "darkred",
-      });
+      if (typeURL === "favorites") {
+        setFilteredList(state.favorites);
+        $(".heart").css({
+          backgroundColor: "var(--redBackground)",
+          color: "darkred",
+        });
+      }
     }
-  }, [state.favorites, state.url]);
+  }, [state.favorites, state.url, paths]);
 
   return (
     <>

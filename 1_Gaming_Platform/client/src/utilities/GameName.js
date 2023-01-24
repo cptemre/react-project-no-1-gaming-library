@@ -3,18 +3,21 @@ import React, { useContext, useEffect, useState } from "react";
 import $ from "jquery";
 // CONTEXT
 import { Context } from "./Context";
-// ROUTER
+// HOOKS
+import useURL from "../hooks/useURL";
+
 const GameName = () => {
   const { state, dispatch, item } = useContext(Context);
   const [url, setUrl] = useState("");
+  const paths = useURL(document.URL);
 
   // SET URL
   useEffect(() => {
     // PREPARE TYPE URL PART
-    const fullURL = document.URL.split("/");
-    const typeURL = fullURL[3];
-    setUrl(typeURL);
-  }, []);
+    if (paths[0][3]) {
+      setUrl(paths[0][3]);
+    }
+  }, [paths]);
 
   // SET STATE FAVORITES FROM LOCAL STORAGE
   useEffect(() => {

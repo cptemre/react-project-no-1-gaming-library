@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../utilities/Context";
 import Links from "../utilities/Links";
+// HOOKS
 import useTypes from "../hooks/useTypes";
+import useURL from "../hooks/useURL";
 
 const Platforms = () => {
   const { state, dispatch } = useContext(Context);
@@ -9,16 +11,15 @@ const Platforms = () => {
   const [url, setUrl] = useState(document.URL.split("/"));
   const [lastURL, setLastURL] = useState(url[url.length - 1]);
   const [path, setPath] = useState("");
+  const paths = useURL(document.URL);
 
   useEffect(() => {
     // PREPARE URL PART
-    const url = document.URL.split("/");
-    const lURL = url[url.length - 1];
-    setLastURL(lURL);
-    const lURLU = lURL.toUpperCase() + "/";
-    setPath(lURLU);
-  }, []);
-  console.log(state);
+    if (paths[1] && paths[2]) {
+      setLastURL(paths[1]);
+      setPath(paths[2]);
+    }
+  }, [paths]);
 
   useEffect(() => {
     dispatch({ type: "URL", payload: lastURL });
@@ -33,10 +34,16 @@ const Platforms = () => {
   }, [state[lastURL]]);
 
   return (
-    <Context.Provider value={{ path, link }}>
-      <Links />
-    </Context.Provider>
+    <>
+      {path && link && (
+        <Context.Provider value={{ path, link }}>
+          <Links />
+        </Context.Provider>
+      )}
+    </>
   );
+    
+  
 };
 
 export default Platforms;

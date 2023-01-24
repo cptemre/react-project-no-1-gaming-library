@@ -5,12 +5,11 @@ import GameName from "../utilities/GameName";
 import GameImgs from "../utilities/GameImgs";
 // CONTEXT
 import { Context } from "../utilities/Context";
-// PLATFORMS PAGE
-import Platforms from "../links/Platforms";
 // HOOKS
 import useFilter from "../hooks/useFilter";
+import useURL from "../hooks/useURL";
 // ROUTER
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Game = () => {
   // VARIABLES
@@ -21,17 +20,15 @@ const Game = () => {
   const [noKeys, setNoKeys] = useState(["id", "src", "iframe", "names"]);
   // CONTEXT
   const { state, dispatch } = useContext(Context);
-  // NAVIGATE
-  const navigate = useNavigate();
+  const paths = useURL(document.URL);
 
   useEffect(() => {
     // PREPARE URL PART
-    const url = document.URL.split("/");
-    const lastURL = url[url.length - 1].replace(/_/g, " ");
-
-    const game = state.list.filter((games) => games.names === lastURL);
-    setTheGame(game[0]);
-  }, [state.list]);
+    if (paths[3]) {
+      const game = state.list.filter((games) => games.names === paths[3]);
+      setTheGame(game[0]);
+    }
+  }, [state.list, paths]);
 
   // SET ITEM KEYS
   useEffect(() => {
@@ -104,13 +101,13 @@ const Game = () => {
                                   .replace(/ /g, "_");
                               }
                               return (
-                                  <Link
-                                    key={`link${innerHtml}`}
-                                    to={`/${key}/${innerHtml}`}
-                                    target="_blank"
-                                  >
-                                    <p className="tableLinks">{element}</p>
-                                  </Link>
+                                <Link
+                                  key={`link${innerHtml}`}
+                                  to={`/${key}/${innerHtml}`}
+                                  target="_blank"
+                                >
+                                  <p className="tableLinks">{element}</p>
+                                </Link>
                               );
                             })
                           : Object.keys(item[key]).map((link) => {

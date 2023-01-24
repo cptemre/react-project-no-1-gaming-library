@@ -19,5 +19,6 @@
   transform: scale(0);
   cursor: pointer;
   transition: 0.3s;
-  margin-right: 3rem;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
 }
