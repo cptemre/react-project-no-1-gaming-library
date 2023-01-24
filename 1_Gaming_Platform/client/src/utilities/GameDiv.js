@@ -58,10 +58,6 @@ const GameDiv = () => {
 
       if (typeURL === "favorites") {
         setFilteredList(state.favorites);
-        $(".heart").css({
-          backgroundColor: "var(--redBackground)",
-          color: "darkred",
-        });
       }
     }
   }, [state.favorites, state.url, paths]);
@@ -71,39 +67,41 @@ const GameDiv = () => {
       <div className="gamesDiv">
         {filteredList.length ? (
           filteredList.map((item) => {
-            const nameReplace = item.names.replace(/ /g, "_");
-            return (
-              <div
-                key={item.id}
-                id={nameReplace}
-                className="gameDiv"
-                onMouseEnter={(e) => divmouseenterHandle(e, width)}
-                onMouseLeave={(e) => divmouseleaveHandle(e)}
-              >
-                {item.src.map((src, i) => {
-                  return (
-                    <figure
-                      key={`${item.id}figure${i}`}
-                      className={`figure${i} gameFig`}
-                      onMouseEnter={(e) => mouseenterHandle(e, width)}
-                      onMouseLeave={(e) => mouseleaveHandle(e, width)}
-                      onClick={() => navigate(`/game/${nameReplace}`)}
-                    >
-                      <img
-                        src={require(`../assets/imgs/games/${item.names}/${
-                          i + 1
-                        }.jpg`)}
-                        alt=""
-                        className="gameImg"
-                      />
-                    </figure>
-                  );
-                })}
-                <Context.Provider value={{ state, dispatch, item }}>
-                  <GameName />
-                </Context.Provider>
-              </div>
-            );
+            if (item.names) {
+              const nameReplace = item.names.replace(/ /g, "_");
+              return (
+                <div
+                  key={item.id}
+                  id={nameReplace}
+                  className="gameDiv"
+                  onMouseEnter={(e) => divmouseenterHandle(e, width)}
+                  onMouseLeave={(e) => divmouseleaveHandle(e)}
+                >
+                  {item.src.map((src, i) => {
+                    return (
+                      <figure
+                        key={`${item.id}figure${i}`}
+                        className={`figure${i} gameFig`}
+                        onMouseEnter={(e) => mouseenterHandle(e, width)}
+                        onMouseLeave={(e) => mouseleaveHandle(e, width)}
+                        onClick={() => navigate(`/game/${nameReplace}`)}
+                      >
+                        <img
+                          src={require(`../assets/imgs/games/${item.names}/${
+                            i + 1
+                          }.jpg`)}
+                          alt=""
+                          className="gameImg"
+                        />
+                      </figure>
+                    );
+                  })}
+                  <Context.Provider value={{ state, dispatch, item }}>
+                    <GameName />
+                  </Context.Provider>
+                </div>
+              );
+            }
           })
         ) : (
           <div>THERE ARE NO GAMES HERE</div>

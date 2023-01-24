@@ -58,7 +58,6 @@ const App = () => {
   const paths = useURL(document.URL);
 
   // SET SUB FOLDER NAMES
-
   useEffect(() => {
     if (paths[0][3]) {
       setUrl(paths[0][3]);

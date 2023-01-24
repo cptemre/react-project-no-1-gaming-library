@@ -9,6 +9,7 @@ import useURL from "../hooks/useURL";
 const GameName = () => {
   const { state, dispatch, item } = useContext(Context);
   const [url, setUrl] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
   const paths = useURL(document.URL);
 
   // SET URL
@@ -18,11 +19,6 @@ const GameName = () => {
       setUrl(paths[0][3]);
     }
   }, [paths]);
-
-  // SET STATE FAVORITES FROM LOCAL STORAGE
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(state.favorites));
-  }, [state.favorites]);
 
   // AT START CHECK IF FILTERED ITEMS ARE IN FAVS, IF SO CHANGE HEART COLOR
   useEffect(() => {
@@ -73,7 +69,16 @@ const GameName = () => {
     state.filteredTypeList,
     url,
   ]);
-
+  // SET URL
+  useEffect(() => {
+    console.log(state.favorites);
+    if (state.favorites.length > 0) {
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
+      console.log(1);
+    } else {
+      console.log(JSON.parse(localStorage.getItem("favorites")));
+    }
+  }, [isClicked]);
   // MOUSE ENTER HANDLE
   const mouseEnterHandle = (e) => {
     $(e.currentTarget).css("transform", "scale(1.2)");
@@ -85,7 +90,8 @@ const GameName = () => {
   // CHANGE HEART COLOR BY CHECKING IF IT IS IN FAVS
   const clickHandle = (e, item) => {
     dispatch({ type: "FAVORITES", payload: item });
-    if (state.favorites.includes(item)) {
+    console.log(state.favorites.filter((game) => game.id === item.id));
+    if (state.favorites && state.favorites.includes(item)) {
       $(e.currentTarget).css({
         backgroundColor: "var(--redBackground)",
         color: "darkred",
@@ -96,6 +102,9 @@ const GameName = () => {
         color: "var(--redBackground)",
       });
     }
+    setIsClicked(!isClicked);
+    console.log(state.favorites);
+    console.log(localStorage);
   };
   return (
     <>
