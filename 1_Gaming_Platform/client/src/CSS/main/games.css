@@ -19,7 +19,6 @@
   cursor: pointer;
 }
 
-
 .gameFig {
   position: absolute;
   overflow: hidden;
@@ -58,7 +57,7 @@
   background-color: rgb(83, 83, 195);
   box-shadow: 2px 2px 3px 2px rgb(195, 0, 255);
   height: 4rem;
-  z-index: 10;
+  z-index: 2;
   border-radius: 0.5rem;
   border: 2px solid white;
   border-bottom-left-radius: 2rem;

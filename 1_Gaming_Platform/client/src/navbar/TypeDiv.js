@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TypesDiv from "./TypesDiv";
+import { Context } from "../utilities/Context";
 // JQUERY
 import $ from "jquery";
 
 const TypeDiv = () => {
   const [isClicked, setIsClicked] = useState(true);
+  const { state } = useContext(Context);
   // SHOW AND HIDE MENU
   useEffect(() => {
+    const typesLength = state.types.length;
     if (isClicked) {
       $(".types").each((i, dom) => {
         interval(i, dom, 0, "hidden");
       });
+      // AFTER EVERY TYPE USES ANIMATION, SCALE DOWN THE DIV
+      setTimeout(() => {
+        $("#typesDiv").css("transform", "scale(0)");
+      }, 100 * typesLength);
     } else {
       $(".types").each((i, dom) => {
         interval(i, dom, 1, "scroll");
@@ -18,12 +25,14 @@ const TypeDiv = () => {
           transform: "rotate(0deg)",
         });
       });
+      // SHOW THE TYPES DIV WITH SCALE
+      $("#typesDiv").css("transform", "scale(1)");
     }
-  }, [isClicked]);
+  }, [isClicked, state.types]);
 
   //#region TYPES FUNCTIONS TO HIDE AND SHOW
   // FUNCTION TO LOOP TYPES TO SCALE THEM AND ADJUST SCROLLBAR
-  const interval = (i, dom, value, scroll) => {
+  const interval = (i, dom, value, scroll, z) => {
     setTimeout(() => {
       $(dom).css("transform", `scale(${value})`);
       if (i === 3) {
