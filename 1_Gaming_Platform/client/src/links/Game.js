@@ -46,7 +46,7 @@ const Game = () => {
   }, [item]);
 
   // HIDE LOAD MORE
-  useFilter(state, dispatch);
+  useFilter(state, dispatch, paths);
 
   return (
     <div className="gamePage">
@@ -130,7 +130,9 @@ const Game = () => {
             </tbody>
           </table>
         </>
-      ) : <Error/>}
+      ) : (
+        <Error />
+      )}
     </div>
   );
 };

@@ -1,15 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "./utilities/Context";
 
-// HOOKS
-
 const Load = () => {
-  const { dispatch } = useContext(Context);
+  const { state,dispatch } = useContext(Context);
   const [filterID, setFilterID] = useState(10);
 
   useEffect(() => {
     dispatch({ type: "ID", payload: filterID });
-  }, [filterID]);
+  }, [filterID,state.filteredTypeList, state.domLength]);
 
   // CHECK IF FILTERED TYPE LIST AND GAMEDIV LENGTH IS SAME. IF SO CHANGE COLOR OF THE BUTTON
 

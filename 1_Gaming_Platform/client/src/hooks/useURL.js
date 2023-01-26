@@ -5,6 +5,9 @@ const useURL = (a) => {
   const [lastPath, setLastPath] = useState("");
   const [path, setPath] = useState("");
   const [replace, setReplace] = useState("");
+  const [platform, setPlatform] = useState("");
+  const [subPlatform, setSubPlatform] = useState("");
+  const [subPlatformReplace, setSubPlatformReplace] = useState("");
   useEffect(() => {
     setUrl(a.split("/"));
   }, [a]);
@@ -17,7 +20,22 @@ const useURL = (a) => {
   useEffect(() => {
     setReplace(lastPath.replace(/_/g, " "));
   }, [lastPath]);
-  return [url, lastPath, path, replace];
+  useEffect(() => {
+    if (url[3] && url[4]) {
+      setPlatform(url[3]);
+      setSubPlatform(url[4]);
+      setSubPlatformReplace(url[4].replace(/_/g, " ").toUpperCase());
+    }
+  }, [url]);
+  return [
+    url,
+    lastPath,
+    path,
+    replace,
+    platform,
+    subPlatform,
+    subPlatformReplace,
+  ];
 };
 
 export default useURL;

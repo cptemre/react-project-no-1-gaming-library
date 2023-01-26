@@ -13,15 +13,30 @@ const InputDiv = () => {
 
   //#region FUNCTIONS
 
+  const searchScaling = (value) => {
+    if (value) {
+      $("#searchResultsDiv").css("transform", "scale(1)");
+    } else {
+      $("#searchResultsDiv").css("transform", "scale(0)");
+    }
+  };
+
   // INPUT FOCUS ANIMATION
-  const focusHandle = () => {
+  const focusHandle = (e) => {
+    const value = e.target.value;
     $("#dot").animate({ left: "100%" }, 500);
     $("#underline").animate({ width: "100%" }, 500);
+
+    // SEARCHRESULTSDIV SCALING
+    searchScaling(value);
   };
   // INPUT FOCUS OUT ANIMATION
   const blurHandle = () => {
     $("#dot").animate({ left: 0 }, 500);
     $("#underline").animate({ width: 0 }, 500);
+
+    // SEARCHRESULTSDIV SCALING
+    $("#searchResultsDiv").css("transform", "scale(0)");
   };
 
   const valueChange = (e) => {
@@ -30,12 +45,9 @@ const InputDiv = () => {
     let type = $("#filterType").html().toLowerCase();
     let tempArray = [];
     setSearchArray([]);
+
     // SEARCHRESULTSDIV SCALING
-    if (value) {
-      $("#searchResultsDiv").css("transform", "scale(1)");
-    } else {
-      $("#searchResultsDiv").css("transform", "scale(0)");
-    }
+    searchScaling(value);
 
     // REGEX MATCH CHECK
     const myRegex = new RegExp(value, "gi");
@@ -75,7 +87,7 @@ const InputDiv = () => {
           type="text"
           placeholder="Search here"
           ref={inputRef}
-          onFocus={() => focusHandle()}
+          onFocus={(e) => focusHandle(e)}
           onBlur={() => blurHandle()}
           onChange={(e) => valueChange(e)}
         />

@@ -190,10 +190,10 @@ const App = () => {
             </Context.Provider>
           }
         />
-        <Route path="*" element={<Error/>} />
+        <Route path="*" element={<Error />} />
       </Routes>
       {state.show && (
-        <Context.Provider value={{ dispatch }}>
+        <Context.Provider value={{ state, dispatch }}>
           <Load />
         </Context.Provider>
       )}

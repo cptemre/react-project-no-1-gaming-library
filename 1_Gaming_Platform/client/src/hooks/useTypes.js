@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 const useTypes = (state, dispatch, path) => {
-  // CONTINUE FROM HERE. STATE PLATFORM SET UP WORKS
   useEffect(() => {
     let types = [];
     for (let i = 0; i < state.list.length; i++) {

@@ -10,7 +10,7 @@ const GameName = () => {
   const { state, dispatch, item } = useContext(Context);
   const [url, setUrl] = useState("");
   const [isClicked, setIsClicked] = useState(false);
-  const [isChanged, setIsChanged] = useState(false)
+  const [isChanged, setIsChanged] = useState(false);
   const paths = useURL(document.URL);
 
   // SET URL
@@ -72,7 +72,7 @@ const GameName = () => {
     state.filteredTypeList,
     url,
   ]);
-  // SET URL
+  // SET LOCALSTORAGE FAVS
   useEffect(() => {
     if (state.favorites.length >= 0 && isChanged) {
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
@@ -99,7 +99,15 @@ const GameName = () => {
         color: "darkred",
       });
       const removeFav = state.favorites.filter((favs) => favs.id !== item.id);
+      const removeFiltered = state.filteredTypeList.filter(
+        (type) => type.id !== item.id
+      );
+
       dispatch({ type: "REMOVE_FAV", payload: removeFav });
+      dispatch({
+        type: "FILTERED_TYPE_LIST",
+        payload: removeFiltered,
+      });
     } else {
       $(e.currentTarget).css({
         backgroundColor: "darkred",
@@ -109,7 +117,7 @@ const GameName = () => {
     }
 
     setIsClicked(!isClicked);
-    setIsChanged(true)
+    setIsChanged(true);
   };
   return (
     <>

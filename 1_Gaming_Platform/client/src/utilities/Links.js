@@ -5,17 +5,20 @@ import { Link } from "react-router-dom";
 
 const Links = () => {
   // GET TYPES ARRAY
-  const { path, link } = useContext(Context);
+  const { path, link, state } = useContext(Context);
   // STATE LINKS SETUP
   const [types, setTypes] = useState([]);
   const [imgPath, setImgPath] = useState("");
   // SET TYPES BY FILTERING IT WITH CURRENT SELECTED VALUE IN FILTERTYPE
-  useEffect(() => {
-    setTypes(link);
-  }, [link]);
+
   useEffect(() => {
     setImgPath(path);
-  }, [path]);
+    if (path) {
+      setTypes(state.filtered);
+    } else {
+      setTypes(link)
+    }
+  }, [path, state.filtered]);
 
   //#region MOUSE FUNCTIONS
 
@@ -47,37 +50,36 @@ const Links = () => {
 
   return (
     <main id="main">
-      {
-        imgPath !== '/' && types.map((type) => {
-        return (
-          <div key={type} id={type} className="urlDiv">
-            <Link
-              to={`${type.toLowerCase().replace(/ /g, "_")}`}
-              onMouseEnter={(e) => mouseenterHandle(e)}
-              onMouseLeave={(e) => mouseleaveHandle(e)}
-            >
-              <div className="urlName">{type}</div>
-              <div className="urlImgDiv">
-                <div className="urlUpDiv">
-                  <img
-                    src={require(`../assets/imgs/links/${imgPath}${type}/image1x1.jpg`)}
-                    alt={type}
-                    className="urlUpImg"
-                  />
+      {imgPath !== "/" &&
+        types.map((type) => {
+          return (
+            <div key={type} id={type} className="urlDiv">
+              <Link
+                to={`${type.toLowerCase().replace(/ /g, "_")}`}
+                onMouseEnter={(e) => mouseenterHandle(e)}
+                onMouseLeave={(e) => mouseleaveHandle(e)}
+              >
+                <div className="urlName">{type}</div>
+                <div className="urlImgDiv">
+                  <div className="urlUpDiv">
+                    <img
+                      src={require(`../assets/imgs/links/${imgPath}${type}/image1x1.jpg`)}
+                      alt={type}
+                      className="urlUpImg"
+                    />
+                  </div>
+                  <div className="urlDownDiv">
+                    <img
+                      src={require(`../assets/imgs/links/${imgPath}${type}/image1x2.jpg`)}
+                      alt={type}
+                      className="urlDownImg"
+                    />
+                  </div>
                 </div>
-                <div className="urlDownDiv">
-                  <img
-                    src={require(`../assets/imgs/links/${imgPath}${type}/image1x2.jpg`)}
-                    alt={type}
-                    className="urlDownImg"
-                  />
-                </div>
-              </div>
-            </Link>
-          </div>
-        );
-      })
-      }
+              </Link>
+            </div>
+          );
+        })}
     </main>
   );
 };

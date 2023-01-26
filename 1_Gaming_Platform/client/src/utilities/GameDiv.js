@@ -29,38 +29,28 @@ const GameDiv = () => {
   const [filteredList, setFilteredList] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
   const paths = useURL(document.URL);
-
+  const [length, setLength] = useState(state.filtered.length);
   // LINK
   const navigate = useNavigate();
 
   // HOOKS
-  useFilter(state, dispatch);
+  useFilter(state, dispatch, paths);
   useLength(state);
-  useDispatch(state, dispatch);
+  useDispatch(state, dispatch, length, paths);
   useWidth(dispatch);
 
   // FILTER THE LIST BY 10 ON PAGE LOAD
 
   useEffect(() => {
     setFilteredList(state.filtered);
+    setLength(state.filtered.length);
+    console.log(state.filtered);
   }, [state.filtered]);
 
   // SET WIDTH
   useEffect(() => {
     setWidth(state.width);
   }, [state.width]);
-
-  // IF THE PAGE IS FAVORITES THEN SET FILTEREDLIST TO FAVORITES AND CHANGE THE HEART COLOR TO FAV COLOR
-  useEffect(() => {
-    // PREPARE TYPE URL PART
-    if (paths[0][3]) {
-      const typeURL = paths[0][3];
-
-      if (typeURL === "favorites") {
-        setFilteredList(state.favorites);
-      }
-    }
-  }, [state.favorites, state.url, paths]);
 
   return (
     <>

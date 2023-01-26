@@ -18,7 +18,7 @@ const Home = () => {
   }, [state.types]);
 
   return (
-    <Context.Provider value={{ path, link }}>
+    <Context.Provider value={{ path, link,state }}>
       <Links />
     </Context.Provider>
   );

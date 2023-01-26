@@ -1,9 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../utilities/Context";
 import Links from "../utilities/Links";
+// JQUERY
+import $ from "jquery";
 // HOOKS
 import useTypes from "../hooks/useTypes";
 import useURL from "../hooks/useURL";
+import useDispatch from "../hooks/useDispatch";
+import useFilter from "../hooks/useFilter";
+import useLength from "../hooks/useLength";
 
 const Platforms = () => {
   const { state, dispatch } = useContext(Context);
@@ -12,7 +17,7 @@ const Platforms = () => {
   const [lastURL, setLastURL] = useState(url[url.length - 1]);
   const [path, setPath] = useState("");
   const paths = useURL(document.URL);
-
+  const [length, setLength] = useState(state.filtered.length);
   useEffect(() => {
     // PREPARE URL PART
     if (paths[1] && paths[2]) {
@@ -22,11 +27,18 @@ const Platforms = () => {
   }, [paths]);
 
   useEffect(() => {
+    setLength(state.filtered.length);
+  }, [state.filtered]);
+
+  useEffect(() => {
     dispatch({ type: "URL", payload: lastURL });
   }, [state.list]);
 
   // SET NEW PATH WITH USESTATE
   useTypes(state, dispatch, lastURL);
+  useDispatch(state, dispatch, length,paths);
+  useFilter(state, dispatch, paths);
+  useLength(state);
 
   // SET SUB FOLDER NAMES
   useEffect(() => {
@@ -36,14 +48,12 @@ const Platforms = () => {
   return (
     <>
       {path && link && (
-        <Context.Provider value={{ path, link }}>
+        <Context.Provider value={{ path, link, state }}>
           <Links />
         </Context.Provider>
       )}
     </>
   );
-    
-  
 };
 
 export default Platforms;

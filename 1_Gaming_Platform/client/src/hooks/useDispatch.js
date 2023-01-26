@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
-import $ from "jquery";
 
-const useDispatch = (state, dispatch) => {
+const useDispatch = (state, dispatch, length) => {
   const [filteredList, setFilteredList] = useState([]);
 
   useEffect(() => {
     dispatch({ type: "ID", payload: 10 });
   }, []);
-
-  // CONTINUE FROM HERE. STATE PLATFORM SET UP WORKS
 
   // SET FILTERED TYPE LIST
 
@@ -19,12 +16,14 @@ const useDispatch = (state, dispatch) => {
     // PREPARE TYPE URL PART
     const fullURL = document.URL.split("/");
     const typeURL = fullURL[3];
-
     // ALL GAMES WITHOUT FILTER
     if (typeURL === "games") {
       filteredTypeList = state.list;
     } else if (typeURL === "favorites") {
       filteredTypeList = state.favorites;
+    } else if (!fullURL[4]) {
+      filteredTypeList = state[typeURL];
+      console.log(filteredTypeList);
     }
     // FILTER TYPES
     else if (state[typeURL].includes(state.url.toUpperCase())) {
@@ -38,17 +37,19 @@ const useDispatch = (state, dispatch) => {
         }
       }
     }
+    console.log(filteredTypeList);
     dispatch({ type: "FILTERED_TYPE_LIST", payload: filteredTypeList });
-  }, [state.list, state.url]);
+  }, [state.list, state.url, state.types]);
 
   // FILTER THE LIST BY 10 ON PAGE LOAD
   useEffect(() => {
     setFilteredList(state.filtered);
+    console.log(state.filtered);
   }, [state.filtered]);
 
   // SET DOM LENGTH TO STATE
   useEffect(() => {
-    dispatch({ type: "DOM_LENGTH", payload: $(".gameDiv").length });
+    dispatch({ type: "DOM_LENGTH", payload: length });
   }, [filteredList]);
 };
 
