@@ -53,9 +53,11 @@ const InputDiv = () => {
       });
     } else {
       tempArray = state.list.filter((game) => {
-        for (let i = 0; i < game[type].length; i++) {
-          if (game[type][i].match(myRegex)) {
-            return game;
+        if (game[type]) {
+          for (let i = 0; i < game[type].length; i++) {
+            if (game[type][i].match(myRegex)) {
+              return game;
+            }
           }
         }
       });

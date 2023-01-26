@@ -11,6 +11,8 @@ import Platforms from "./links/Platforms";
 import PlatformTypes from "./pages/PlatformTypes";
 // GAME PAGE
 import Game from "./links/Game";
+// ERROR PAGE
+import Error from "./pages/Error";
 // HOOKS
 import useURL from "./hooks/useURL";
 
@@ -71,7 +73,6 @@ const App = () => {
     }
     setLink(state[url]);
   }, [state[url], url]);
-
   // SET YOUR DATA TO STATE
   useEffect(() => {
     const data = require("./gamesList.json");
@@ -88,6 +89,16 @@ const App = () => {
       dispatch({ type: "LOCAL", payload: favoritesLoc });
     }
   }, []);
+
+  // CHECK FOR TYPES IN LOCALSTORAGE TO SAVE THEM IN REDUCER TO USE FOR PAGE TYPES
+  useEffect(() => {
+    types.map((type) => {
+      const subpaths = JSON.parse(localStorage.getItem(type));
+      if (subpaths) {
+        dispatch({ type: type, payload: subpaths });
+      }
+    });
+  }, [types]);
 
   useEffect(() => {
     // SET YOUR LIST TO STATE.LIST
@@ -179,7 +190,7 @@ const App = () => {
             </Context.Provider>
           }
         />
-        <Route path="*" element="Page is not exist" />
+        <Route path="*" element={<Error/>} />
       </Routes>
       {state.show && (
         <Context.Provider value={{ dispatch }}>

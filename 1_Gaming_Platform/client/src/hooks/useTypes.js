@@ -17,8 +17,12 @@ const useTypes = (state, dispatch, path) => {
         }
       }
     }
+    // DELETE COPIES AND SORT THEM
     types = [...new Set(types)];
     types = types.sort();
+    // SAVE TO LOCALSTORAGE
+    localStorage.setItem(path.toUpperCase(), JSON.stringify(types));
+
     dispatch({ type: path.toUpperCase(), payload: types });
   }, [path, state.list]);
 };

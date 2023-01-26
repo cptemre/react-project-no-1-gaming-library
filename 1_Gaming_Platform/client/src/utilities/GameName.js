@@ -10,6 +10,7 @@ const GameName = () => {
   const { state, dispatch, item } = useContext(Context);
   const [url, setUrl] = useState("");
   const [isClicked, setIsClicked] = useState(false);
+  const [isChanged, setIsChanged] = useState(false)
   const paths = useURL(document.URL);
 
   // SET URL
@@ -23,44 +24,46 @@ const GameName = () => {
   // AT START CHECK IF FILTERED ITEMS ARE IN FAVS, IF SO CHANGE HEART COLOR
   useEffect(() => {
     // IF IT IS A GAME URL DONT LOOP
-    if (url !== "game" && url !== "favorites") {
-      state.filteredTypeList.map((item, i) => {
+    if (state.favorites.length > 0) {
+      if (url !== "game" && url !== "favorites") {
+        state.filteredTypeList.map((item, i) => {
+          if (
+            !state.favorites.includes(
+              state.favorites.find((game) => game.id === item.id)
+            )
+          ) {
+            $(".heart").eq(i).css({
+              backgroundColor: "var(--redBackground)",
+              color: "darkred",
+            });
+          } else {
+            $(".heart").eq(i).css({
+              backgroundColor: "darkred",
+              color: "var(--redBackground)",
+            });
+          }
+        });
+      } else if (url === "favorites") {
+        $(".heart").css({
+          backgroundColor: "darkred",
+          color: "var(--redBackground)",
+        });
+      } else {
         if (
           !state.favorites.includes(
             state.favorites.find((game) => game.id === item.id)
           )
         ) {
-          $(".heart").eq(i).css({
+          $(".heart").css({
             backgroundColor: "var(--redBackground)",
             color: "darkred",
           });
         } else {
-          $(".heart").eq(i).css({
+          $(".heart").css({
             backgroundColor: "darkred",
             color: "var(--redBackground)",
           });
         }
-      });
-    } else if (url === "favorites") {
-      $(".heart").css({
-        backgroundColor: "darkred",
-        color: "var(--redBackground)",
-      });
-    } else {
-      if (
-        !state.favorites.includes(
-          state.favorites.find((game) => game.id === item.id)
-        )
-      ) {
-        $(".heart").css({
-          backgroundColor: "var(--redBackground)",
-          color: "darkred",
-        });
-      } else {
-        $(".heart").css({
-          backgroundColor: "darkred",
-          color: "var(--redBackground)",
-        });
       }
     }
   }, [
@@ -71,12 +74,8 @@ const GameName = () => {
   ]);
   // SET URL
   useEffect(() => {
-    console.log(state.favorites);
-    if (state.favorites.length > 0) {
+    if (state.favorites.length >= 0 && isChanged) {
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
-      console.log(1);
-    } else {
-      console.log(JSON.parse(localStorage.getItem("favorites")));
     }
   }, [isClicked]);
   // MOUSE ENTER HANDLE
@@ -89,22 +88,28 @@ const GameName = () => {
   };
   // CHANGE HEART COLOR BY CHECKING IF IT IS IN FAVS
   const clickHandle = (e, item) => {
-    dispatch({ type: "FAVORITES", payload: item });
-    console.log(state.favorites.filter((game) => game.id === item.id));
-    if (state.favorites && state.favorites.includes(item)) {
+    if (
+      state.favorites.length > 0 &&
+      state.favorites.includes(
+        state.favorites.find((game) => game.id === item.id)
+      )
+    ) {
       $(e.currentTarget).css({
         backgroundColor: "var(--redBackground)",
         color: "darkred",
       });
+      const removeFav = state.favorites.filter((favs) => favs.id !== item.id);
+      dispatch({ type: "REMOVE_FAV", payload: removeFav });
     } else {
       $(e.currentTarget).css({
         backgroundColor: "darkred",
         color: "var(--redBackground)",
       });
+      dispatch({ type: "FAVORITES", payload: item });
     }
+
     setIsClicked(!isClicked);
-    console.log(state.favorites);
-    console.log(localStorage);
+    setIsChanged(true)
   };
   return (
     <>

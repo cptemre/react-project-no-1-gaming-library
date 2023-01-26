@@ -10,6 +10,8 @@ import useFilter from "../hooks/useFilter";
 import useURL from "../hooks/useURL";
 // ROUTER
 import { Link } from "react-router-dom";
+// ERROR
+import Error from "../pages/Error";
 
 const Game = () => {
   // VARIABLES
@@ -21,7 +23,6 @@ const Game = () => {
   // CONTEXT
   const { state, dispatch } = useContext(Context);
   const paths = useURL(document.URL);
-
   useEffect(() => {
     // PREPARE URL PART
     if (paths[3]) {
@@ -49,7 +50,7 @@ const Game = () => {
 
   return (
     <div className="gamePage">
-      {item && (
+      {item ? (
         <>
           <Context.Provider value={{ state, dispatch, item }}>
             <GameName />
@@ -129,7 +130,7 @@ const Game = () => {
             </tbody>
           </table>
         </>
-      )}
+      ) : <Error/>}
     </div>
   );
 };
