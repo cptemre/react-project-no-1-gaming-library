@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-// JQUERY
-import $ from "jquery";
 // CONTEXT
 import { Context } from "./Context";
 // ROUTER

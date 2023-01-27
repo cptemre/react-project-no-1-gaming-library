@@ -8,6 +8,7 @@ import { Context } from "../utilities/Context";
 // HOOKS
 import useFilter from "../hooks/useFilter";
 import useURL from "../hooks/useURL";
+import useScroll from "../hooks/useScroll";
 // ROUTER
 import { Link } from "react-router-dom";
 // ERROR
@@ -47,7 +48,7 @@ const Game = () => {
 
   // HIDE LOAD MORE
   useFilter(state, dispatch, paths);
-
+  useScroll()
   return (
     <div className="gamePage">
       {item ? (

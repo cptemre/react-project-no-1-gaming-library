@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 
-const useTypes = (state, dispatch, path) => {
+const useTypes = (state, dispatch, paths) => {
   useEffect(() => {
     let types = [];
     for (let i = 0; i < state.list.length; i++) {
-      if (state.list[i][path]) {
-        for (let x = 0; x < state.list[i][path].length; x++) {
+      if (state.list[i][paths]) {
+        for (let x = 0; x < state.list[i][paths].length; x++) {
           // SPLIT FROM COMMA
-          for (let y = 0; y < state.list[i][path][x].length; y++) {
-            const splitted = state.list[i][path][x].split(",");
+          for (let y = 0; y < state.list[i][paths][x].length; y++) {
+            const splitted = state.list[i][paths][x].split(",");
             for (let y = 0; y < splitted.length; y++) {
               types.push(splitted[y].toUpperCase());
             }
@@ -20,10 +20,10 @@ const useTypes = (state, dispatch, path) => {
     types = [...new Set(types)];
     types = types.sort();
     // SAVE TO LOCALSTORAGE
-    localStorage.setItem(path.toUpperCase(), JSON.stringify(types));
+    localStorage.setItem(paths.toUpperCase(), JSON.stringify(types));
 
-    dispatch({ type: path.toUpperCase(), payload: types });
-  }, [path, state.list]);
+    dispatch({ type: paths.toUpperCase(), payload: types });
+  }, [paths, state.list]);
 };
 
 export default useTypes;

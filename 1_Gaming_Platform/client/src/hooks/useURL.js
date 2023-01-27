@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useURL = (a) => {
+const useURL = (paths) => {
   const [url, setUrl] = useState(document.URL.split("/"));
   const [lastPath, setLastPath] = useState("");
   const [path, setPath] = useState("");
@@ -9,8 +9,8 @@ const useURL = (a) => {
   const [subPlatform, setSubPlatform] = useState("");
   const [subPlatformReplace, setSubPlatformReplace] = useState("");
   useEffect(() => {
-    setUrl(a.split("/"));
-  }, [a]);
+    setUrl(paths.split("/"));
+  }, [paths]);
   useEffect(() => {
     setLastPath(url[url.length - 1]);
   }, [url]);

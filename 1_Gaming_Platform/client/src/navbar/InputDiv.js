@@ -34,9 +34,6 @@ const InputDiv = () => {
   const blurHandle = () => {
     $("#dot").animate({ left: 0 }, 500);
     $("#underline").animate({ width: 0 }, 500);
-
-    // SEARCHRESULTSDIV SCALING
-    $("#searchResultsDiv").css("transform", "scale(0)");
   };
 
   const valueChange = (e) => {
