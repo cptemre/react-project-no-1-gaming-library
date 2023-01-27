@@ -27,7 +27,6 @@ const useFilter = (state, dispatch, paths) => {
   useEffect(() => {
     // FILTER YOUR LIST TO STATE.FILTER
     const filter = filteredTypeList.filter((item, i) => i < filterID);
-    console.log(filter);
     dispatch({ type: "FILTERED", payload: filter });
     // SET URL IN DISPATCH
     dispatch({ type: "URL", payload: replacedURL });
@@ -38,6 +37,7 @@ const useFilter = (state, dispatch, paths) => {
         dispatch({ type: "SHOW", payload: false });
       }
     } else {
+      // CHECK IF THERE ARE SUBPATHS FOR FORTH LINK PATH
       if (
         path &&
         subpath &&

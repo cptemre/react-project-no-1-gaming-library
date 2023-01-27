@@ -7,8 +7,6 @@ import { Context } from "./Context";
 import { useNavigate } from "react-router-dom";
 // GAME NAME FILE
 import GameName from "../utilities/GameName";
-// HOOKS
-import useURL from "../hooks/useURL";
 
 // GAME FUNCTIONS
 import {
@@ -23,6 +21,8 @@ import useFilter from "../hooks/useFilter";
 import useLength from "../hooks/useLength";
 import useDispatch from "../hooks/useDispatch";
 import useWidth from "../hooks/useWidth";
+import useURL from "../hooks/useURL";
+import useScroll from "../hooks/useScroll";
 
 const GameDiv = () => {
   const { state, dispatch } = useContext(Context);
@@ -38,13 +38,13 @@ const GameDiv = () => {
   useLength(state);
   useDispatch(state, dispatch, length, paths);
   useWidth(dispatch);
+  useScroll();
 
   // FILTER THE LIST BY 10 ON PAGE LOAD
 
   useEffect(() => {
     setFilteredList(state.filtered);
     setLength(state.filtered.length);
-    console.log(state.filtered);
   }, [state.filtered]);
 
   // SET WIDTH

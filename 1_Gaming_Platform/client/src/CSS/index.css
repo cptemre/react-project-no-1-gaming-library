@@ -13,7 +13,7 @@
   /* BUTTON COLORS */
   --loadGreen: rgb(100, 204, 98);
   --redBackground: rgb(220, 190, 190);
-    /* CLOSE SIGN COLORS */
+  /* CLOSE SIGN COLORS */
   --closeSign: rgb(184, 60, 60);
   --closeSignHover: rgb(182, 31, 31);
 }
@@ -74,6 +74,8 @@ nav {
   top: 0;
   z-index: 5;
   background-color: black;
+  box-shadow: 0 0px 2px 1px white;
+  transition: 0.3s;
 }
 
 @media screen and (max-width: 550px) {

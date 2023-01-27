@@ -23,7 +23,6 @@ const useDispatch = (state, dispatch, length) => {
       filteredTypeList = state.favorites;
     } else if (!fullURL[4]) {
       filteredTypeList = state[typeURL];
-      console.log(filteredTypeList);
     }
     // FILTER TYPES
     else if (state[typeURL].includes(state.url.toUpperCase())) {
@@ -37,14 +36,12 @@ const useDispatch = (state, dispatch, length) => {
         }
       }
     }
-    console.log(filteredTypeList);
     dispatch({ type: "FILTERED_TYPE_LIST", payload: filteredTypeList });
   }, [state.list, state.url, state.types]);
 
   // FILTER THE LIST BY 10 ON PAGE LOAD
   useEffect(() => {
     setFilteredList(state.filtered);
-    console.log(state.filtered);
   }, [state.filtered]);
 
   // SET DOM LENGTH TO STATE

@@ -4,6 +4,7 @@ import Links from "../utilities/Links";
 
 // HOOKS
 import useFilter from "../hooks/useFilter";
+import useScroll from "../hooks/useScroll";
 
 const Home = () => {
   const { state, dispatch } = useContext(Context);
@@ -11,14 +12,14 @@ const Home = () => {
   const path = "";
 
   useFilter(state, dispatch);
-
+  useScroll();
   // SET TYPES BY FILTERING IT WITH CURRENT SELECTED VALUE IN FILTERTYPE
   useEffect(() => {
     setLink(state.types);
   }, [state.types]);
 
   return (
-    <Context.Provider value={{ path, link,state }}>
+    <Context.Provider value={{ path, link, state }}>
       <Links />
     </Context.Provider>
   );

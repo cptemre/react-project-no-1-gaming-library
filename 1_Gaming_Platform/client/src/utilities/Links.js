@@ -9,6 +9,7 @@ const Links = () => {
   // STATE LINKS SETUP
   const [types, setTypes] = useState([]);
   const [imgPath, setImgPath] = useState("");
+
   // SET TYPES BY FILTERING IT WITH CURRENT SELECTED VALUE IN FILTERTYPE
 
   useEffect(() => {
@@ -21,6 +22,8 @@ const Links = () => {
   }, [path, state.filtered]);
 
   //#region MOUSE FUNCTIONS
+
+
 
   // MOUSE ENTER IMG UP AND DOWN ANIMATION
   const mouseenterHandle = (e) => {

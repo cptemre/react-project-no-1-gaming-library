@@ -9,6 +9,7 @@ import useURL from "../hooks/useURL";
 import useDispatch from "../hooks/useDispatch";
 import useFilter from "../hooks/useFilter";
 import useLength from "../hooks/useLength";
+import useScroll from "../hooks/useScroll";
 
 const Platforms = () => {
   const { state, dispatch } = useContext(Context);
@@ -39,7 +40,8 @@ const Platforms = () => {
   useDispatch(state, dispatch, length,paths);
   useFilter(state, dispatch, paths);
   useLength(state);
-
+  useScroll()
+  
   // SET SUB FOLDER NAMES
   useEffect(() => {
     setLink(state[lastURL]);
