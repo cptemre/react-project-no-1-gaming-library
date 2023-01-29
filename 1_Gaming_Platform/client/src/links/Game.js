@@ -12,7 +12,7 @@ import useScroll from "../hooks/useScroll";
 // ROUTER
 import { Link } from "react-router-dom";
 // ERROR
-import Error from "../pages/Error";
+import Error from "../error/Error";
 
 const Game = () => {
   // VARIABLES
@@ -48,7 +48,7 @@ const Game = () => {
 
   // HIDE LOAD MORE
   useFilter(state, dispatch, paths);
-  useScroll()
+  useScroll();
   return (
     <div className="gamePage">
       {item ? (

@@ -8,11 +8,11 @@ import Home from "./links/Home";
 // MAIN PAGES
 import Platforms from "./links/Platforms";
 // SUBPATHS
-import PlatformTypes from "./pages/PlatformTypes";
+import GameDiv from "./utilities/GameDiv";
 // GAME PAGE
 import Game from "./links/Game";
 // ERROR PAGE
-import Error from "./pages/Error";
+import Error from "./error/Error";
 // HOOKS
 import useURL from "./hooks/useURL";
 
@@ -136,7 +136,7 @@ const App = () => {
             path={path}
             element={
               <Context.Provider value={{ state, dispatch }}>
-                <PlatformTypes />
+                <GameDiv />
               </Context.Provider>
             }
           />
@@ -173,7 +173,7 @@ const App = () => {
                       path={`/${type}/${subpath}`}
                       element={
                         <Context.Provider value={{ state, dispatch }}>
-                          <PlatformTypes />
+                          <GameDiv />
                         </Context.Provider>
                       }
                     />

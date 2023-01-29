@@ -6,7 +6,7 @@ import $ from "jquery";
 
 const TypesDiv = () => {
   // GET TYPES ARRAY
-  const { state, dispatch } = useContext(Context);
+  const { state } = useContext(Context);
   // STATE TYPES SETUP
   const [types, setTypes] = useState([]);
 
