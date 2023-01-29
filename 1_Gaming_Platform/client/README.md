@@ -1,5 +1,5 @@
 <img
-  src="./public/images/logo/logo/jpg"
+  src="/public/images/logo/logo/jpg"
   alt="Logo"
   title="Gaming Library"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
@@ -11,7 +11,7 @@
 ## React Personal Project No: 1
 
 <img
-  src="./public/images/logo/logo/jpg"
+  src="/public/images/logo/logo/jpg"
   alt="Home Page"
   title="Home Page Example"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
