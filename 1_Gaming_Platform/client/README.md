@@ -1,4 +1,8 @@
-![Project Logo][./public/images/logo/logo.jpg "gaming library"]
+<img
+  src="./public/images/logo/logo/jpg"
+  alt="Logo"
+  title="Gaming Library"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
 
 <hr>
 
@@ -6,7 +10,12 @@
 
 ## React Personal Project No: 1
 
-![Home Page][./public/images/example/homePage.jpg "home page"]
+<img
+  src="./public/images/logo/logo/jpg"
+  alt="Home Page"
+  title="Home Page Example"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+
 
 # Table of Contents
 
