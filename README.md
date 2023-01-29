@@ -10,73 +10,34 @@
 
 # Table of Contents
 
-1. Project Summary
-2. Purpose of the Project
-3. Technologies
-   1. Language
-   2. Libraries
-   3. Styling
-   4. Database
-4. Files & Functions
-   1. public
-      1. images
-      2. index.html
-   2. src
-      1. assets/imgs
-        1. games
-        2. header
-        3. links
-      2. CSS
-        1. game/table.css
-        2. main
-          1. game.css
-          2. games.css
-          3. home.css
-        3. navbar
-          1. searchForm
-             1. inputDiv.css
-             2. searchResultsDiv.css
-             3. typeDiv.css
-             4. typesDiv.css
-          2. headerDiv.css
-        4. index.css
-        5. load.css
-      3. hooks
-        1. useDispatch.js
-        2. useFilter.js
-        3. useLength.js
-        4. useScroll.js
-        5. useTypes.js
-        6. useURL.js
-        7. useWidth.js
-      4. links
-        1. Game.js
-        2. Home.js
-        3. Platform.js
-      5. navbar
-        1. InputDiv.js
-        2. Navbar.js
-        3. SearchResultsDiv.js
-        4. TypeDiv.js
-        5. TypesDiv.js
-      6. error/Error.js
-      7. utilities
-        1. Context.js
-        2. gameAnimations.js
-        3. GameDiv.js
-        4. GameImgs.js
-        5. GameName.js
-        6. Links.js
-        7. reducer.js
-      8. App.js
-      9. gamesList.json
-      10. index.js
-      11. Load.js
-   3. .gitignore
-5. Videos
-6. Live Page
-7. Credits
-8. Licence
+1. [Project Summary](#1-project-summary)
+2. [Purpose of the Project](#2-purpose-of-the-project)
+3. [Technologies](#3-technologies)
+   1. [Language](#1-language)
+   2. [Libraries](#2-libraries)
+   3. [Styling](#3-styling)
+   4. [Database](#4-database)
+4. [Files & Functions](#4-files--functions)
+   1. [public](#1-public)
+      1. [images](#1-images)
+      2. [index.html](#2-indexhtml)
+   2. [src](#2-src)
+      1. [assets](#1-assets)
+      2. [CSS](#2-css)
+      3. [hooks](#3-hooks)
+      4. [links](#4-links)
+      5. [navbar](#5-navbar)
+      6. [error](#6-error)
+      7. [utilities](#7-utilities)
+      8. [App.js](#8-appjs)
+      9. [gamesList.json](#9-gameslistjson)
+      10. [index.js](#10-indexjs)
+      11. [Load.js](#11-loadjs)
+   3. [.gitignore](#3-gitignore)
+5. [Video](#5-video)
+6. [Live Page](#6-live-page)
+7. [Credits](#7-credits)
+8. [Licence](#8-licence)
 
 <hr>
 
@@ -84,7 +45,7 @@
 
 Gaming library categorizes games by their genres, platforms, years etc. This way we can easily find the games we are searching for either by manually finding via homepage links or with the search bar on top. We can also save our favorite games by clicking an icon to reach them easily in the future.
 
-I do not upload all the images to decrease repo size therefore you would not be able to download and run it. You can check the live page from section 6.
+I do not upload all the images to decrease repo size therefore you would not be able to download and run it. You can check the live page from [here](#6-live-page).
 
 <hr>
 
@@ -118,6 +79,8 @@ I wanted to test my react skills to create a more complex project than I have ev
 
 # 4. Files & Functions
 
+Here you can find all the important files and their functions inside related folders.
+
 ## 1. public
 
 ### 1. images
@@ -132,7 +95,7 @@ Contains the root div for react and logo links.
 
 ## 2. src
 
-### 1. assets/imgs
+### 1. assets
 
 Contains 3 folders which keeps all the imgs for the app. All images are resized to 500px width to decrease size of the app.
 
@@ -305,7 +268,7 @@ Contains the components for the navigation bar parts.
 
 This is a component for the search bar.
 On page load it starts an animation under search bar with a straight line extends to right side and focuses to search bar for searching
-Checks the value of type div to be able to check the proper object key. 
+Checks the value of type div to be able to check the proper object key.
 
 Example: If the type div value is engines than you can search your games by the game engine.
 
@@ -342,7 +305,7 @@ On mouse enter it fades the already selected text inside type div. Changes the c
 On mouse leave reverses the effects of the mouse enter.
 On click it swaps the selected search type with the current clicked one.
 
-### 6. error/Error.js
+### 6. error
 
 This component is used to display an error page message on screen when URL is not properly entered.
 If URL doesn't exist this component will be called inside other components.
@@ -359,7 +322,7 @@ This only includes the createContext function to be able to use globally in whol
 
 Contains the functions of the game animations for subpaths.
 Depends on width of the screen size, it uses different values to create game images and functions.
-On mouse enter it filters all other games' images to be less visible. 
+On mouse enter it filters all other games' images to be less visible.
 
 Zoom in to the current image and shows other 2 images of the chosen game.
 
@@ -377,11 +340,11 @@ All the needed data for the game comes from gamesList.json file.
 #### 4. GameImgs.js
 
 Component which includes images and functions to be used in selected game page.
-Gets the 3 image of the game and shows them in the page. 
+Gets the 3 image of the game and shows them in the page.
 All of them has their own border color and hover border color animations.
 On mouse over scales up the image and reverse on mouse leave.
 On click it shows the image on up in wider size.
-Displays an "X" button to be able to close the image. This button has its own hover animation as well. 
+Displays an "X" button to be able to close the image. This button has its own hover animation as well.
 
 #### 5. GameName.js
 
@@ -421,18 +384,38 @@ A button which is used to load more of the desired page links.
 If links are more than 10 this button displays itself.
 On click it shows up to 10 more links and so on. If there are not more links anymore this button hides itself.
 
-## 2. .gitignore
+## 3. .gitignore
 
 Node modules and assets which contains all the images for the page are ignored to upload. To be able to run the page check Live Page section.
 
-# 5. Videos
+# 5. Video
 
 # 6. Live Page
 
 # 7. Credits
 
-This project created by Emre Kunduraci. All the information and images are taken from open sources. 
+This project created by Emre Kunduraci. All the information and images are taken from open sources.
 All the images are resized by and sliced horizontally by me.
 The informations are collected in December 2022 therefore they may be changes over time.
 
 # 8. Licence
+
+Copyright (c) 2023 Emre Kunduraci
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
