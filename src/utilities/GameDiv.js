@@ -78,7 +78,7 @@ const GameDiv = () => {
                           src={require(`../assets/imgs/games/${item.names}/${
                             i + 1
                           }.jpg`)}
-                          alt=""
+                          alt={item.names}
                           className="gameImg"
                         />
                       </figure>

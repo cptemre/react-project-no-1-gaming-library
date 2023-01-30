@@ -48,6 +48,10 @@ const GameName = () => {
           backgroundColor: "darkred",
           color: "var(--redBackground)",
         });
+        $(".gameDiv").css({
+          filter: "none",
+          opacity: 1,
+        });
       } else {
         if (
           !state.favorites.includes(
@@ -77,6 +81,10 @@ const GameName = () => {
     if (state.favorites.length >= 0 && isChanged) {
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
     }
+    $(".gameDiv").css({
+      filter: "none",
+      opacity: 1,
+    });
   }, [isClicked]);
   // MOUSE ENTER HANDLE
   const mouseEnterHandle = (e) => {
