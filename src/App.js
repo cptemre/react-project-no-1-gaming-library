@@ -140,9 +140,6 @@ const App = () => {
     }
   }, [types, list]);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
   // GET TYPES EXCEPT FAVORITES AND GAMES
   useEffect(() => {
     const filtered = state.types.filter((item) => {

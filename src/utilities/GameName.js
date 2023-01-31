@@ -112,10 +112,13 @@ const GameName = () => {
       );
 
       dispatch({ type: "REMOVE_FAV", payload: removeFav });
-      dispatch({
-        type: "FILTERED_TYPE_LIST",
-        payload: removeFiltered,
-      });
+
+      if (url === "favorites") {
+        dispatch({
+          type: "FILTERED_TYPE_LIST",
+          payload: removeFiltered,
+        });
+      }
     } else {
       $(e.currentTarget).css({
         backgroundColor: "darkred",

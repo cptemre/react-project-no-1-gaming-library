@@ -36,7 +36,6 @@ const useDispatch = (state, dispatch, length) => {
         }
       }
     }
-    console.log(typeURL);
     dispatch({ type: "FILTERED_TYPE_LIST", payload: filteredTypeList });
   }, [state.list, state.url, state.types]);
 
