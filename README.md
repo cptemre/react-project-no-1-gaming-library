@@ -45,7 +45,7 @@
 
 Gaming library categorizes games by their genres, platforms, years etc. This way we can easily find the games we are searching for either by manually finding via homepage links or with the search bar on top. We can also save our favorite games by clicking an icon to reach them easily in the future.
 
-I do not upload all the images to decrease repo size therefore you would not be able to download and run it. You can check the live page from [here](#6-live-page).
+I do not upload all the images to decrease repo size therefore you would not be able to download and run it. You can check the live page from [here](https://cptemre-react-project-1.netlify.app).
 
 <hr>
 
@@ -367,7 +367,7 @@ This file includes the default state and reducer function to be used to get data
 ### 8. App.js
 
 Includes all CSS file imports.
-Sets the local storage data to state.
+Sets the local storage data to state and local storage.
 Dynamically routes to all pages.
 
 ### 9. gamesList.json
@@ -390,7 +390,11 @@ Node modules and assets which contains all the images for the page are ignored t
 
 # 5. Video
 
+You can see how to use the project from this youtube [link](https://www.youtube.com/watch?v=GJPkQFBbFTA)
+
 # 6. Live Page
+
+You can reach the preview of my project from netlify app [link](https://cptemre-react-project-1.netlify.app)
 
 # 7. Credits
 
