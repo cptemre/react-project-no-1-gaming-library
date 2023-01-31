@@ -58,6 +58,7 @@ const App = () => {
   const [link, setLink] = useState([]);
   const [url, setUrl] = useState("");
   const paths = useURL(document.URL);
+  const [isLoad, setIsLoad] = useState(false);
 
   // SET SUB FOLDER NAMES
   useEffect(() => {
@@ -76,6 +77,7 @@ const App = () => {
   // SET YOUR DATA TO STATE
   useEffect(() => {
     const data = require("./gamesList.json");
+
     setList(data);
     dispatch({ type: "SHOW", payload: false });
     // IF TYPE INCLUDES THEN SET
@@ -105,6 +107,42 @@ const App = () => {
     dispatch({ type: "GET_ALL", payload: list });
   }, [list]);
 
+  useEffect(() => {
+    let tempArray = {};
+    const unwanted = ["definition", "id", "iframe", "links", "names", "src"];
+    // SET DATA ON LOAD TO STATE AND LOCALSTORAGE
+    for (let i = 0; i < list.length; i++) {
+      for (let j = 0; j < Object.keys(list[i]).length; j++) {
+        const key = Object.keys(list[i])[j];
+        const value = Object.values(list[i])[j];
+        if (types.includes(key.toUpperCase()) && !unwanted.includes(key)) {
+          for (let x = 0; x < value.length; x++) {
+            if (tempArray[key]) {
+              tempArray[key] = [...tempArray[key], value[x].toUpperCase()];
+            } else {
+              tempArray[key] = [];
+            }
+          }
+        }
+        // DELETE COPIES AND SORT THEM
+        tempArray[key] = [...new Set(tempArray[key])];
+        tempArray[key] = tempArray[key].sort();
+      }
+    }
+
+    for (let i = 0; i < Object.keys(tempArray).length; i++) {
+      const key = Object.keys(tempArray)[i];
+      const value = Object.values(tempArray)[i];
+      if (types.includes(key.toUpperCase())) {
+        localStorage.setItem(key, JSON.stringify(value));
+        dispatch({ type: key.toUpperCase(), payload: value });
+      }
+    }
+  }, [types, list]);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
   // GET TYPES EXCEPT FAVORITES AND GAMES
   useEffect(() => {
     const filtered = state.types.filter((item) => {

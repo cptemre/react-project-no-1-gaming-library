@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../utilities/Context";
 import Links from "../utilities/Links";
-// JQUERY
-import $ from "jquery";
 // HOOKS
 import useTypes from "../hooks/useTypes";
 import useURL from "../hooks/useURL";
@@ -37,11 +35,10 @@ const Platforms = () => {
 
   // SET NEW PATH WITH USESTATE
   useTypes(state, dispatch, lastURL);
-  useDispatch(state, dispatch, length,paths);
+  useDispatch(state, dispatch, length, paths);
   useFilter(state, dispatch, paths);
   useLength(state);
-  useScroll()
-  
+  useScroll();
   // SET SUB FOLDER NAMES
   useEffect(() => {
     setLink(state[lastURL]);

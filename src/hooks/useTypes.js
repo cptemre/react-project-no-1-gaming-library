@@ -20,7 +20,7 @@ const useTypes = (state, dispatch, paths) => {
     types = [...new Set(types)];
     types = types.sort();
     // SAVE TO LOCALSTORAGE
-    localStorage.setItem(paths.toUpperCase(), JSON.stringify(types));
+    localStorage.setItem(paths, JSON.stringify(types));
 
     dispatch({ type: paths.toUpperCase(), payload: types });
   }, [paths, state.list]);

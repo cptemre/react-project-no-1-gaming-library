@@ -17,13 +17,11 @@ const Links = () => {
     if (path) {
       setTypes(state.filtered);
     } else {
-      setTypes(link)
+      setTypes(link);
     }
   }, [path, state.filtered]);
 
   //#region MOUSE FUNCTIONS
-
-
 
   // MOUSE ENTER IMG UP AND DOWN ANIMATION
   const mouseenterHandle = (e) => {
@@ -66,14 +64,14 @@ const Links = () => {
                 <div className="urlImgDiv">
                   <div className="urlUpDiv">
                     <img
-                      src={require(`../assets/imgs/links/${imgPath}${type}/image1x1.jpg`)}
+                      src={require(`../assets/imgs/links/${imgPath.toUpperCase()}${type.toUpperCase()}/image1x1.jpg`)}
                       alt={type}
                       className="urlUpImg"
                     />
                   </div>
                   <div className="urlDownDiv">
                     <img
-                      src={require(`../assets/imgs/links/${imgPath}${type}/image1x2.jpg`)}
+                      src={require(`../assets/imgs/links/${imgPath.toUpperCase()}${type.toUpperCase()}/image1x2.jpg`)}
                       alt={type}
                       className="urlDownImg"
                     />
